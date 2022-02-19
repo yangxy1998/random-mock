@@ -1,0 +1,1869 @@
+{
+  "errors": [
+  ],
+  "warnings": [
+  ],
+  "version": "4.46.0",
+  "hash": "9dde05022382a281fd59",
+  "time": 1337,
+  "builtAt": 1645272658502,
+  "publicPath": "",
+  "outputPath": "G:\\Github\\random-mock\\build",
+  "assetsByChunkName": {
+    "random-mock": [
+      "random-mock.js",
+      "random-mock.js.map"
+    ],
+    "random-mock.min": "random-mock.min.js"
+  },
+  "assets": [
+    {
+      "name": "random-mock.js",
+      "size": 17536,
+      "chunks": [
+        0,
+        1
+      ],
+      "chunkNames": [
+        "random-mock"
+      ],
+      "info": {
+      },
+      "emitted": true
+    },
+    {
+      "name": "random-mock.js.map",
+      "size": 26198,
+      "chunks": [
+        0,
+        1
+      ],
+      "chunkNames": [
+        "random-mock"
+      ],
+      "info": {
+        "development": true
+      },
+      "emitted": true
+    },
+    {
+      "name": "random-mock.min.js",
+      "size": 6785,
+      "chunks": [
+        1,
+        0
+      ],
+      "chunkNames": [
+        "random-mock.min"
+      ],
+      "info": {
+      },
+      "emitted": true
+    }
+  ],
+  "filteredAssets": 0,
+  "entrypoints": {
+    "random-mock": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "random-mock.js",
+        "random-mock.js.map"
+      ],
+      "children": {
+      },
+      "childAssets": {
+      }
+    },
+    "random-mock.min": {
+      "chunks": [
+        1
+      ],
+      "assets": [
+        "random-mock.min.js"
+      ],
+      "children": {
+      },
+      "childAssets": {
+      }
+    }
+  },
+  "namedChunkGroups": {
+    "random-mock": {
+      "chunks": [
+        0
+      ],
+      "assets": [
+        "random-mock.js",
+        "random-mock.js.map"
+      ],
+      "children": {
+      },
+      "childAssets": {
+      }
+    },
+    "random-mock.min": {
+      "chunks": [
+        1
+      ],
+      "assets": [
+        "random-mock.min.js"
+      ],
+      "children": {
+      },
+      "childAssets": {
+      }
+    }
+  },
+  "chunks": [
+    {
+      "id": 0,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 12764,
+      "names": [
+        "random-mock"
+      ],
+      "files": [
+        "random-mock.js",
+        "random-mock.js.map"
+      ],
+      "hash": "b016ba067035eaaa4bba",
+      "siblings": [
+      ],
+      "parents": [
+      ],
+      "children": [
+      ],
+      "childrenByOrder": {
+      },
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Distribution.ts",
+          "name": "./src/distribution/Distribution.ts",
+          "index": 6,
+          "index2": 3,
+          "size": 229,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "issuerId": 7,
+          "issuerName": "./src/distribution/Continuous.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            },
+            {
+              "id": 7,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+              "name": "./src/distribution/Continuous.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 6,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+              "module": "./src/distribution/Discrete.ts",
+              "moduleName": "./src/distribution/Discrete.ts",
+              "type": "cjs require",
+              "userRequest": "./Distribution",
+              "loc": "4:23-48"
+            },
+            {
+              "moduleId": 7,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+              "module": "./src/distribution/Continuous.ts",
+              "moduleName": "./src/distribution/Continuous.ts",
+              "type": "cjs require",
+              "userRequest": "./Distribution",
+              "loc": "4:23-48"
+            },
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+              "module": "./src/distribution/Compound.ts",
+              "moduleName": "./src/distribution/Compound.ts",
+              "type": "cjs require",
+              "userRequest": "./Distribution",
+              "loc": "4:23-48"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 3
+        },
+        {
+          "id": 1,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Analysis.ts",
+          "name": "./src/util/Analysis.ts",
+          "index": 2,
+          "index2": 0,
+          "size": 992,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "issuerId": 4,
+          "issuerName": "./src/util/generator.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 4,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "name": "./src/util/generator.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 4,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "module": "./src/util/generator.ts",
+              "moduleName": "./src/util/generator.ts",
+              "type": "cjs require",
+              "userRequest": "./Analysis",
+              "loc": "4:19-40"
+            },
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+              "module": "./src/distribution/Compound.ts",
+              "moduleName": "./src/distribution/Compound.ts",
+              "type": "cjs require",
+              "userRequest": "../util/Analysis",
+              "loc": "6:19-46"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 2,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Rule.ts",
+          "name": "./src/util/Rule.ts",
+          "index": 3,
+          "index2": 1,
+          "size": 1270,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "issuerId": 4,
+          "issuerName": "./src/util/generator.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 4,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "name": "./src/util/generator.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 4,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "module": "./src/util/generator.ts",
+              "moduleName": "./src/util/generator.ts",
+              "type": "cjs require",
+              "userRequest": "./Rule",
+              "loc": "5:15-32"
+            },
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+              "module": "./src/distribution/Compound.ts",
+              "moduleName": "./src/distribution/Compound.ts",
+              "type": "cjs require",
+              "userRequest": "../util/Rule",
+              "loc": "5:15-38"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts",
+          "index": 0,
+          "index2": 9,
+          "size": 762,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.ts",
+              "loc": "random-mock"
+            },
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.ts",
+              "loc": "random-mock.min"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "id": 4,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "name": "./src/util/generator.ts",
+          "index": 1,
+          "index2": 2,
+          "size": 4148,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "issuerId": 3,
+          "issuerName": "./src/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "module": "./src/index.ts",
+              "moduleName": "./src/index.ts",
+              "type": "cjs require",
+              "userRequest": "./util/generator",
+              "loc": "4:20-47"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "id": 5,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "name": "./src/distribution/index.ts",
+          "index": 4,
+          "index2": 7,
+          "size": 614,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "issuerId": 3,
+          "issuerName": "./src/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "module": "./src/index.ts",
+              "moduleName": "./src/index.ts",
+              "type": "cjs require",
+              "userRequest": "./distribution",
+              "loc": "6:23-48"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "id": 6,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+          "name": "./src/distribution/Discrete.ts",
+          "index": 5,
+          "index2": 4,
+          "size": 1109,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "issuerId": 5,
+          "issuerName": "./src/distribution/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "module": "./src/distribution/index.ts",
+              "moduleName": "./src/distribution/index.ts",
+              "type": "cjs require",
+              "userRequest": "./Discrete",
+              "loc": "4:19-40"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 7,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "name": "./src/distribution/Continuous.ts",
+          "index": 7,
+          "index2": 5,
+          "size": 1650,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "issuerId": 5,
+          "issuerName": "./src/distribution/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "module": "./src/distribution/index.ts",
+              "moduleName": "./src/distribution/index.ts",
+              "type": "cjs require",
+              "userRequest": "./Continuous",
+              "loc": "5:21-44"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 8,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+          "name": "./src/distribution/Compound.ts",
+          "index": 8,
+          "index2": 6,
+          "size": 1501,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "issuerId": 5,
+          "issuerName": "./src/distribution/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "module": "./src/distribution/index.ts",
+              "moduleName": "./src/distribution/index.ts",
+              "type": "cjs require",
+              "userRequest": "./Compound",
+              "loc": "6:19-40"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 9,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Attribute.ts",
+          "name": "./src/util/Attribute.ts",
+          "index": 9,
+          "index2": 8,
+          "size": 489,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "issuerId": 3,
+          "issuerName": "./src/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "module": "./src/index.ts",
+              "moduleName": "./src/index.ts",
+              "type": "cjs require",
+              "userRequest": "./util/Attribute",
+              "loc": "8:20-47"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "random-mock",
+          "request": "./src/index.ts",
+          "reasons": [
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "rendered": true,
+      "initial": true,
+      "entry": true,
+      "size": 12764,
+      "names": [
+        "random-mock.min"
+      ],
+      "files": [
+        "random-mock.min.js"
+      ],
+      "hash": "f2dec93cba496f23002d",
+      "siblings": [
+      ],
+      "parents": [
+      ],
+      "children": [
+      ],
+      "childrenByOrder": {
+      },
+      "modules": [
+        {
+          "id": 0,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Distribution.ts",
+          "name": "./src/distribution/Distribution.ts",
+          "index": 6,
+          "index2": 3,
+          "size": 229,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "issuerId": 7,
+          "issuerName": "./src/distribution/Continuous.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            },
+            {
+              "id": 7,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+              "name": "./src/distribution/Continuous.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 6,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+              "module": "./src/distribution/Discrete.ts",
+              "moduleName": "./src/distribution/Discrete.ts",
+              "type": "cjs require",
+              "userRequest": "./Distribution",
+              "loc": "4:23-48"
+            },
+            {
+              "moduleId": 7,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+              "module": "./src/distribution/Continuous.ts",
+              "moduleName": "./src/distribution/Continuous.ts",
+              "type": "cjs require",
+              "userRequest": "./Distribution",
+              "loc": "4:23-48"
+            },
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+              "module": "./src/distribution/Compound.ts",
+              "moduleName": "./src/distribution/Compound.ts",
+              "type": "cjs require",
+              "userRequest": "./Distribution",
+              "loc": "4:23-48"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 3
+        },
+        {
+          "id": 1,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Analysis.ts",
+          "name": "./src/util/Analysis.ts",
+          "index": 2,
+          "index2": 0,
+          "size": 992,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "issuerId": 4,
+          "issuerName": "./src/util/generator.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 4,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "name": "./src/util/generator.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 4,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "module": "./src/util/generator.ts",
+              "moduleName": "./src/util/generator.ts",
+              "type": "cjs require",
+              "userRequest": "./Analysis",
+              "loc": "4:19-40"
+            },
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+              "module": "./src/distribution/Compound.ts",
+              "moduleName": "./src/distribution/Compound.ts",
+              "type": "cjs require",
+              "userRequest": "../util/Analysis",
+              "loc": "6:19-46"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 2,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Rule.ts",
+          "name": "./src/util/Rule.ts",
+          "index": 3,
+          "index2": 1,
+          "size": 1270,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "issuerId": 4,
+          "issuerName": "./src/util/generator.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 4,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "name": "./src/util/generator.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 4,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+              "module": "./src/util/generator.ts",
+              "moduleName": "./src/util/generator.ts",
+              "type": "cjs require",
+              "userRequest": "./Rule",
+              "loc": "5:15-32"
+            },
+            {
+              "moduleId": 8,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+              "module": "./src/distribution/Compound.ts",
+              "moduleName": "./src/distribution/Compound.ts",
+              "type": "cjs require",
+              "userRequest": "../util/Rule",
+              "loc": "5:15-38"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts",
+          "index": 0,
+          "index2": 9,
+          "size": 762,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": null,
+          "issuerId": null,
+          "issuerName": null,
+          "issuerPath": null,
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.ts",
+              "loc": "random-mock"
+            },
+            {
+              "moduleId": null,
+              "moduleIdentifier": null,
+              "module": null,
+              "moduleName": null,
+              "type": "single entry",
+              "userRequest": "./src/index.ts",
+              "loc": "random-mock.min"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 0
+        },
+        {
+          "id": 4,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "name": "./src/util/generator.ts",
+          "index": 1,
+          "index2": 2,
+          "size": 4148,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "issuerId": 3,
+          "issuerName": "./src/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "module": "./src/index.ts",
+              "moduleName": "./src/index.ts",
+              "type": "cjs require",
+              "userRequest": "./util/generator",
+              "loc": "4:20-47"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "id": 5,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "name": "./src/distribution/index.ts",
+          "index": 4,
+          "index2": 7,
+          "size": 614,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "issuerId": 3,
+          "issuerName": "./src/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "module": "./src/index.ts",
+              "moduleName": "./src/index.ts",
+              "type": "cjs require",
+              "userRequest": "./distribution",
+              "loc": "6:23-48"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        },
+        {
+          "id": 6,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+          "name": "./src/distribution/Discrete.ts",
+          "index": 5,
+          "index2": 4,
+          "size": 1109,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "issuerId": 5,
+          "issuerName": "./src/distribution/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "module": "./src/distribution/index.ts",
+              "moduleName": "./src/distribution/index.ts",
+              "type": "cjs require",
+              "userRequest": "./Discrete",
+              "loc": "4:19-40"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 7,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "name": "./src/distribution/Continuous.ts",
+          "index": 7,
+          "index2": 5,
+          "size": 1650,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "issuerId": 5,
+          "issuerName": "./src/distribution/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "module": "./src/distribution/index.ts",
+              "moduleName": "./src/distribution/index.ts",
+              "type": "cjs require",
+              "userRequest": "./Continuous",
+              "loc": "5:21-44"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 8,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+          "name": "./src/distribution/Compound.ts",
+          "index": 8,
+          "index2": 6,
+          "size": 1501,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "issuerId": 5,
+          "issuerName": "./src/distribution/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            },
+            {
+              "id": 5,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "name": "./src/distribution/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 5,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+              "module": "./src/distribution/index.ts",
+              "moduleName": "./src/distribution/index.ts",
+              "type": "cjs require",
+              "userRequest": "./Compound",
+              "loc": "6:19-40"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 2
+        },
+        {
+          "id": 9,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Attribute.ts",
+          "name": "./src/util/Attribute.ts",
+          "index": 9,
+          "index2": 8,
+          "size": 489,
+          "cacheable": true,
+          "built": true,
+          "optional": false,
+          "prefetched": false,
+          "chunks": [
+            0,
+            1
+          ],
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "issuerId": 3,
+          "issuerName": "./src/index.ts",
+          "issuerPath": [
+            {
+              "id": 3,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "name": "./src/index.ts"
+            }
+          ],
+          "failed": false,
+          "errors": 0,
+          "warnings": 0,
+          "assets": [
+          ],
+          "reasons": [
+            {
+              "moduleId": 3,
+              "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+              "module": "./src/index.ts",
+              "moduleName": "./src/index.ts",
+              "type": "cjs require",
+              "userRequest": "./util/Attribute",
+              "loc": "8:20-47"
+            }
+          ],
+          "usedExports": true,
+          "providedExports": null,
+          "optimizationBailout": [
+            "ModuleConcatenation bailout: Module is not an ECMAScript module"
+          ],
+          "depth": 1
+        }
+      ],
+      "filteredModules": 0,
+      "origins": [
+        {
+          "module": "",
+          "moduleIdentifier": "",
+          "moduleName": "",
+          "loc": "random-mock.min",
+          "request": "./src/index.ts",
+          "reasons": [
+          ]
+        }
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "id": 0,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Distribution.ts",
+      "name": "./src/distribution/Distribution.ts",
+      "index": 6,
+      "index2": 3,
+      "size": 229,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+      "issuerId": 7,
+      "issuerName": "./src/distribution/Continuous.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        },
+        {
+          "id": 5,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "name": "./src/distribution/index.ts"
+        },
+        {
+          "id": 7,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "name": "./src/distribution/Continuous.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 6,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+          "module": "./src/distribution/Discrete.ts",
+          "moduleName": "./src/distribution/Discrete.ts",
+          "type": "cjs require",
+          "userRequest": "./Distribution",
+          "loc": "4:23-48"
+        },
+        {
+          "moduleId": 7,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "module": "./src/distribution/Continuous.ts",
+          "moduleName": "./src/distribution/Continuous.ts",
+          "type": "cjs require",
+          "userRequest": "./Distribution",
+          "loc": "4:23-48"
+        },
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+          "module": "./src/distribution/Compound.ts",
+          "moduleName": "./src/distribution/Compound.ts",
+          "type": "cjs require",
+          "userRequest": "./Distribution",
+          "loc": "4:23-48"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 3
+    },
+    {
+      "id": 1,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Analysis.ts",
+      "name": "./src/util/Analysis.ts",
+      "index": 2,
+      "index2": 0,
+      "size": 992,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+      "issuerId": 4,
+      "issuerName": "./src/util/generator.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        },
+        {
+          "id": 4,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "name": "./src/util/generator.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 4,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "module": "./src/util/generator.ts",
+          "moduleName": "./src/util/generator.ts",
+          "type": "cjs require",
+          "userRequest": "./Analysis",
+          "loc": "4:19-40"
+        },
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+          "module": "./src/distribution/Compound.ts",
+          "moduleName": "./src/distribution/Compound.ts",
+          "type": "cjs require",
+          "userRequest": "../util/Analysis",
+          "loc": "6:19-46"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "id": 2,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Rule.ts",
+      "name": "./src/util/Rule.ts",
+      "index": 3,
+      "index2": 1,
+      "size": 1270,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+      "issuerId": 4,
+      "issuerName": "./src/util/generator.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        },
+        {
+          "id": 4,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "name": "./src/util/generator.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 4,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+          "module": "./src/util/generator.ts",
+          "moduleName": "./src/util/generator.ts",
+          "type": "cjs require",
+          "userRequest": "./Rule",
+          "loc": "5:15-32"
+        },
+        {
+          "moduleId": 8,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+          "module": "./src/distribution/Compound.ts",
+          "moduleName": "./src/distribution/Compound.ts",
+          "type": "cjs require",
+          "userRequest": "../util/Rule",
+          "loc": "5:15-38"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "id": 3,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+      "name": "./src/index.ts",
+      "index": 0,
+      "index2": 9,
+      "size": 762,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": null,
+      "issuerId": null,
+      "issuerName": null,
+      "issuerPath": null,
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src/index.ts",
+          "loc": "random-mock"
+        },
+        {
+          "moduleId": null,
+          "moduleIdentifier": null,
+          "module": null,
+          "moduleName": null,
+          "type": "single entry",
+          "userRequest": "./src/index.ts",
+          "loc": "random-mock.min"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 0
+    },
+    {
+      "id": 4,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\generator.ts",
+      "name": "./src/util/generator.ts",
+      "index": 1,
+      "index2": 2,
+      "size": 4148,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+      "issuerId": 3,
+      "issuerName": "./src/index.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "module": "./src/index.ts",
+          "moduleName": "./src/index.ts",
+          "type": "cjs require",
+          "userRequest": "./util/generator",
+          "loc": "4:20-47"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "id": 5,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+      "name": "./src/distribution/index.ts",
+      "index": 4,
+      "index2": 7,
+      "size": 614,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+      "issuerId": 3,
+      "issuerName": "./src/index.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "module": "./src/index.ts",
+          "moduleName": "./src/index.ts",
+          "type": "cjs require",
+          "userRequest": "./distribution",
+          "loc": "6:23-48"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    },
+    {
+      "id": 6,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+      "name": "./src/distribution/Discrete.ts",
+      "index": 5,
+      "index2": 4,
+      "size": 1109,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+      "issuerId": 5,
+      "issuerName": "./src/distribution/index.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        },
+        {
+          "id": 5,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "name": "./src/distribution/index.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 5,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "module": "./src/distribution/index.ts",
+          "moduleName": "./src/distribution/index.ts",
+          "type": "cjs require",
+          "userRequest": "./Discrete",
+          "loc": "4:19-40"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "id": 7,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+      "name": "./src/distribution/Continuous.ts",
+      "index": 7,
+      "index2": 5,
+      "size": 1650,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+      "issuerId": 5,
+      "issuerName": "./src/distribution/index.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        },
+        {
+          "id": 5,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "name": "./src/distribution/index.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 5,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "module": "./src/distribution/index.ts",
+          "moduleName": "./src/distribution/index.ts",
+          "type": "cjs require",
+          "userRequest": "./Continuous",
+          "loc": "5:21-44"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "id": 8,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Compound.ts",
+      "name": "./src/distribution/Compound.ts",
+      "index": 8,
+      "index2": 6,
+      "size": 1501,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+      "issuerId": 5,
+      "issuerName": "./src/distribution/index.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        },
+        {
+          "id": 5,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "name": "./src/distribution/index.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 5,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\index.ts",
+          "module": "./src/distribution/index.ts",
+          "moduleName": "./src/distribution/index.ts",
+          "type": "cjs require",
+          "userRequest": "./Compound",
+          "loc": "6:19-40"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 2
+    },
+    {
+      "id": 9,
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Attribute.ts",
+      "name": "./src/util/Attribute.ts",
+      "index": 9,
+      "index2": 8,
+      "size": 489,
+      "cacheable": true,
+      "built": true,
+      "optional": false,
+      "prefetched": false,
+      "chunks": [
+        0,
+        1
+      ],
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+      "issuerId": 3,
+      "issuerName": "./src/index.ts",
+      "issuerPath": [
+        {
+          "id": 3,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "name": "./src/index.ts"
+        }
+      ],
+      "failed": false,
+      "errors": 0,
+      "warnings": 0,
+      "assets": [
+      ],
+      "reasons": [
+        {
+          "moduleId": 3,
+          "moduleIdentifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\index.ts",
+          "module": "./src/index.ts",
+          "moduleName": "./src/index.ts",
+          "type": "cjs require",
+          "userRequest": "./util/Attribute",
+          "loc": "8:20-47"
+        }
+      ],
+      "usedExports": true,
+      "providedExports": null,
+      "optimizationBailout": [
+        "ModuleConcatenation bailout: Module is not an ECMAScript module"
+      ],
+      "depth": 1
+    }
+  ],
+  "filteredModules": 0,
+  "logging": {
+    "webpack.buildChunkGraph.visitModules": {
+      "entries": [
+      ],
+      "filteredEntries": 2,
+      "debug": false
+    }
+  },
+  "children": [
+  ]
+}
