@@ -2,15 +2,15 @@
 
 [中文](./README-CHINESE.md) | [English](./README.md)
 
-Lightweight JavaScript random sample generator.
+轻量级 Javascript 随机样本生成器
 
-random-mock is a random variable generator that can generate multidimensional variables with specified distribution or correlation, which can be installed through NPM.
+Random mock 是一种随机变量生成器，可以生成具有指定分布或相关性的多维变量，可以通过 npm 进行安装。
 
 ```bash
 npm install random-mock
 ```
 
-# Usage
+# 使用方法
 
 ```js
 const config = {
@@ -55,7 +55,7 @@ let items = generator.create({
 })
 ```
 
-## Attribute Definition
+## 属性定义
 
 ```js
 let attributes = [
@@ -72,7 +72,7 @@ let attributes = [
 ]
 ```
 
-The above code defines a continuous variable x subject to standard normal distribution and a discrete variable subject to binomial distribution, in which the occurrence probability of CN is 0.8 and the occurrence probability of US is 0.2
+上述代码定义了一个服从标准正态分布的连续型变量 x，以及一个服从二项分布的离散型变量，其中 CN 出现概率为 0.8，US 出现概率为 0.2
 
 ## 规则定义
 
@@ -88,17 +88,13 @@ let rules = [
 ]
 ```
 
-The above code defines a rule about variable y, where dependent indicates the dependent variable, and its value is affected by the independent variables (i.e. region and x) indicated by arguments.
+上述代码定义了一条关于变量 y 的规则，其中 dependent 指明的是因变量，其取值受到 arguments 指明的自变量（即 region 和 x）的影响。
+filter 是一个可选参数，用于指定筛选条件，筛选的是所有符合指定规则的元素。
+effect 是必需的，用于指定一条相关性规则，参数应是自变量，函数返回值为因变量。
+confidence 用于指定这条规则的置信度，指示的是 filter 筛选后的样本中服从指定规则的最小比率。
+目前，您需要确保 filter 和 effect 的函数原型当中的参数列表与属性名相对应。
 
-Filter is an optional parameter, which is used to specify the filter criteria. It filters all elements that meet the specified rules.
-
-Effect is required to specify a correlation rule. The parameter should be an independent variable and the return value of the function is a dependent variable.
-
-Confidence is used to specify the confidence of this rule, indicating the minimum rate of compliance with the specified rule in the sample filtered by the filter.
-
-At present, you need to ensure that the parameter list in the function prototype of filter and effect corresponds to the property name.
-
-## Distribution
+## 分布 Distribution
 
 ```js
 let distribution = new Distribution.Continuous.Uniform([0, 10])
@@ -110,16 +106,16 @@ let distribution = new Distribution.Continuous.Uniform([0, 10])
 distribution.random()
 ```
 
-The above function defines a uniform distribution in the range of [0,10].
+上述函数调用将返回一个服从[0,10]均匀分布的随机变量。
 
-At present, the realized distribution includes:
+目前已实现的分布包括：
 
 ```js
-Distribution.Continuous.Uniform // uniform distribution
-Distribution.Continuous.Normal // normal distribution
-Distribution.Discrete.Discrete // specifies the discrete variable corresponding to the distribution rate
-Distribution.Date.Uniform // uniformly distributed time parameters
-Distribution.Date.Normal // time parameter of normal distribution
+Distribution.Continuous.Uniform // 均匀分布
+Distribution.Continuous.Normal // 正态分布
+Distribution.Discrete.Discrete // 指定对应分布率的离散型变量
+Distribution.Date.Uniform // 均匀分布的时间参数
+Distribution.Date.Normal // 正态分布的时间参数
 ```
 
 ## Mocker
@@ -131,7 +127,7 @@ let mocker = new Mocker({
 })
 ```
 
-A mocker configuration item should contain attribute list `attributes` and rule list `rules`.
+一个 Mocker 配置项应当包含属性列表 attributes 及规则列表 rules。
 
 ```js
 mocker.create({
@@ -140,4 +136,4 @@ mocker.create({
 })
 ```
 
-The above code will return a list with a length of 10000, and each item in the list is a sample generated according to the specified rules.
+上述代码将返回一个长度为 10000 的列表，列表当中每一项都是按照指定规则生成的样本。
