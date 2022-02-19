@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
+        <div id="menu"></div>
         <canvas id="chart"></canvas>
     </body>
     <script src="./dist/main.js"></script>
@@ -9,7 +10,7 @@
             {
                 name: 'x',
                 type: ExampleChart.AttributeType.Continuous,
-                distribution: new ExampleChart.Distribution.Continuous.Uniform([0, 10])
+                distribution: new ExampleChart.Distribution.Continuous.Normal(0, 5)
             },
             {
                 name: 'y',
@@ -83,6 +84,12 @@
                 filter: (x) => x >= 3,
                 effect: (x) => ExampleChart.Distribution.Continuous.Normal.Random(3 * x + 1, 0.5),
                 confidence: 0.95
+            },
+            {
+                dependent: 'z',
+                arguments: ['x', 'y'],
+                effect: (x, y) => x * 2 + y * y,
+                confidence: 0.99
             }
         ]
         const config = {
@@ -92,7 +99,7 @@
 
         let generator = new ExampleChart.Mocker(config)
         let data = generator.create({
-            count: 10000,
+            count: 1000,
             mode: ExampleChart.DataMode.Object
         })
         const chart = new ExampleChart()
