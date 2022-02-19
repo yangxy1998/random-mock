@@ -74,7 +74,7 @@ let attributes = [
 
 The above code defines a continuous variable x subject to standard normal distribution and a discrete variable subject to binomial distribution, in which the occurrence probability of CN is 0.8 and the occurrence probability of US is 0.2
 
-## 规则定义
+## Rules Definition
 
 ```js
 let rules = [
@@ -104,13 +104,13 @@ At present, you need to ensure that the parameter list in the function prototype
 let distribution = new Distribution.Continuous.Uniform([0, 10])
 ```
 
-上述函数定义了一个[0,10]范围内的均匀分布。
+The above function defines a uniform distribution in the range of [0,10].
 
 ```js
 distribution.random()
 ```
 
-The above function defines a uniform distribution in the range of [0,10].
+The above function call will return a random variable that obeys the uniform distribution of [0,10].
 
 At present, the realized distribution includes:
 
