@@ -2,7 +2,7 @@
     "name": "random-mock",
     "version": "0.1.1",
     "description": "Random-mock is a random variable generator that can generate multidimensional variables with specified distribution or correlation.",
-    "main": "index.js",
+    "main": "./build/random-mock.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "build": "webpack --config webpack.prod.js",
