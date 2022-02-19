@@ -1,89 +1,101 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div id="main" />
+        <canvas id="chart"></canvas>
     </body>
-    <script src="../build/random-mock.js"></script>
+    <script src="./dist/main.js"></script>
     <script>
+        const attributes = [
+            {
+                name: 'x',
+                type: ExampleChart.AttributeType.Continuous,
+                distribution: new ExampleChart.Distribution.Continuous.Uniform([0, 10])
+            },
+            {
+                name: 'y',
+                type: ExampleChart.AttributeType.Continuous,
+                distribution: new ExampleChart.Distribution.Continuous.Uniform([0, 10])
+            },
+            {
+                name: 'z',
+                type: ExampleChart.AttributeType.Continuous,
+                distribution: new ExampleChart.Distribution.Continuous.Normal(5, 2)
+            },
+            {
+                name: 'region',
+                type: ExampleChart.AttributeType.Discrete,
+                distribution: new ExampleChart.Distribution.Discrete.Discrete(
+                    ['CN', 'US'],
+                    [0.8, 0.2]
+                )
+            },
+            {
+                name: 'model',
+                type: ExampleChart.AttributeType.Compound,
+                distribution: new ExampleChart.Distribution.Compound({
+                    attributes: [
+                        {
+                            name: 'cpu',
+                            type: ExampleChart.AttributeType.Discrete,
+                            distribution: new ExampleChart.Distribution.Discrete.Discrete(
+                                ['骁龙870', '骁龙888'],
+                                [0.8, 0.2]
+                            )
+                        },
+                        {
+                            name: 'memory',
+                            type: ExampleChart.AttributeType.Continuous,
+                            distribution: new ExampleChart.Distribution.Continuous.Normal(8, 0.2)
+                        }
+                    ],
+                    rules: [
+                        {
+                            dependent: 'memory',
+                            arguments: ['cpu'],
+                            filter: (cpu) => cpu === '骁龙888',
+                            effect: () =>
+                                ExampleChart.Distribution.Continuous.Normal.Random(12, 0.01),
+                            confidence: 0.99
+                        }
+                    ]
+                })
+            },
+            {
+                name: 'date',
+                type: ExampleChart.AttributeType.Date,
+                distribution: new ExampleChart.Distribution.Date.Uniform([
+                    '2021/01/01 00:00',
+                    '2021/12/01 00:00'
+                ])
+            }
+        ]
+        const rules = [
+            {
+                dependent: 'y',
+                arguments: ['region', 'x'],
+                filter: (region) => region === 'US',
+                effect: (x) => ExampleChart.Distribution.Continuous.Normal.Random(-1 * x, 0.5),
+                confidence: 0.98
+            },
+            {
+                dependent: 'y',
+                arguments: ['x'],
+                filter: (x) => x >= 3,
+                effect: (x) => ExampleChart.Distribution.Continuous.Normal.Random(3 * x + 1, 0.5),
+                confidence: 0.95
+            }
+        ]
         const config = {
-            attributes: [
-                {
-                    name: 'x',
-                    type: rmock.AttributeType.Continuous,
-                    distribution: new rmock.Distribution.Continuous.Uniform([0, 10])
-                },
-                {
-                    name: 'y',
-                    type: rmock.AttributeType.Continuous,
-                    distribution: new rmock.Distribution.Continuous.Uniform([0, 10])
-                },
-                {
-                    name: 'region',
-                    type: rmock.AttributeType.Discrete,
-                    distribution: new rmock.Distribution.Discrete.Discrete(['CN', 'US'], [0.8, 0.2])
-                },
-                {
-                    name: 'model',
-                    type: rmock.AttributeType.Compound,
-                    distribution: new rmock.Distribution.Compound({
-                        attributes: [
-                            {
-                                name: 'cpu',
-                                type: rmock.AttributeType.Discrete,
-                                distribution: new rmock.Distribution.Discrete.Discrete(
-                                    ['骁龙870', '骁龙888'],
-                                    [0.8, 0.2]
-                                )
-                            },
-                            {
-                                name: 'memory',
-                                type: rmock.AttributeType.Continuous,
-                                distribution: new rmock.Distribution.Continuous.Normal(8, 0.2)
-                            }
-                        ],
-                        rules: [
-                            {
-                                dependent: 'memory',
-                                arguments: ['cpu'],
-                                filter: (cpu) => cpu === '骁龙888',
-                                effect: () => rmock.Distribution.Continuous.Normal.Random(12, 0.01),
-                                confidence: 0.99
-                            }
-                        ]
-                    })
-                },
-                {
-                    name: 'date',
-                    type: rmock.AttributeType.Date,
-                    distribution: new rmock.Distribution.Date.Uniform([
-                        '2021/01/01 00:00',
-                        '2021/12/01 00:00'
-                    ])
-                }
-            ],
-            rules: [
-                {
-                    dependent: 'y',
-                    arguments: ['region', 'x'],
-                    filter: (region) => region === 'US',
-                    effect: (x) => rmock.Distribution.Continuous.Normal.Random(-1 * x, 0.5),
-                    confidence: 0.98
-                },
-                {
-                    dependent: 'y',
-                    arguments: ['x'],
-                    filter: (x) => x >= 3,
-                    effect: (x) => rmock.Distribution.Continuous.Normal.Random(3 * x + 1, 0.5),
-                    confidence: 0.95
-                }
-            ]
+            attributes,
+            rules
         }
 
-        let generator = new rmock.Mocker(config)
-        let items = generator.create({
-            count: 100,
-            mode: rmock.DataMode.Object
+        let generator = new ExampleChart.Mocker(config)
+        let data = generator.create({
+            count: 10000,
+            mode: ExampleChart.DataMode.Object
         })
-        console.log(items)
+        const chart = new ExampleChart()
+        chart.data(attributes, data)
     </script>
 </html>
