@@ -12,7 +12,6 @@ module.exports = merge(common, {
     devtool: 'source-map',
     output: {
         libraryTarget: 'umd',
-        library: 'rmock',
         path: path.resolve(__dirname, 'build'),
         filename: '[name].js'
     },

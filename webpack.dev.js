@@ -8,7 +8,6 @@ module.exports = merge(common, {
     output: {
         filename: 'random-mock.js',
         libraryTarget: 'umd',
-        library: 'rmock',
         path: path.resolve(__dirname, 'build')
     },
     watch: true,

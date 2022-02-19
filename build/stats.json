@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.46.0",
-  "hash": "9dde05022382a281fd59",
-  "time": 1337,
-  "builtAt": 1645272658502,
+  "hash": "2512931c7d8d4f99c443",
+  "time": 1708,
+  "builtAt": 1645295014813,
   "publicPath": "",
   "outputPath": "G:\\Github\\random-mock\\build",
   "assetsByChunkName": {
@@ -19,7 +19,7 @@
   "assets": [
     {
       "name": "random-mock.js",
-      "size": 17536,
+      "size": 17539,
       "chunks": [
         0,
         1
@@ -33,7 +33,7 @@
     },
     {
       "name": "random-mock.js.map",
-      "size": 26198,
+      "size": 26137,
       "chunks": [
         0,
         1
@@ -48,7 +48,7 @@
     },
     {
       "name": "random-mock.min.js",
-      "size": 6785,
+      "size": 6817,
       "chunks": [
         1,
         0
@@ -130,7 +130,7 @@
         "random-mock.js",
         "random-mock.js.map"
       ],
-      "hash": "b016ba067035eaaa4bba",
+      "hash": "44f7aa340baf171baa91",
       "siblings": [
       ],
       "parents": [
@@ -155,9 +155,9 @@
             0,
             1
           ],
-          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
-          "issuerId": 7,
-          "issuerName": "./src/distribution/Continuous.ts",
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+          "issuerId": 6,
+          "issuerName": "./src/distribution/Discrete.ts",
           "issuerPath": [
             {
               "id": 3,
@@ -170,9 +170,9 @@
               "name": "./src/distribution/index.ts"
             },
             {
-              "id": 7,
-              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
-              "name": "./src/distribution/Continuous.ts"
+              "id": 6,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+              "name": "./src/distribution/Discrete.ts"
             }
           ],
           "failed": false,
@@ -720,7 +720,7 @@
       "files": [
         "random-mock.min.js"
       ],
-      "hash": "f2dec93cba496f23002d",
+      "hash": "f1a7bb05e1021db3f64a",
       "siblings": [
       ],
       "parents": [
@@ -745,9 +745,9 @@
             0,
             1
           ],
-          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
-          "issuerId": 7,
-          "issuerName": "./src/distribution/Continuous.ts",
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+          "issuerId": 6,
+          "issuerName": "./src/distribution/Discrete.ts",
           "issuerPath": [
             {
               "id": 3,
@@ -760,9 +760,9 @@
               "name": "./src/distribution/index.ts"
             },
             {
-              "id": 7,
-              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
-              "name": "./src/distribution/Continuous.ts"
+              "id": 6,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+              "name": "./src/distribution/Discrete.ts"
             }
           ],
           "failed": false,
@@ -1315,9 +1315,9 @@
         0,
         1
       ],
-      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
-      "issuerId": 7,
-      "issuerName": "./src/distribution/Continuous.ts",
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+      "issuerId": 6,
+      "issuerName": "./src/distribution/Discrete.ts",
       "issuerPath": [
         {
           "id": 3,
@@ -1330,9 +1330,9 @@
           "name": "./src/distribution/index.ts"
         },
         {
-          "id": 7,
-          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
-          "name": "./src/distribution/Continuous.ts"
+          "id": 6,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
+          "name": "./src/distribution/Discrete.ts"
         }
       ],
       "failed": false,
