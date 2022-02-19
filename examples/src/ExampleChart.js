@@ -51,7 +51,7 @@ Chart.register(
     Tooltip,
     SubTitle
 )
-import { AttributeType } from '../../build/random-mock'
+import { AttributeType } from 'random-mock'
 
 export class ExampleChart {
     constructor() {

@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^3.7.1"
+    "chart.js": "^3.7.1",
+    "random-mock": "^0.1.1"
   }
 }
