@@ -1,4 +1,4 @@
-import { Discrete, Hypergeometric } from './Discrete'
+import { Standard, Hypergeometric } from './Discrete'
 import { Uniform, Normal, Exponential, Cauchy } from './Continuous'
 import { Compound } from './Compound'
 import { UniformDate, NormalDate } from './Date'
@@ -15,7 +15,7 @@ export const Distribution = {
         Normal: NormalDate
     },
     Discrete: {
-        Discrete,
+        Standard,
         Hypergeometric // 超几何分布
     }
 }

@@ -442,7 +442,7 @@ exports.Distribution = {
         Normal: Date_1.NormalDate
     },
     Discrete: {
-        Discrete: Discrete_1.Discrete,
+        Standard: Discrete_1.Standard,
         Hypergeometric: Discrete_1.Hypergeometric // 超几何分布
     }
 };
@@ -455,9 +455,9 @@ exports.Distribution = {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Hypergeometric = exports.Discrete = void 0;
+exports.Hypergeometric = exports.Standard = void 0;
 const Distribution_1 = __webpack_require__(0);
-class Discrete extends Distribution_1.Distribution {
+class Standard extends Distribution_1.Distribution {
     constructor(range, p) {
         super();
         this.range = range;
@@ -511,8 +511,8 @@ class Discrete extends Distribution_1.Distribution {
         return range[range.length - 1];
     }
 }
-exports.Discrete = Discrete;
-class Hypergeometric extends Discrete {
+exports.Standard = Standard;
+class Hypergeometric extends Standard {
     constructor(range, N, M, n) {
         const denominator = C(n, N);
         let p = [];
@@ -538,10 +538,10 @@ class Hypergeometric extends Discrete {
                 value += numerator / denominator;
                 p.push(value);
             }
-            Discrete.Random(range, p);
+            Standard.Random(range, p);
         }
         else {
-            Discrete.Random(arguments[0], arguments[1]);
+            Standard.Random(arguments[0], arguments[1]);
         }
     }
 }

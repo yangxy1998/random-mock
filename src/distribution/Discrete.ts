@@ -1,6 +1,6 @@
 import { Distribution } from './Distribution'
 
-export class Discrete extends Distribution {
+export class Standard extends Distribution {
     range: any[]
     p: number[]
     constructor(range: any[], p?: number[]) {
@@ -52,7 +52,7 @@ export class Discrete extends Distribution {
     }
 }
 
-export class Hypergeometric extends Discrete {
+export class Hypergeometric extends Standard {
     p: number[]
     range: any[]
     constructor(range: any[], N: number, M: number, n: number) {
@@ -82,9 +82,9 @@ export class Hypergeometric extends Discrete {
                 value += numerator / denominator
                 p.push(value)
             }
-            Discrete.Random(range, p)
+            Standard.Random(range, p)
         } else {
-            Discrete.Random(arguments[0], arguments[1])
+            Standard.Random(arguments[0], arguments[1])
         }
     }
 }

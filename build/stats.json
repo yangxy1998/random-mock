@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.46.0",
-  "hash": "96ae41729b5b03bc3bbf",
-  "time": 2071,
-  "builtAt": 1645349534634,
+  "hash": "a0214ab48b1d5fad2ac8",
+  "time": 2055,
+  "builtAt": 1645351612822,
   "publicPath": "",
   "outputPath": "G:\\Github\\random-mock\\build",
   "assetsByChunkName": {
@@ -130,7 +130,7 @@
         "random-mock.js",
         "random-mock.js.map"
       ],
-      "hash": "52bbbe86f34d3dd8e4c2",
+      "hash": "6f91b024697c119cce29",
       "siblings": [
       ],
       "parents": [
@@ -840,7 +840,7 @@
       "files": [
         "random-mock.min.js"
       ],
-      "hash": "2c2197f45e0e7d04f5f3",
+      "hash": "16a8e88306cae60b965b",
       "siblings": [
       ],
       "parents": [
