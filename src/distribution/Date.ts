@@ -1,21 +1,31 @@
-import { Uniform, Normal } from './Continuous'
 import dayjs = require('dayjs')
+import { Uniform, Normal } from './Continuous'
 
 export class UniformDate extends Uniform {
-    constructor(range) {
+    format: string
+    constructor(range, format) {
         super([dayjs(range[0]).unix(), dayjs(range[1]).unix()])
+        this.format = format
     }
-    static Random(range) {
-        return Uniform.Random([dayjs(range[0]).unix(), dayjs(range[1]).unix()])
+    random(): string {
+        return dayjs.unix(super.random()).format(this.format)
+    }
+    static Random(range, format) {
+        return dayjs
+            .unix(Uniform.Random([dayjs(range[0]).unix(), dayjs(range[1]).unix()]))
+            .format(format)
     }
 }
 export class NormalDate extends Normal {
-    u: number
-    sigma: number
-    constructor(u, sigma) {
+    format: string
+    constructor(u, sigma, format) {
         super(dayjs(u).unix(), dayjs(sigma).unix())
+        this.format = format
     }
-    static Random(u, sigma) {
-        return Normal.Random(dayjs(u).unix(), dayjs(sigma).unix())
+    random(): string {
+        return dayjs.unix(super.random()).format(this.format)
+    }
+    static Random(u, sigma, format) {
+        return dayjs.unix(Normal.Random(dayjs(u).unix(), dayjs(sigma).unix())).format(format)
     }
 }

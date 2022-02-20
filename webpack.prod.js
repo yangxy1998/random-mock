@@ -12,6 +12,7 @@ module.exports = merge(common, {
     devtool: 'source-map',
     output: {
         libraryTarget: 'umd',
+        library: 'RandMock',
         path: path.resolve(__dirname, 'build'),
         filename: '[name].js'
     },

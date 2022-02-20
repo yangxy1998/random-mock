@@ -8,10 +8,10 @@ export class Uniform extends Distribution {
         this.begin = range[0]
         this.length = range[1] - range[0]
     }
-    random() {
+    random(): any {
         return this.begin + Math.random() * this.length
     }
-    static Random(range) {
+    static Random(range, ...args) {
         let begin = range[0]
         let length = range[1] - range[0]
         return begin + Math.random() * length
@@ -25,11 +25,11 @@ export class Normal extends Distribution {
         this.u = u
         this.sigma = sigma
     }
-    random() {
+    random(): any {
         //Box-Muller
         return this.u + Normal._BoxMuller() * this.sigma
     }
-    static Random(u, sigma) {
+    static Random(u, sigma, ...args) {
         return u + Normal._BoxMuller() * sigma
     }
     private static _BoxMuller() {
@@ -51,4 +51,37 @@ export class Normal extends Distribution {
         return u * c
     }
 }
-export default { Uniform, Normal }
+
+export class Exponential extends Distribution {
+    begin: number
+    lambda: number
+    constructor(offset: number, lambda: number) {
+        super()
+        this.begin = offset
+        this.lambda = lambda
+    }
+    random() {
+        return this.begin - Math.log(Math.random()) / this.lambda
+    }
+    static Random(begin: number, lambda: number) {
+        return begin - Math.log(Math.random()) / lambda
+    }
+}
+
+export class Cauchy extends Distribution {
+    begin: number
+    theta: number
+    constructor(x0: number, theta: number) {
+        super()
+        this.begin = x0
+        this.theta = theta
+    }
+    random() {
+        return Math.tan((Math.random() - 0.5) * Math.PI) * this.theta + this.begin
+    }
+    static Random(x0: number, theta: number) {
+        return Math.tan((Math.random() - 0.5) * Math.PI) * theta + x0
+    }
+}
+
+export default { Uniform, Normal, Exponential, Cauchy }
