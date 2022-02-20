@@ -1,4 +1,4 @@
-import { Distribution } from 'src/distribution/Distribution'
+import { Distribution } from '../distribution/Distribution'
 import { AnalysisEffect, AnalysisFilter } from './Analysis'
 import { Attribute, AttributeType, isAttribute } from './Attribute'
 import { GetRuleOrder, Rule } from './Rule'
