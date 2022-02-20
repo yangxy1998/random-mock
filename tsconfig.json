@@ -3,6 +3,7 @@
         "sourceMap": true,
         "module": "commonjs",
         "target": "es2018",
+        "strict": true,
         "allowJs": true,
         "outDir": "generated",
         "baseUrl": ".",

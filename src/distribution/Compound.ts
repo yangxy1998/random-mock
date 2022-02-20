@@ -11,7 +11,7 @@ export class Compound extends Distribution {
         this.orders = GetRuleOrder(confiurations.attributes, confiurations.rules)
     }
     random() {
-        let item = {}
+        let item: { [key: string]: any } = {}
         for (let rule of this.orders) {
             if (rule.name) {
                 //attribute

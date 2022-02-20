@@ -6,7 +6,7 @@ export function AnalysisEffect(effect: Function, mapper?: { [key: string]: numbe
         .substring(left + 1, right)
         .replace(/\s/g, '')
         .split(',')
-    return (item) => {
+    return (item: { [x: string]: any }) => {
         const args = names.map((name) => item[mapper ? mapper[name] : name])
         return effect(...args)
     }
@@ -19,7 +19,7 @@ export function AnalysisFilter(filter: Function, mapper?: { [key: string]: numbe
         .substring(left + 1, right)
         .replace(/\s/g, '')
         .split(',')
-    return (item, index?, items?) => {
+    return (item: { [x: string]: any }, index?: number, items?: any[]) => {
         const args = names.map((name) => item[mapper ? mapper[name] : name])
         return filter(...args)
     }

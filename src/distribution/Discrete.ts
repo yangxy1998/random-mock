@@ -53,8 +53,6 @@ export class Standard extends Distribution {
 }
 
 export class Hypergeometric extends Standard {
-    p: number[]
-    range: any[]
     constructor(range: any[], N: number, M: number, n: number) {
         const denominator = C(n, N)
         let p = []
@@ -66,11 +64,11 @@ export class Hypergeometric extends Standard {
         }
         super(range, p)
     }
-    static Random(range: any[], N: number, M: number, n: number)
-    static Random(range: any[], p: number[])
+    static Random(range: any[], N: number, M: number, n: number): number
+    static Random(range: any[], p: number[]): number
     static Random() {
         if (arguments.length === 4) {
-            const range = arguments[0]
+            const range = arguments[0] as any[]
             const N = arguments[1]
             const M = arguments[2]
             const n = arguments[3]
@@ -82,9 +80,9 @@ export class Hypergeometric extends Standard {
                 value += numerator / denominator
                 p.push(value)
             }
-            Standard.Random(range, p)
+            return Standard.Random(range, p)
         } else {
-            Standard.Random(arguments[0], arguments[1])
+            return Standard.Random(arguments[0], arguments[1])
         }
     }
 }

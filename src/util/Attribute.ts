@@ -1,4 +1,4 @@
-import { Distribution } from 'src/distribution/Distribution'
+import { Distribution } from '../distribution/Distribution'
 
 export enum AttributeType {
     Discrete,
@@ -7,8 +7,12 @@ export enum AttributeType {
     Compound
 }
 
-export interface Attribute {
+export type Attribute = {
     name: string
     type: AttributeType
     distribution: Distribution
+}
+
+export function isAttribute(attribute: any): attribute is Attribute {
+    return 'name' in attribute && 'type' in attribute && 'distribution' in attribute
 }

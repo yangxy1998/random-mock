@@ -3,7 +3,7 @@ import { Distribution } from './Distribution'
 export class Uniform extends Distribution {
     begin: number
     length: number
-    constructor(range) {
+    constructor(range: [number, number]) {
         super()
         this.begin = range[0]
         this.length = range[1] - range[0]
@@ -11,7 +11,7 @@ export class Uniform extends Distribution {
     random(): any {
         return this.begin + Math.random() * this.length
     }
-    static Random(range, ...args) {
+    static Random(range: [number, number], ...args: any[]): any {
         let begin = range[0]
         let length = range[1] - range[0]
         return begin + Math.random() * length
@@ -20,7 +20,7 @@ export class Uniform extends Distribution {
 export class Normal extends Distribution {
     u: number
     sigma: number
-    constructor(u, sigma) {
+    constructor(u: number, sigma: number) {
         super()
         this.u = u
         this.sigma = sigma
@@ -29,7 +29,7 @@ export class Normal extends Distribution {
         //Box-Muller
         return this.u + Normal._BoxMuller() * this.sigma
     }
-    static Random(u, sigma, ...args) {
+    static Random(u: number, sigma: number, ...args: any[]): any {
         return u + Normal._BoxMuller() * sigma
     }
     private static _BoxMuller() {

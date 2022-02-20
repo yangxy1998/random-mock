@@ -1,6 +1,6 @@
 import { Attribute, AttributeType } from './Attribute'
 
-export interface Rule {
+export type Rule = {
     // rule like y = 3 * x + 1 ± 0.5
     dependent: string
     arguments: Array<string>
@@ -8,9 +8,9 @@ export interface Rule {
     effect: (...args: any) => any
     confidence?: number
 }
-export function GetRuleOrder(attributes: Attribute[], rules: Rule[]) {
-    let leading = []
-    let following = []
+export function GetRuleOrder(attributes: Attribute[], rules: Rule[]): Array<Rule | Attribute> {
+    let leading = [] as string[]
+    let following = [] as string[]
     let order: any[] = []
     function updateState() {
         following = []
