@@ -25,7 +25,7 @@
             {
                 name: 'region',
                 type: ExampleChart.AttributeType.Discrete,
-                distribution: new ExampleChart.Distribution.Discrete.Discrete(
+                distribution: new ExampleChart.Distribution.Discrete.Standard(
                     ['CN', 'US'],
                     [0.8, 0.2]
                 )
@@ -38,7 +38,7 @@
                         {
                             name: 'cpu',
                             type: ExampleChart.AttributeType.Discrete,
-                            distribution: new ExampleChart.Distribution.Discrete.Discrete(
+                            distribution: new ExampleChart.Distribution.Discrete.Standard(
                                 ['骁龙870', '骁龙888'],
                                 [0.8, 0.2]
                             )

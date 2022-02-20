@@ -462,14 +462,20 @@ class Discrete extends Distribution_1.Distribution {
         super();
         this.range = range;
         if (p) {
+            if (p.length !== range.length) {
+                throw Error('the rate is not matched to range');
+            }
             this.p = [0];
             let current = 0;
             for (let range_p of p) {
                 current += range_p;
+                if (current > 1) {
+                    throw Error('the rate is above 1, please check your definition');
+                }
                 this.p.push(current);
             }
             if (current !== 1) {
-                throw Error('the total rate is not 1');
+                this.p[this.p.length - 1] = 1;
             }
         }
         else {
