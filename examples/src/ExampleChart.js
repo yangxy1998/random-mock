@@ -51,7 +51,7 @@ Chart.register(
     Tooltip,
     SubTitle
 )
-import { AttributeType } from 'random-mock'
+import { AttributeType } from '../../build/random-mock'
 
 export class ExampleChart {
     constructor() {
@@ -129,7 +129,6 @@ export class ExampleChart {
                                 })
                         }
                     })
-                    console.log(datasets)
                     this.chart.data.datasets = datasets
                     this.chart.update()
                 }

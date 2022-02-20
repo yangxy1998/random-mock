@@ -5,6 +5,7 @@
         <canvas id="chart"></canvas>
     </body>
     <script src="./dist/main.js"></script>
+    <script src="../build/random-mock.js"></script>
     <script>
         const attributes = [
             {
@@ -20,7 +21,7 @@
             {
                 name: 'z',
                 type: ExampleChart.AttributeType.Continuous,
-                distribution: new ExampleChart.Distribution.Continuous.Normal(5, 2)
+                distribution: new ExampleChart.Distribution.Continuous.Exponential(5, 5)
             },
             {
                 name: 'region',
@@ -64,10 +65,10 @@
             {
                 name: 'date',
                 type: ExampleChart.AttributeType.Date,
-                distribution: new ExampleChart.Distribution.Date.Uniform([
-                    '2021/01/01 00:00',
-                    '2021/12/01 00:00'
-                ])
+                distribution: new ExampleChart.Distribution.Date.Uniform(
+                    ['2021/01/01 00:00', '2021/12/01 00:00'],
+                    'YYYY/MM/DD HH:mm'
+                )
             }
         ]
         const rules = [
@@ -96,12 +97,12 @@
             attributes,
             rules
         }
-
         let generator = new ExampleChart.Mocker(config)
         let data = generator.create({
             count: 1000,
             mode: ExampleChart.DataMode.Object
         })
+        console.log(data)
         const chart = new ExampleChart()
         chart.data(attributes, data)
     </script>
