@@ -12,6 +12,17 @@
     "homepage": "https://github.com/yangxy1998/random-mock",
     "repository": "github:yangxy1998/random-mock",
     "license": "MIT",
+    "keywords": [
+        "casual",
+        "data",
+        "fake",
+        "faker",
+        "mock",
+        "mocking",
+        "random",
+        "sampling",
+        "simulation"
+    ],
     "devDependencies": {
         "ts-loader": "^7.0.4",
         "typescript": "^3.9.3",

@@ -117,7 +117,7 @@ exports.Distribution = Distribution;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AnalysisFilter = exports.AnalysisEffect = void 0;
-function AnalysisEffect(effect) {
+function AnalysisEffect(effect, mapper) {
     const str = effect.toString();
     const left = str.indexOf('(');
     const right = str.indexOf(')');
@@ -126,12 +126,12 @@ function AnalysisEffect(effect) {
         .replace(/\s/g, '')
         .split(',');
     return (item) => {
-        const args = names.map((name) => item[name]);
+        const args = names.map((name) => item[mapper ? mapper[name] : name]);
         return effect(...args);
     };
 }
 exports.AnalysisEffect = AnalysisEffect;
-function AnalysisFilter(filter) {
+function AnalysisFilter(filter, mapper) {
     const str = filter.toString();
     const left = str.indexOf('(');
     const right = str.indexOf(')');
@@ -140,7 +140,7 @@ function AnalysisFilter(filter) {
         .replace(/\s/g, '')
         .split(',');
     return (item, index, items) => {
-        const args = names.map((name) => item[name]);
+        const args = names.map((name) => item[mapper ? mapper[name] : name]);
         return filter(...args);
     };
 }
@@ -310,7 +310,7 @@ exports.Mocker = Mocker;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Generator = exports.Table = exports.DataMode = void 0;
+exports.Generator = exports.TableMode = exports.DataMode = void 0;
 const Analysis_1 = __webpack_require__(1);
 const Rule_1 = __webpack_require__(2);
 var DataMode;
@@ -318,11 +318,11 @@ var DataMode;
     DataMode[DataMode["Object"] = 0] = "Object";
     DataMode[DataMode["Table"] = 1] = "Table";
 })(DataMode = exports.DataMode || (exports.DataMode = {}));
-var Table;
-(function (Table) {
-    Table[Table["ArrangeByRow"] = 0] = "ArrangeByRow";
-    Table[Table["ArrangeByCol"] = 1] = "ArrangeByCol";
-})(Table = exports.Table || (exports.Table = {}));
+var TableMode;
+(function (TableMode) {
+    TableMode[TableMode["ArrangeByRow"] = 0] = "ArrangeByRow";
+    TableMode[TableMode["ArrangeByCol"] = 1] = "ArrangeByCol";
+})(TableMode = exports.TableMode || (exports.TableMode = {}));
 class Generator {
     constructor(config) {
         this.config = config;
@@ -379,16 +379,21 @@ class Generator {
         }
         return items;
     }
-    _createTable(count, settings = { head: true, mode: Table.ArrangeByRow }) {
-        if (settings.mode === Table.ArrangeByRow) {
-            let header = this.config.attributes.map((attribute) => attribute.name);
-            let items = settings.head ? [header] : [];
+    _createTable(count, settings = { head: true, mode: TableMode.ArrangeByRow }) {
+        if (settings.mode === TableMode.ArrangeByRow) {
+            const header = [];
+            const mapper = {};
+            this.config.attributes.forEach((attribute, index) => {
+                mapper[attribute.name] = index;
+                header.push(attribute.name);
+            });
+            const items = settings.head ? [header] : [];
             for (let i = 0; i < count; i++) {
                 items.push(Array(this.config.attributes.length));
             }
             let rules = Rule_1.GetRuleOrder(this.config.attributes, this.config.rules);
             for (let rule of rules) {
-                if (rule.type) {
+                if (rule.name) {
                     //attribute
                     const index = header.indexOf(rule.name);
                     items.forEach((item) => {
@@ -396,14 +401,20 @@ class Generator {
                             item[index] = rule.distribution.random();
                     });
                 }
+                else if (rule.filter) {
+                    //rule
+                    const index = header.indexOf(rule.dependent);
+                    items.filter(Analysis_1.AnalysisFilter(rule.filter, mapper)).forEach((item) => {
+                        if (!item[index] && Math.random() <= rule.confidence)
+                            item[index] = Analysis_1.AnalysisEffect(rule.effect, mapper)(item);
+                    });
+                }
                 else {
                     //rule
                     const index = header.indexOf(rule.dependent);
-                    items.filter(Analysis_1.AnalysisFilter(rule.filter)).forEach((item) => {
-                        item[index] =
-                            Math.random() <= rule.confidence
-                                ? Analysis_1.AnalysisEffect(rule.effect)
-                                : this.attributes[index].distribution.random();
+                    items.forEach((item) => {
+                        if (!item[index] && Math.random() <= rule.confidence)
+                            item[index] = Analysis_1.AnalysisEffect(rule.effect, mapper)(item);
                     });
                 }
             }

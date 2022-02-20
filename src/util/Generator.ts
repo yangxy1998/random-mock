@@ -15,13 +15,13 @@ export enum DataMode {
     Object,
     Table
 }
-export enum Table {
+export enum TableMode {
     ArrangeByRow,
     ArrangeByCol
 }
 interface TableSettings {
     head: boolean
-    mode: Table
+    mode: TableMode
 }
 export class Generator {
     config: GeneratorConfiguation
@@ -80,29 +80,39 @@ export class Generator {
         }
         return items
     }
-    private _createTable(count: number, settings = { head: true, mode: Table.ArrangeByRow }) {
-        if (settings.mode === Table.ArrangeByRow) {
-            let header = this.config.attributes.map((attribute) => attribute.name)
-            let items = settings.head ? [header] : []
+    private _createTable(count: number, settings = { head: true, mode: TableMode.ArrangeByRow }) {
+        if (settings.mode === TableMode.ArrangeByRow) {
+            const header = []
+            const mapper = {}
+            this.config.attributes.forEach((attribute, index) => {
+                mapper[attribute.name] = index
+                header.push(attribute.name)
+            })
+            const items = settings.head ? [header] : []
             for (let i = 0; i < count; i++) {
                 items.push(Array(this.config.attributes.length))
             }
             let rules = GetRuleOrder(this.config.attributes, this.config.rules)
             for (let rule of rules) {
-                if (rule.type) {
+                if (rule.name) {
                     //attribute
                     const index = header.indexOf(rule.name)
                     items.forEach((item) => {
                         if (!item[index]) item[index] = rule.distribution.random()
                     })
+                } else if (rule.filter) {
+                    //rule
+                    const index = header.indexOf(rule.dependent)
+                    items.filter(AnalysisFilter(rule.filter, mapper)).forEach((item) => {
+                        if (!item[index] && Math.random() <= rule.confidence)
+                            item[index] = AnalysisEffect(rule.effect, mapper)(item)
+                    })
                 } else {
                     //rule
                     const index = header.indexOf(rule.dependent)
-                    items.filter(AnalysisFilter(rule.filter)).forEach((item) => {
-                        item[index] =
-                            Math.random() <= rule.confidence
-                                ? AnalysisEffect(rule.effect)
-                                : this.attributes[index].distribution.random()
+                    items.forEach((item) => {
+                        if (!item[index] && Math.random() <= rule.confidence)
+                            item[index] = AnalysisEffect(rule.effect, mapper)(item)
                     })
                 }
             }

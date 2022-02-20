@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.46.0",
-  "hash": "a0214ab48b1d5fad2ac8",
-  "time": 2055,
-  "builtAt": 1645351612822,
+  "hash": "bbe24c7c4fba2c9d7de5",
+  "time": 2537,
+  "builtAt": 1645363736876,
   "publicPath": "",
   "outputPath": "G:\\Github\\random-mock\\build",
   "assetsByChunkName": {
@@ -19,7 +19,7 @@
   "assets": [
     {
       "name": "random-mock.js",
-      "size": 28521,
+      "size": 29125,
       "chunks": [
         0,
         1
@@ -33,7 +33,7 @@
     },
     {
       "name": "random-mock.js.map",
-      "size": 43536,
+      "size": 44746,
       "chunks": [
         0,
         1
@@ -48,7 +48,7 @@
     },
     {
       "name": "random-mock.min.js",
-      "size": 15203,
+      "size": 15395,
       "chunks": [
         1,
         0
@@ -122,7 +122,7 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 23723,
+      "size": 24327,
       "names": [
         "random-mock"
       ],
@@ -130,7 +130,7 @@
         "random-mock.js",
         "random-mock.js.map"
       ],
-      "hash": "6f91b024697c119cce29",
+      "hash": "b97e24d523e297538666",
       "siblings": [
       ],
       "parents": [
@@ -222,7 +222,7 @@
           "name": "./src/util/Analysis.ts",
           "index": 2,
           "index2": 0,
-          "size": 992,
+          "size": 1056,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -459,7 +459,7 @@
           "name": "./src/util/generator.ts",
           "index": 1,
           "index2": 2,
-          "size": 4148,
+          "size": 4688,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -833,14 +833,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 23723,
+      "size": 24327,
       "names": [
         "random-mock.min"
       ],
       "files": [
         "random-mock.min.js"
       ],
-      "hash": "16a8e88306cae60b965b",
+      "hash": "b078b765c66f68fc5782",
       "siblings": [
       ],
       "parents": [
@@ -932,7 +932,7 @@
           "name": "./src/util/Analysis.ts",
           "index": 2,
           "index2": 0,
-          "size": 992,
+          "size": 1056,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1169,7 +1169,7 @@
           "name": "./src/util/generator.ts",
           "index": 1,
           "index2": 2,
-          "size": 4148,
+          "size": 4688,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1622,7 +1622,7 @@
       "name": "./src/util/Analysis.ts",
       "index": 2,
       "index2": 0,
-      "size": 992,
+      "size": 1056,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -1859,7 +1859,7 @@
       "name": "./src/util/generator.ts",
       "index": 1,
       "index2": 2,
-      "size": 4148,
+      "size": 4688,
       "cacheable": true,
       "built": true,
       "optional": false,
