@@ -11,6 +11,11 @@
         "server:clean": "concurrently \"http-server -a localhost -p 5001 -c-1\" \"start http://localhost:5001/examples\""
     },
     "author": "Xiaoyu Yang",
+    "homepage": "https://github.com/yangxy1998/random-mock",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:yangxy1998/random-mock.git"
+    },
     "license": "ISC",
     "devDependencies": {
         "concurrently": "^7.0.0",
