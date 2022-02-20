@@ -1,11 +1,13 @@
 {
     "name": "random-mock",
-    "version": "0.1.6",
+    "version": "0.1.7",
     "description": "Random mock is a random variable generator that can generate multidimensional variables with specified distribution or correlation.",
-    "main": "./src/index.ts",
+    "main": "./src/index.js",
+    "types": "./src/index.ts",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack --config webpack.prod.js",
+        "build:webpack": "webpack --config webpack.prod.js",
+        "build:tsc": "tsc -P ./tsconfig.json -w",
         "watch": "webpack --config webpack.dev.js"
     },
     "author": "Xiaoyu Yang",

@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.46.0",
-  "hash": "b719febdc195c935dcc0",
-  "time": 2034,
-  "builtAt": 1645369770096,
+  "hash": "a4bd5846a36fe06fff54",
+  "time": 2013,
+  "builtAt": 1645372750251,
   "publicPath": "",
   "outputPath": "G:\\Github\\random-mock\\build",
   "assetsByChunkName": {
@@ -19,7 +19,7 @@
   "assets": [
     {
       "name": "random-mock.js",
-      "size": 29923,
+      "size": 30231,
       "chunks": [
         0,
         1
@@ -33,7 +33,7 @@
     },
     {
       "name": "random-mock.js.map",
-      "size": 46800,
+      "size": 46839,
       "chunks": [
         0,
         1
@@ -48,7 +48,7 @@
     },
     {
       "name": "random-mock.min.js",
-      "size": 15649,
+      "size": 15844,
       "chunks": [
         1,
         0
@@ -122,7 +122,7 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 25125,
+      "size": 25433,
       "names": [
         "random-mock"
       ],
@@ -130,7 +130,7 @@
         "random-mock.js",
         "random-mock.js.map"
       ],
-      "hash": "dde4ae1eaf013404e989",
+      "hash": "69f367b187f14967074b",
       "siblings": [
       ],
       "parents": [
@@ -449,7 +449,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "./Continuous",
-              "loc": "5:21-44"
+              "loc": "8:21-44"
             }
           ],
           "usedExports": true,
@@ -465,7 +465,7 @@
           "name": "./src/index.ts",
           "index": 0,
           "index2": 11,
-          "size": 762,
+          "size": 789,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -718,7 +718,7 @@
           "name": "./src/distribution/Date.ts",
           "index": 10,
           "index2": 9,
-          "size": 1174,
+          "size": 1455,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -813,7 +813,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "dayjs",
-              "loc": "4:14-30"
+              "loc": "7:32-48"
             }
           ],
           "usedExports": true,
@@ -842,14 +842,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 25125,
+      "size": 25433,
       "names": [
         "random-mock.min"
       ],
       "files": [
         "random-mock.min.js"
       ],
-      "hash": "cb58b98478aa68833872",
+      "hash": "166392bd644722dc9132",
       "siblings": [
       ],
       "parents": [
@@ -1168,7 +1168,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "./Continuous",
-              "loc": "5:21-44"
+              "loc": "8:21-44"
             }
           ],
           "usedExports": true,
@@ -1184,7 +1184,7 @@
           "name": "./src/index.ts",
           "index": 0,
           "index2": 11,
-          "size": 762,
+          "size": 789,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1437,7 +1437,7 @@
           "name": "./src/distribution/Date.ts",
           "index": 10,
           "index2": 9,
-          "size": 1174,
+          "size": 1455,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1532,7 +1532,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "dayjs",
-              "loc": "4:14-30"
+              "loc": "7:32-48"
             }
           ],
           "usedExports": true,
@@ -1867,7 +1867,7 @@
           "moduleName": "./src/distribution/Date.ts",
           "type": "cjs require",
           "userRequest": "./Continuous",
-          "loc": "5:21-44"
+          "loc": "8:21-44"
         }
       ],
       "usedExports": true,
@@ -1883,7 +1883,7 @@
       "name": "./src/index.ts",
       "index": 0,
       "index2": 11,
-      "size": 762,
+      "size": 789,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -2136,7 +2136,7 @@
       "name": "./src/distribution/Date.ts",
       "index": 10,
       "index2": 9,
-      "size": 1174,
+      "size": 1455,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -2231,7 +2231,7 @@
           "moduleName": "./src/distribution/Date.ts",
           "type": "cjs require",
           "userRequest": "dayjs",
-          "loc": "4:14-30"
+          "loc": "7:32-48"
         }
       ],
       "usedExports": true,

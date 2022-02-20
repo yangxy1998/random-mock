@@ -322,6 +322,7 @@ const Attribute_1 = __webpack_require__(2);
 Object.defineProperty(exports, "AttributeType", { enumerable: true, get: function () { return Attribute_1.AttributeType; } });
 const Mocker = Generator_1.Generator;
 exports.Mocker = Mocker;
+exports.default = Mocker;
 
 
 /***/ }),
@@ -655,35 +656,38 @@ exports.Compound = Compound;
 
 "use strict";
 
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NormalDate = exports.UniformDate = void 0;
-const dayjs = __webpack_require__(11);
+const dayjs_1 = __importDefault(__webpack_require__(11));
 const Continuous_1 = __webpack_require__(4);
 class UniformDate extends Continuous_1.Uniform {
     constructor(range, format) {
-        super([dayjs(range[0]).unix(), dayjs(range[1]).unix()]);
+        super([dayjs_1.default(range[0]).unix(), dayjs_1.default(range[1]).unix()]);
         this.format = format;
     }
     random() {
-        return dayjs.unix(super.random()).format(this.format);
+        return dayjs_1.default.unix(super.random()).format(this.format);
     }
     static Random(range, format) {
-        return dayjs
-            .unix(Continuous_1.Uniform.Random([dayjs(range[0]).unix(), dayjs(range[1]).unix()]))
+        return dayjs_1.default
+            .unix(Continuous_1.Uniform.Random([dayjs_1.default(range[0]).unix(), dayjs_1.default(range[1]).unix()]))
             .format(format);
     }
 }
 exports.UniformDate = UniformDate;
 class NormalDate extends Continuous_1.Normal {
     constructor(u, sigma, format) {
-        super(dayjs(u).unix(), dayjs(sigma).unix());
+        super(dayjs_1.default(u).unix(), dayjs_1.default(sigma).unix());
         this.format = format;
     }
     random() {
-        return dayjs.unix(super.random()).format(this.format);
+        return dayjs_1.default.unix(super.random()).format(this.format);
     }
     static Random(u, sigma, format) {
-        return dayjs.unix(Continuous_1.Normal.Random(dayjs(u).unix(), dayjs(sigma).unix())).format(format);
+        return dayjs_1.default.unix(Continuous_1.Normal.Random(dayjs_1.default(u).unix(), dayjs_1.default(sigma).unix())).format(format);
     }
 }
 exports.NormalDate = NormalDate;
