@@ -5,48 +5,46 @@
         <canvas id="chart"></canvas>
     </body>
     <script src="./dist/main.js"></script>
+    <script src="../build/random-mock.js"></script>
     <script>
         const attributes = [
             {
                 name: 'x',
-                type: ExampleChart.AttributeType.Continuous,
-                distribution: new ExampleChart.Distribution.Continuous.Normal(0, 5)
+                type: RandMock.AttributeType.Continuous,
+                distribution: new RandMock.Distribution.Continuous.Normal(0, 5)
             },
             {
                 name: 'y',
-                type: ExampleChart.AttributeType.Continuous,
-                distribution: new ExampleChart.Distribution.Continuous.Uniform([0, 10])
+                type: RandMock.AttributeType.Continuous,
+                distribution: new RandMock.Distribution.Continuous.Uniform([0, 10])
             },
             {
                 name: 'z',
-                type: ExampleChart.AttributeType.Continuous,
-                distribution: new ExampleChart.Distribution.Continuous.Exponential(5, 5)
+                type: RandMock.AttributeType.Continuous,
+                distribution: new RandMock.Distribution.Continuous.Exponential(5, 5)
             },
             {
                 name: 'region',
-                type: ExampleChart.AttributeType.Discrete,
-                distribution: new ExampleChart.Distribution.Discrete.Standard(
-                    ['CN', 'US'],
-                    [0.8, 0.2]
-                )
+                type: RandMock.AttributeType.Discrete,
+                distribution: new RandMock.Distribution.Discrete.Standard(['CN', 'US'], [0.8, 0.2])
             },
             {
                 name: 'model',
-                type: ExampleChart.AttributeType.Compound,
-                distribution: new ExampleChart.Distribution.Compound({
+                type: RandMock.AttributeType.Compound,
+                distribution: new RandMock.Distribution.Compound({
                     attributes: [
                         {
                             name: 'cpu',
-                            type: ExampleChart.AttributeType.Discrete,
-                            distribution: new ExampleChart.Distribution.Discrete.Standard(
+                            type: RandMock.AttributeType.Discrete,
+                            distribution: new RandMock.Distribution.Discrete.Standard(
                                 ['骁龙870', '骁龙888'],
                                 [0.8, 0.2]
                             )
                         },
                         {
                             name: 'memory',
-                            type: ExampleChart.AttributeType.Continuous,
-                            distribution: new ExampleChart.Distribution.Continuous.Normal(8, 0.2)
+                            type: RandMock.AttributeType.Continuous,
+                            distribution: new RandMock.Distribution.Continuous.Normal(8, 0.2)
                         }
                     ],
                     rules: [
@@ -54,8 +52,7 @@
                             dependent: 'memory',
                             arguments: ['cpu'],
                             filter: (cpu) => cpu === '骁龙888',
-                            effect: () =>
-                                ExampleChart.Distribution.Continuous.Normal.Random(12, 0.01),
+                            effect: () => RandMock.Distribution.Continuous.Normal.Random(12, 0.01),
                             confidence: 0.99
                         }
                     ]
@@ -63,8 +60,8 @@
             },
             {
                 name: 'date',
-                type: ExampleChart.AttributeType.Date,
-                distribution: new ExampleChart.Distribution.Date.Uniform(
+                type: RandMock.AttributeType.Date,
+                distribution: new RandMock.Distribution.Date.Uniform(
                     ['2021/01/01 00:00', '2021/12/01 00:00'],
                     'YYYY/MM/DD HH:mm'
                 )
@@ -75,14 +72,14 @@
                 dependent: 'y',
                 arguments: ['region', 'x'],
                 filter: (region) => region === 'US',
-                effect: (x) => ExampleChart.Distribution.Continuous.Normal.Random(-1 * x, 0.5),
+                effect: (x) => RandMock.Distribution.Continuous.Normal.Random(-1 * x, 0.5),
                 confidence: 0.98
             },
             {
                 dependent: 'y',
                 arguments: ['x'],
                 filter: (x) => x >= 3,
-                effect: (x) => ExampleChart.Distribution.Continuous.Normal.Random(3 * x + 1, 0.5),
+                effect: (x) => RandMock.Distribution.Continuous.Normal.Random(3 * x + 1, 0.5),
                 confidence: 0.95
             },
             {
@@ -96,10 +93,10 @@
             attributes,
             rules
         }
-        let generator = new ExampleChart.Mocker(config)
+        let generator = new RandMock.Mocker(config)
         let data = generator.create({
-            count: 1000,
-            mode: ExampleChart.DataMode.Object
+            count: 10000,
+            mode: RandMock.DataMode.Table
         })
         console.log(data)
         const chart = new ExampleChart()

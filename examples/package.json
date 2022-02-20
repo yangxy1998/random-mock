@@ -6,7 +6,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "server": "webpack && concurrently \"http-server -a localhost -p 5000\" \"start http://localhost:5000\"",
-        "server:clean": "cd .. && npm run build && cd examples && webpack && concurrently \"http-server -a localhost -p 5001 -c-1\" \"start http://localhost:5001\""
+        "server:clean": "cd .. && npm run build && cd examples && webpack && cd .. && concurrently \"http-server -a localhost -p 5001 -c-1\" \"start http://localhost:5001/examples\""
     },
     "author": "",
     "license": "ISC",
