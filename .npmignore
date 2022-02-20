@@ -1,7 +1,10 @@
-build/
+.npmignore
 .vscode
 .DS_Store
 .idea
+.prettierrc.js
+webpack.*
+tsconfig.json
 npm-debug.log
 /node_modules
 /examples
