@@ -2,12 +2,12 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compound = void 0;
 const Distribution_1 = require("./Distribution");
-const Rule_1 = require("../util/Rule");
+const PrecedenceGraph_1 = require("../util/PrecedenceGraph");
 const Analysis_1 = require("../util/Analysis");
 class Compound extends Distribution_1.Distribution {
     constructor(confiurations) {
         super();
-        this.orders = Rule_1.GetRuleOrder(confiurations.attributes, confiurations.rules);
+        this.orders = new PrecedenceGraph_1.PrecedenceGraph(confiurations.attributes, confiurations.rules).getSequence();
     }
     random() {
         let item = {};

@@ -7,6 +7,20 @@
     <script src="./dist/main.js"></script>
     <script src="../build/random-mock.js"></script>
     <script>
+        const primary = [
+            {
+                name: 'A',
+                range: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            },
+            {
+                name: 'B',
+                range: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            },
+            {
+                name: 'C',
+                range: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+            }
+        ]
         const attributes = [
             {
                 name: 'x',
@@ -90,12 +104,13 @@
             }
         ]
         const config = {
+            primary,
             attributes,
             rules
         }
         let generator = new RandMock.Mocker(config)
         let data = generator.create({
-            count: 10000,
+            count: 100,
             mode: RandMock.DataMode.Table
         })
         console.log(data)

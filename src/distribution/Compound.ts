@@ -1,14 +1,17 @@
 import { Generator } from '../util/Generator'
 import { Attribute } from '../util/Attribute'
 import { Distribution } from './Distribution'
-import { GetRuleOrder } from '../util/Rule'
+import { PrecedenceGraph } from '../util/PrecedenceGraph'
 import { AnalysisEffect, AnalysisFilter } from '../util/Analysis'
 
 export class Compound extends Distribution {
     orders: any
     constructor(confiurations: any) {
         super()
-        this.orders = GetRuleOrder(confiurations.attributes, confiurations.rules)
+        this.orders = new PrecedenceGraph(
+            confiurations.attributes,
+            confiurations.rules
+        ).getSequence()
     }
     random() {
         let item: { [key: string]: any } = {}

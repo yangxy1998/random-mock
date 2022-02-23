@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Generator = exports.TableMode = exports.DataMode = void 0;
 const Analysis_1 = require("./Analysis");
 const Attribute_1 = require("./Attribute");
-const Rule_1 = require("./Rule");
+const PrecedenceGraph_1 = require("./PrecedenceGraph");
 var DataMode;
 (function (DataMode) {
     DataMode[DataMode["Object"] = 0] = "Object";
@@ -18,6 +18,7 @@ class Generator {
     constructor(config) {
         this.config = config;
         this.attributes = {};
+        this.precedence = new PrecedenceGraph_1.PrecedenceGraph(config.attributes, config.rules);
         for (let attribute of config.attributes) {
             this.attributes[attribute.name] = {
                 type: attribute.type,
@@ -25,10 +26,11 @@ class Generator {
             };
         }
     }
-    create(config = {
-        count: 100,
-        mode: DataMode.Object
-    }) {
+    create(config) {
+        config = {
+            mode: DataMode.Object,
+            ...config
+        };
         if (config.mode === DataMode.Object) {
             return this._createObjectList(config.count);
         }
@@ -38,11 +40,42 @@ class Generator {
     }
     _createObjectList(count) {
         let items = [];
-        for (let i = 0; i < count; i++) {
-            items.push({});
+        if (this.config.primary) {
+            const cart = (target, unique) => {
+                if (target.length === 0) {
+                    return unique.range.map((value) => {
+                        return { [unique.name]: value };
+                    });
+                }
+                else {
+                    const result = [];
+                    target.forEach((element) => {
+                        unique.range.forEach((value) => {
+                            result.push({ [unique.name]: value, ...element });
+                        });
+                    });
+                    return result;
+                }
+            };
+            this.config.primary.forEach((unique) => {
+                items = cart(items, unique);
+            });
+            if (count)
+                if (count > items.length)
+                    console.warn('requested count greater than primary keys');
+                else
+                    items = items.slice(0, count);
         }
-        let rules = Rule_1.GetRuleOrder(this.config.attributes, this.config.rules);
-        for (let singlerule of rules) {
+        else {
+            if (count)
+                for (let i = 0; i < count; i++) {
+                    items.push({});
+                }
+            else
+                throw Error('count is needed while primary is not defined');
+        }
+        let sequence = this.precedence.getSequence();
+        for (let singlerule of sequence) {
             if (Attribute_1.isAttribute(singlerule)) {
                 const rule = singlerule;
                 //attribute
@@ -79,16 +112,56 @@ class Generator {
         if (settings.mode === TableMode.ArrangeByRow) {
             const header = [];
             const mapper = {};
-            this.config.attributes.forEach((attribute, index) => {
+            let index = 0;
+            const cart = (target, unique) => {
+                if (target.length === 0) {
+                    return unique.range.map((value) => {
+                        return [value];
+                    });
+                }
+                else {
+                    const result = [];
+                    target.forEach((element) => {
+                        unique.range.forEach((value) => {
+                            result.push([...element, value]);
+                        });
+                    });
+                    return result;
+                }
+            };
+            let items = [];
+            if (this.config.primary) {
+                this.config.primary.forEach((unique) => {
+                    mapper[unique.name] = index;
+                    header.push(unique.name);
+                    items = cart(items, unique);
+                    index++;
+                });
+                if (count)
+                    if (count > items.length)
+                        console.warn('requested count greater than primary keys');
+                    else
+                        items = items.slice(0, count);
+                items = items.map((item) => item.concat(Array(this.config.attributes.length)));
+            }
+            else {
+                if (count) {
+                    for (let i = 0; i < count; i++) {
+                        items.push(Array(this.config.attributes.length));
+                    }
+                }
+                else
+                    throw Error('count is needed while primary is not defined');
+            }
+            this.config.attributes.forEach((attribute) => {
                 mapper[attribute.name] = index;
                 header.push(attribute.name);
+                index++;
             });
-            const items = settings.head ? [header] : [];
-            for (let i = 0; i < count; i++) {
-                items.push(Array(this.config.attributes.length));
-            }
-            let rules = Rule_1.GetRuleOrder(this.config.attributes, this.config.rules);
-            for (let singlerule of rules) {
+            if (settings.head)
+                items.unshift(header);
+            let sequence = this.precedence.getSequence();
+            for (let singlerule of sequence) {
                 if (Attribute_1.isAttribute(singlerule)) {
                     //attribute
                     const rule = singlerule;

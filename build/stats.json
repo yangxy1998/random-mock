@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.46.0",
-  "hash": "a4bd5846a36fe06fff54",
-  "time": 2013,
-  "builtAt": 1645372750251,
+  "hash": "77927a4c9181216a4407",
+  "time": 1434,
+  "builtAt": 1645608239001,
   "publicPath": "",
   "outputPath": "G:\\Github\\random-mock\\build",
   "assetsByChunkName": {
@@ -19,7 +19,7 @@
   "assets": [
     {
       "name": "random-mock.js",
-      "size": 30231,
+      "size": 33468,
       "chunks": [
         0,
         1
@@ -33,7 +33,7 @@
     },
     {
       "name": "random-mock.js.map",
-      "size": 46839,
+      "size": 40445,
       "chunks": [
         0,
         1
@@ -48,7 +48,7 @@
     },
     {
       "name": "random-mock.min.js",
-      "size": 15844,
+      "size": 16807,
       "chunks": [
         1,
         0
@@ -122,7 +122,7 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 25433,
+      "size": 28692,
       "names": [
         "random-mock"
       ],
@@ -130,7 +130,7 @@
         "random-mock.js",
         "random-mock.js.map"
       ],
-      "hash": "69f367b187f14967074b",
+      "hash": "423d7838064498fc3be9",
       "siblings": [
       ],
       "parents": [
@@ -155,9 +155,9 @@
             0,
             1
           ],
-          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
-          "issuerId": 8,
-          "issuerName": "./src/distribution/Discrete.ts",
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "issuerId": 4,
+          "issuerName": "./src/distribution/Continuous.ts",
           "issuerPath": [
             {
               "id": 5,
@@ -170,9 +170,9 @@
               "name": "./src/distribution/index.ts"
             },
             {
-              "id": 8,
-              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
-              "name": "./src/distribution/Discrete.ts"
+              "id": 4,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+              "name": "./src/distribution/Continuous.ts"
             }
           ],
           "failed": false,
@@ -337,11 +337,11 @@
         },
         {
           "id": 3,
-          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Rule.ts",
-          "name": "./src/util/Rule.ts",
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\PrecedenceGraph.ts",
+          "name": "./src/util/PrecedenceGraph.ts",
           "index": 4,
           "index2": 2,
-          "size": 1270,
+          "size": 1924,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -377,8 +377,8 @@
               "module": "./src/util/Generator.ts",
               "moduleName": "./src/util/Generator.ts",
               "type": "cjs require",
-              "userRequest": "./Rule",
-              "loc": "6:15-32"
+              "userRequest": "./PrecedenceGraph",
+              "loc": "6:26-54"
             },
             {
               "moduleId": 9,
@@ -386,8 +386,8 @@
               "module": "./src/distribution/Compound.ts",
               "moduleName": "./src/distribution/Compound.ts",
               "type": "cjs require",
-              "userRequest": "../util/Rule",
-              "loc": "5:15-38"
+              "userRequest": "../util/PrecedenceGraph",
+              "loc": "5:26-60"
             }
           ],
           "usedExports": true,
@@ -449,7 +449,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "./Continuous",
-              "loc": "8:21-44"
+              "loc": "5:21-44"
             }
           ],
           "usedExports": true,
@@ -516,7 +516,7 @@
           "name": "./src/util/Generator.ts",
           "index": 1,
           "index2": 3,
-          "size": 5289,
+          "size": 8121,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -665,7 +665,7 @@
           "name": "./src/distribution/Compound.ts",
           "index": 9,
           "index2": 7,
-          "size": 1501,
+          "size": 1555,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -718,7 +718,7 @@
           "name": "./src/distribution/Date.ts",
           "index": 10,
           "index2": 9,
-          "size": 1455,
+          "size": 1174,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -813,7 +813,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "dayjs",
-              "loc": "7:32-48"
+              "loc": "4:14-30"
             }
           ],
           "usedExports": true,
@@ -842,14 +842,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 25433,
+      "size": 28692,
       "names": [
         "random-mock.min"
       ],
       "files": [
         "random-mock.min.js"
       ],
-      "hash": "166392bd644722dc9132",
+      "hash": "dcbbcc455ee1bbd5c9dc",
       "siblings": [
       ],
       "parents": [
@@ -874,9 +874,9 @@
             0,
             1
           ],
-          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
-          "issuerId": 8,
-          "issuerName": "./src/distribution/Discrete.ts",
+          "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "issuerId": 4,
+          "issuerName": "./src/distribution/Continuous.ts",
           "issuerPath": [
             {
               "id": 5,
@@ -889,9 +889,9 @@
               "name": "./src/distribution/index.ts"
             },
             {
-              "id": 8,
-              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
-              "name": "./src/distribution/Discrete.ts"
+              "id": 4,
+              "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+              "name": "./src/distribution/Continuous.ts"
             }
           ],
           "failed": false,
@@ -1056,11 +1056,11 @@
         },
         {
           "id": 3,
-          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Rule.ts",
-          "name": "./src/util/Rule.ts",
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\PrecedenceGraph.ts",
+          "name": "./src/util/PrecedenceGraph.ts",
           "index": 4,
           "index2": 2,
-          "size": 1270,
+          "size": 1924,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1096,8 +1096,8 @@
               "module": "./src/util/Generator.ts",
               "moduleName": "./src/util/Generator.ts",
               "type": "cjs require",
-              "userRequest": "./Rule",
-              "loc": "6:15-32"
+              "userRequest": "./PrecedenceGraph",
+              "loc": "6:26-54"
             },
             {
               "moduleId": 9,
@@ -1105,8 +1105,8 @@
               "module": "./src/distribution/Compound.ts",
               "moduleName": "./src/distribution/Compound.ts",
               "type": "cjs require",
-              "userRequest": "../util/Rule",
-              "loc": "5:15-38"
+              "userRequest": "../util/PrecedenceGraph",
+              "loc": "5:26-60"
             }
           ],
           "usedExports": true,
@@ -1168,7 +1168,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "./Continuous",
-              "loc": "8:21-44"
+              "loc": "5:21-44"
             }
           ],
           "usedExports": true,
@@ -1235,7 +1235,7 @@
           "name": "./src/util/Generator.ts",
           "index": 1,
           "index2": 3,
-          "size": 5289,
+          "size": 8121,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1384,7 +1384,7 @@
           "name": "./src/distribution/Compound.ts",
           "index": 9,
           "index2": 7,
-          "size": 1501,
+          "size": 1555,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1437,7 +1437,7 @@
           "name": "./src/distribution/Date.ts",
           "index": 10,
           "index2": 9,
-          "size": 1455,
+          "size": 1174,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1532,7 +1532,7 @@
               "moduleName": "./src/distribution/Date.ts",
               "type": "cjs require",
               "userRequest": "dayjs",
-              "loc": "7:32-48"
+              "loc": "4:14-30"
             }
           ],
           "usedExports": true,
@@ -1573,9 +1573,9 @@
         0,
         1
       ],
-      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
-      "issuerId": 8,
-      "issuerName": "./src/distribution/Discrete.ts",
+      "issuer": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+      "issuerId": 4,
+      "issuerName": "./src/distribution/Continuous.ts",
       "issuerPath": [
         {
           "id": 5,
@@ -1588,9 +1588,9 @@
           "name": "./src/distribution/index.ts"
         },
         {
-          "id": 8,
-          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Discrete.ts",
-          "name": "./src/distribution/Discrete.ts"
+          "id": 4,
+          "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\distribution\\Continuous.ts",
+          "name": "./src/distribution/Continuous.ts"
         }
       ],
       "failed": false,
@@ -1755,11 +1755,11 @@
     },
     {
       "id": 3,
-      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\Rule.ts",
-      "name": "./src/util/Rule.ts",
+      "identifier": "G:\\Github\\random-mock\\node_modules\\ts-loader\\index.js!G:\\Github\\random-mock\\src\\util\\PrecedenceGraph.ts",
+      "name": "./src/util/PrecedenceGraph.ts",
       "index": 4,
       "index2": 2,
-      "size": 1270,
+      "size": 1924,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -1795,8 +1795,8 @@
           "module": "./src/util/Generator.ts",
           "moduleName": "./src/util/Generator.ts",
           "type": "cjs require",
-          "userRequest": "./Rule",
-          "loc": "6:15-32"
+          "userRequest": "./PrecedenceGraph",
+          "loc": "6:26-54"
         },
         {
           "moduleId": 9,
@@ -1804,8 +1804,8 @@
           "module": "./src/distribution/Compound.ts",
           "moduleName": "./src/distribution/Compound.ts",
           "type": "cjs require",
-          "userRequest": "../util/Rule",
-          "loc": "5:15-38"
+          "userRequest": "../util/PrecedenceGraph",
+          "loc": "5:26-60"
         }
       ],
       "usedExports": true,
@@ -1867,7 +1867,7 @@
           "moduleName": "./src/distribution/Date.ts",
           "type": "cjs require",
           "userRequest": "./Continuous",
-          "loc": "8:21-44"
+          "loc": "5:21-44"
         }
       ],
       "usedExports": true,
@@ -1934,7 +1934,7 @@
       "name": "./src/util/Generator.ts",
       "index": 1,
       "index2": 3,
-      "size": 5289,
+      "size": 8121,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -2083,7 +2083,7 @@
       "name": "./src/distribution/Compound.ts",
       "index": 9,
       "index2": 7,
-      "size": 1501,
+      "size": 1555,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -2136,7 +2136,7 @@
       "name": "./src/distribution/Date.ts",
       "index": 10,
       "index2": 9,
-      "size": 1455,
+      "size": 1174,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -2231,7 +2231,7 @@
           "moduleName": "./src/distribution/Date.ts",
           "type": "cjs require",
           "userRequest": "dayjs",
-          "loc": "7:32-48"
+          "loc": "4:14-30"
         }
       ],
       "usedExports": true,

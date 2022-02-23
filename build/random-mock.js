@@ -175,49 +175,62 @@ exports.isAttribute = isAttribute;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GetRuleOrder = void 0;
-function GetRuleOrder(attributes, rules) {
-    let leading = [];
-    let following = [];
-    let order = [];
-    function updateState() {
-        following = [];
-        for (let rule of rules) {
-            if (!following.includes(rule.dependent))
-                following.push(rule.dependent);
-        }
-        for (let attribute of attributes) {
-            if (!following.includes(attribute.name) && !leading.includes(attribute.name)) {
-                order.push(attribute);
-                leading.push(attribute.name);
+exports.PrecedenceGraph = void 0;
+class PrecedenceGraph {
+    constructor(attributes, rules) {
+        let leading = [];
+        let following = [];
+        let order = [];
+        this.nodes = new Map(attributes.map((attribute) => [attribute.name, { name: attribute.name }]));
+        this.links = [];
+        function updateState() {
+            following = [];
+            for (let rule of rules) {
+                if (!following.includes(rule.dependent))
+                    following.push(rule.dependent);
+            }
+            for (let attribute of attributes) {
+                if (!following.includes(attribute.name) && !leading.includes(attribute.name)) {
+                    order.push(attribute);
+                    leading.push(attribute.name);
+                }
             }
         }
-    }
-    updateState();
-    let i = 0;
-    while (rules.length > 0) {
-        let rule = rules[i];
-        let clear = true;
-        rule.arguments.forEach((argument) => {
-            if (!leading.includes(argument)) {
-                clear = false;
+        updateState();
+        let i = 0;
+        while (rules.length > 0) {
+            let rule = rules[i];
+            let clear = true;
+            rule.arguments.forEach((argument) => {
+                if (!leading.includes(argument)) {
+                    clear = false;
+                }
+            });
+            if (!clear) {
+                i++;
             }
-        });
-        if (!clear) {
-            i++;
+            else {
+                order.push(rule);
+                this.links.push(...rule.arguments.map((source) => {
+                    return { source, target: rule.dependent, weight: rule.confidence };
+                }));
+                rules.splice(i, 1);
+            }
+            if (i >= rules.length) {
+                updateState();
+                i = 0;
+            }
         }
-        else {
-            order.push(rule);
-            rules.splice(i, 1);
-        }
-        if (i >= rules.length) {
-            updateState();
-            i = 0;
-        }
+        this.sequence = order;
     }
-    return order;
+    getSequence() {
+        return this.sequence;
+    }
+    getGraph() {
+        return { nodes: this.nodes, links: this.links };
+    }
 }
-exports.GetRuleOrder = GetRuleOrder;
+exports.PrecedenceGraph = PrecedenceGraph;
 
 
 /***/ }),
@@ -335,7 +348,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Generator = exports.TableMode = exports.DataMode = void 0;
 const Analysis_1 = __webpack_require__(1);
 const Attribute_1 = __webpack_require__(2);
-const Rule_1 = __webpack_require__(3);
+const PrecedenceGraph_1 = __webpack_require__(3);
 var DataMode;
 (function (DataMode) {
     DataMode[DataMode["Object"] = 0] = "Object";
@@ -350,6 +363,7 @@ class Generator {
     constructor(config) {
         this.config = config;
         this.attributes = {};
+        this.precedence = new PrecedenceGraph_1.PrecedenceGraph(config.attributes, config.rules);
         for (let attribute of config.attributes) {
             this.attributes[attribute.name] = {
                 type: attribute.type,
@@ -357,10 +371,11 @@ class Generator {
             };
         }
     }
-    create(config = {
-        count: 100,
-        mode: DataMode.Object
-    }) {
+    create(config) {
+        config = {
+            mode: DataMode.Object,
+            ...config
+        };
         if (config.mode === DataMode.Object) {
             return this._createObjectList(config.count);
         }
@@ -370,11 +385,42 @@ class Generator {
     }
     _createObjectList(count) {
         let items = [];
-        for (let i = 0; i < count; i++) {
-            items.push({});
+        if (this.config.primary) {
+            const cart = (target, unique) => {
+                if (target.length === 0) {
+                    return unique.range.map((value) => {
+                        return { [unique.name]: value };
+                    });
+                }
+                else {
+                    const result = [];
+                    target.forEach((element) => {
+                        unique.range.forEach((value) => {
+                            result.push({ [unique.name]: value, ...element });
+                        });
+                    });
+                    return result;
+                }
+            };
+            this.config.primary.forEach((unique) => {
+                items = cart(items, unique);
+            });
+            if (count)
+                if (count > items.length)
+                    console.warn('requested count greater than primary keys');
+                else
+                    items = items.slice(0, count);
         }
-        let rules = Rule_1.GetRuleOrder(this.config.attributes, this.config.rules);
-        for (let singlerule of rules) {
+        else {
+            if (count)
+                for (let i = 0; i < count; i++) {
+                    items.push({});
+                }
+            else
+                throw Error('count is needed while primary is not defined');
+        }
+        let sequence = this.precedence.getSequence();
+        for (let singlerule of sequence) {
             if (Attribute_1.isAttribute(singlerule)) {
                 const rule = singlerule;
                 //attribute
@@ -411,16 +457,56 @@ class Generator {
         if (settings.mode === TableMode.ArrangeByRow) {
             const header = [];
             const mapper = {};
-            this.config.attributes.forEach((attribute, index) => {
+            let index = 0;
+            const cart = (target, unique) => {
+                if (target.length === 0) {
+                    return unique.range.map((value) => {
+                        return [value];
+                    });
+                }
+                else {
+                    const result = [];
+                    target.forEach((element) => {
+                        unique.range.forEach((value) => {
+                            result.push([...element, value]);
+                        });
+                    });
+                    return result;
+                }
+            };
+            let items = [];
+            if (this.config.primary) {
+                this.config.primary.forEach((unique) => {
+                    mapper[unique.name] = index;
+                    header.push(unique.name);
+                    items = cart(items, unique);
+                    index++;
+                });
+                if (count)
+                    if (count > items.length)
+                        console.warn('requested count greater than primary keys');
+                    else
+                        items = items.slice(0, count);
+                items = items.map((item) => item.concat(Array(this.config.attributes.length)));
+            }
+            else {
+                if (count) {
+                    for (let i = 0; i < count; i++) {
+                        items.push(Array(this.config.attributes.length));
+                    }
+                }
+                else
+                    throw Error('count is needed while primary is not defined');
+            }
+            this.config.attributes.forEach((attribute) => {
                 mapper[attribute.name] = index;
                 header.push(attribute.name);
+                index++;
             });
-            const items = settings.head ? [header] : [];
-            for (let i = 0; i < count; i++) {
-                items.push(Array(this.config.attributes.length));
-            }
-            let rules = Rule_1.GetRuleOrder(this.config.attributes, this.config.rules);
-            for (let singlerule of rules) {
+            if (settings.head)
+                items.unshift(header);
+            let sequence = this.precedence.getSequence();
+            for (let singlerule of sequence) {
                 if (Attribute_1.isAttribute(singlerule)) {
                     //attribute
                     const rule = singlerule;
@@ -613,12 +699,12 @@ function C(M, N) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Compound = void 0;
 const Distribution_1 = __webpack_require__(0);
-const Rule_1 = __webpack_require__(3);
+const PrecedenceGraph_1 = __webpack_require__(3);
 const Analysis_1 = __webpack_require__(1);
 class Compound extends Distribution_1.Distribution {
     constructor(confiurations) {
         super();
-        this.orders = Rule_1.GetRuleOrder(confiurations.attributes, confiurations.rules);
+        this.orders = new PrecedenceGraph_1.PrecedenceGraph(confiurations.attributes, confiurations.rules).getSequence();
     }
     random() {
         let item = {};
@@ -656,38 +742,35 @@ exports.Compound = Compound;
 
 "use strict";
 
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.NormalDate = exports.UniformDate = void 0;
-const dayjs_1 = __importDefault(__webpack_require__(11));
+const dayjs = __webpack_require__(11);
 const Continuous_1 = __webpack_require__(4);
 class UniformDate extends Continuous_1.Uniform {
     constructor(range, format) {
-        super([dayjs_1.default(range[0]).unix(), dayjs_1.default(range[1]).unix()]);
+        super([dayjs(range[0]).unix(), dayjs(range[1]).unix()]);
         this.format = format;
     }
     random() {
-        return dayjs_1.default.unix(super.random()).format(this.format);
+        return dayjs.unix(super.random()).format(this.format);
     }
     static Random(range, format) {
-        return dayjs_1.default
-            .unix(Continuous_1.Uniform.Random([dayjs_1.default(range[0]).unix(), dayjs_1.default(range[1]).unix()]))
+        return dayjs
+            .unix(Continuous_1.Uniform.Random([dayjs(range[0]).unix(), dayjs(range[1]).unix()]))
             .format(format);
     }
 }
 exports.UniformDate = UniformDate;
 class NormalDate extends Continuous_1.Normal {
     constructor(u, sigma, format) {
-        super(dayjs_1.default(u).unix(), dayjs_1.default(sigma).unix());
+        super(dayjs(u).unix(), dayjs(sigma).unix());
         this.format = format;
     }
     random() {
-        return dayjs_1.default.unix(super.random()).format(this.format);
+        return dayjs.unix(super.random()).format(this.format);
     }
     static Random(u, sigma, format) {
-        return dayjs_1.default.unix(Continuous_1.Normal.Random(dayjs_1.default(u).unix(), dayjs_1.default(sigma).unix())).format(format);
+        return dayjs.unix(Continuous_1.Normal.Random(dayjs(u).unix(), dayjs(sigma).unix())).format(format);
     }
 }
 exports.NormalDate = NormalDate;
