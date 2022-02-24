@@ -4,7 +4,7 @@ exports.Compound = void 0;
 const Distribution_1 = require("./Distribution");
 const PrecedenceGraph_1 = require("../util/PrecedenceGraph");
 const Analysis_1 = require("../util/Analysis");
-class Compound extends Distribution_1.Distribution {
+class Compound extends Distribution_1.DistributionConstructor {
     constructor(confiurations) {
         super();
         this.orders = new PrecedenceGraph_1.PrecedenceGraph(confiurations.attributes, confiurations.rules).getSequence();

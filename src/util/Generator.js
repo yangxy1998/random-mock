@@ -2,8 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Generator = exports.TableMode = exports.DataMode = void 0;
 const Analysis_1 = require("./Analysis");
-const Attribute_1 = require("./Attribute");
+const attribute_1 = require("../attribute");
 const PrecedenceGraph_1 = require("./PrecedenceGraph");
+const Primary_1 = require("../attribute/Primary");
 var DataMode;
 (function (DataMode) {
     DataMode[DataMode["Object"] = 0] = "Object";
@@ -17,14 +18,18 @@ var TableMode;
 class Generator {
     constructor(config) {
         this.config = config;
-        this.attributes = {};
-        this.precedence = new PrecedenceGraph_1.PrecedenceGraph(config.attributes, config.rules);
-        for (let attribute of config.attributes) {
-            this.attributes[attribute.name] = {
-                type: attribute.type,
-                distribution: attribute.distribution
-            };
+        this.attributes = [];
+        this.primaries = [];
+        for (let attributeConfig of config.attributes) {
+            const attribute = attributeConfig.type(attributeConfig.name, attributeConfig.distribution);
+            if (attribute instanceof Primary_1.Primary) {
+                this.primaries.push(attribute);
+            }
+            else {
+                this.attributes.push(attribute);
+            }
         }
+        this.precedence = new PrecedenceGraph_1.PrecedenceGraph(this.attributes, config.rules);
     }
     create(config) {
         config = {
@@ -40,25 +45,25 @@ class Generator {
     }
     _createObjectList(count) {
         let items = [];
-        if (this.config.primary) {
-            const cart = (target, unique) => {
+        if (this.primaries.length > 0) {
+            const cart = (target, primary) => {
                 if (target.length === 0) {
-                    return unique.range.map((value) => {
-                        return { [unique.name]: value };
+                    return primary.range.map((value) => {
+                        return { [primary.name]: value };
                     });
                 }
                 else {
                     const result = [];
                     target.forEach((element) => {
-                        unique.range.forEach((value) => {
-                            result.push({ [unique.name]: value, ...element });
+                        primary.range.forEach((value) => {
+                            result.push({ [primary.name]: value, ...element });
                         });
                     });
                     return result;
                 }
             };
-            this.config.primary.forEach((unique) => {
-                items = cart(items, unique);
+            this.primaries.forEach((primary) => {
+                items = cart(items, primary);
             });
             if (count)
                 if (count > items.length)
@@ -76,13 +81,13 @@ class Generator {
         }
         let sequence = this.precedence.getSequence();
         for (let singlerule of sequence) {
-            if (Attribute_1.isAttribute(singlerule)) {
+            if (singlerule instanceof attribute_1.AttributeConstructor) {
                 const rule = singlerule;
                 //attribute
                 items.forEach((item) => {
                     if (!item[rule.name])
                         // not initialized attribute
-                        item[rule.name] = rule.distribution.random();
+                        item[rule.name] = rule.random();
                 });
             }
             else if (singlerule.filter) {
@@ -113,16 +118,16 @@ class Generator {
             const header = [];
             const mapper = {};
             let index = 0;
-            const cart = (target, unique) => {
+            const cart = (target, primary) => {
                 if (target.length === 0) {
-                    return unique.range.map((value) => {
+                    return primary.range.map((value) => {
                         return [value];
                     });
                 }
                 else {
                     const result = [];
                     target.forEach((element) => {
-                        unique.range.forEach((value) => {
+                        primary.range.forEach((value) => {
                             result.push([...element, value]);
                         });
                     });
@@ -130,11 +135,11 @@ class Generator {
                 }
             };
             let items = [];
-            if (this.config.primary) {
-                this.config.primary.forEach((unique) => {
-                    mapper[unique.name] = index;
-                    header.push(unique.name);
-                    items = cart(items, unique);
+            if (this.primaries.length > 0) {
+                this.primaries.forEach((primary) => {
+                    mapper[primary.name] = index;
+                    header.push(primary.name);
+                    items = cart(items, primary);
                     index++;
                 });
                 if (count)
@@ -162,13 +167,13 @@ class Generator {
                 items.unshift(header);
             let sequence = this.precedence.getSequence();
             for (let singlerule of sequence) {
-                if (Attribute_1.isAttribute(singlerule)) {
+                if (singlerule instanceof attribute_1.AttributeConstructor) {
                     //attribute
                     const rule = singlerule;
                     const index = header.indexOf(rule.name);
                     items.forEach((item) => {
                         if (!item[index])
-                            item[index] = rule.distribution.random();
+                            item[index] = rule.random();
                     });
                 }
                 else if (singlerule.filter) {

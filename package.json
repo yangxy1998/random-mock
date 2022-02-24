@@ -34,7 +34,6 @@
         "webpack-merge": "^5.7.3"
     },
     "dependencies": {
-        "dayjs": "^1.10.7",
-        "lodash": "^4.17.21"
+        "dayjs": "^1.10.7"
     }
 }

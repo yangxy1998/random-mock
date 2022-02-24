@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Mocker = exports.Distribution = exports.DataMode = exports.AttributeType = void 0;
+exports.Mocker = exports.Distribution = exports.DataMode = exports.Attribute = void 0;
 const Generator_1 = require("./util/Generator");
 Object.defineProperty(exports, "DataMode", { enumerable: true, get: function () { return Generator_1.DataMode; } });
 const distribution_1 = require("./distribution");
-Object.defineProperty(exports, "Distribution", { enumerable: true, get: function () { return distribution_1.Distribution; } });
-const Attribute_1 = require("./util/Attribute");
-Object.defineProperty(exports, "AttributeType", { enumerable: true, get: function () { return Attribute_1.AttributeType; } });
+exports.Distribution = distribution_1.default;
+const attribute_1 = require("./attribute");
+exports.Attribute = attribute_1.default;
 const Mocker = Generator_1.Generator;
 exports.Mocker = Mocker;
 exports.default = Mocker;

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Distribution = void 0;
-class Distribution {
+exports.DistributionConstructor = void 0;
+class DistributionConstructor {
     constructor() { }
+    random(...args) { }
     static Random(...args) { }
 }
-exports.Distribution = Distribution;
+exports.DistributionConstructor = DistributionConstructor;

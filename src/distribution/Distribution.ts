@@ -1,5 +1,5 @@
-export abstract class Distribution {
+export class DistributionConstructor {
     constructor() {}
-    abstract random(...args: any[]): any
+    random(...args: any[]): any {}
     static Random(...args: any[]): any {}
 }

@@ -1,4 +1,4 @@
-import { Attribute } from './Attribute'
+import { AttributeConstructor, AttributeType } from '../attribute'
 import { Rule } from './Rule'
 
 interface Node {
@@ -14,9 +14,11 @@ interface Link {
 export class PrecedenceGraph {
     nodes: Map<string, Node>
     links: Link[]
-    sequence: Array<Attribute | Rule>
-    constructor(attributes: Attribute[], rules: Rule[]) {
-        let leading = [] as string[]
+    sequence: Array<AttributeConstructor | Rule>
+    constructor(attributes: AttributeConstructor[], rules: Rule[]) {
+        let leading = attributes
+            .filter((attribute) => attribute.type === AttributeType.Primary)
+            .map((attribute) => attribute.name)
         let following = [] as string[]
         let order: any[] = []
         this.nodes = new Map(

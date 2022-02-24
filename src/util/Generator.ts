@@ -1,12 +1,12 @@
-import { Distribution } from '../distribution/Distribution'
+import { DistributionConstructor } from '../distribution/Distribution'
 import { AnalysisEffect, AnalysisFilter } from './Analysis'
-import { Attribute, AttributeType, isAttribute } from './Attribute'
+import Attribute, { AttributeConstructor, AttributeConfig } from '../attribute'
 import { Rule } from './Rule'
-import { Unique } from './Unique'
 import { PrecedenceGraph } from './PrecedenceGraph'
+import { AttributeType } from '../attribute/Attribute'
+import { Primary } from '../attribute/Primary'
 interface GeneratorConfiguation {
-    attributes: Array<Attribute>
-    primary?: Unique[]
+    attributes: Array<AttributeConfig>
     rules: Array<Rule> // rules like cause => effect
 }
 interface DataConfiguration {
@@ -30,17 +30,23 @@ interface TableSettings {
 export class Generator {
     config: GeneratorConfiguation
     precedence: PrecedenceGraph
-    attributes: { [name: string]: { type: AttributeType; distribution: Distribution } }
+    attributes: AttributeConstructor[]
+    primaries: Primary[]
     constructor(config: GeneratorConfiguation) {
         this.config = config
-        this.attributes = {}
-        this.precedence = new PrecedenceGraph(config.attributes, config.rules)
-        for (let attribute of config.attributes) {
-            this.attributes[attribute.name] = {
-                type: attribute.type,
-                distribution: attribute.distribution
+        this.attributes = []
+        this.primaries = []
+        for (let attributeConfig of config.attributes) {
+            const attribute = attributeConfig.type(
+                attributeConfig.name,
+                attributeConfig.distribution
+            )
+            if (attribute instanceof Primary) {
+                this.primaries.push(attribute)
             }
+            this.attributes.push(attribute)
         }
+        this.precedence = new PrecedenceGraph(this.attributes, config.rules)
     }
     create(config: DataConfiguration) {
         config = {
@@ -56,24 +62,24 @@ export class Generator {
 
     private _createObjectList(count?: number) {
         let items: { [name: string]: any }[] = []
-        if (this.config.primary) {
-            const cart = (target: any[], unique: Unique) => {
+        if (this.primaries.length > 0) {
+            const cart = (target: any[], primary: Primary) => {
                 if (target.length === 0) {
-                    return unique.range.map((value) => {
-                        return { [unique.name]: value }
+                    return primary.range.map((value) => {
+                        return { [primary.name]: value }
                     })
                 } else {
                     const result: { [name: string]: any }[] = []
                     target.forEach((element) => {
-                        unique.range.forEach((value) => {
-                            result.push({ [unique.name]: value, ...element })
+                        primary.range.forEach((value) => {
+                            result.push({ [primary.name]: value, ...element })
                         })
                     })
                     return result
                 }
             }
-            this.config.primary.forEach((unique) => {
-                items = cart(items, unique)
+            this.primaries.forEach((primary) => {
+                items = cart(items, primary)
             })
             if (count)
                 if (count > items.length) console.warn('requested count greater than primary keys')
@@ -87,13 +93,13 @@ export class Generator {
         }
         let sequence = this.precedence.getSequence()
         for (let singlerule of sequence) {
-            if (isAttribute(singlerule)) {
+            if (singlerule instanceof AttributeConstructor) {
                 const rule = singlerule
                 //attribute
                 items.forEach((item) => {
                     if (!item[rule.name])
                         // not initialized attribute
-                        item[rule.name] = rule.distribution.random()
+                        item[rule.name] = rule.random()
                 })
             } else if (singlerule.filter) {
                 //rule
@@ -126,15 +132,15 @@ export class Generator {
             const header: string[] = []
             const mapper: { [name: string]: number } = {}
             let index = 0
-            const cart = (target: Array<any[]>, unique: Unique) => {
+            const cart = (target: Array<any[]>, primary: Primary) => {
                 if (target.length === 0) {
-                    return unique.range.map((value) => {
+                    return primary.range.map((value) => {
                         return [value]
                     })
                 } else {
                     const result: any[][] = []
                     target.forEach((element) => {
-                        unique.range.forEach((value) => {
+                        primary.range.forEach((value) => {
                             result.push([...element, value])
                         })
                     })
@@ -142,11 +148,11 @@ export class Generator {
                 }
             }
             let items: Array<any[]> = []
-            if (this.config.primary) {
-                this.config.primary.forEach((unique) => {
-                    mapper[unique.name] = index
-                    header.push(unique.name)
-                    items = cart(items, unique)
+            if (this.primaries.length > 0) {
+                this.primaries.forEach((primary) => {
+                    mapper[primary.name] = index
+                    header.push(primary.name)
+                    items = cart(items, primary)
                     index++
                 })
                 if (count)
@@ -169,12 +175,12 @@ export class Generator {
             if (settings.head) items.unshift(header)
             let sequence = this.precedence.getSequence()
             for (let singlerule of sequence) {
-                if (isAttribute(singlerule)) {
+                if (singlerule instanceof AttributeConstructor) {
                     //attribute
                     const rule = singlerule
                     const index = header.indexOf(rule.name)
                     items.forEach((item) => {
-                        if (!item[index]) item[index] = rule.distribution.random()
+                        if (!item[index]) item[index] = rule.random()
                     })
                 } else if (singlerule.filter) {
                     //rule

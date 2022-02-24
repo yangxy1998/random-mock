@@ -1,10 +1,8 @@
-import { Generator } from '../util/Generator'
-import { Attribute } from '../util/Attribute'
-import { Distribution } from './Distribution'
+import { DistributionConstructor } from './Distribution'
 import { PrecedenceGraph } from '../util/PrecedenceGraph'
 import { AnalysisEffect, AnalysisFilter } from '../util/Analysis'
 
-export class Compound extends Distribution {
+export class Compound extends DistributionConstructor {
     orders: any
     constructor(confiurations: any) {
         super()
