@@ -90,16 +90,16 @@ export class ExampleChart {
         const coutinuous = attributes.filter(
             (attribute) => attribute.type === AttributeType.Continuous
         )
-        this.discretes = attributes.filter((attribute) => attribute.type === AttributeType.Discrete)
-        this.principle = this.discretes[0]
-        this.discretes.forEach((discrete, index) => {
+        this.options = attributes.filter((attribute) => attribute.type === AttributeType.Category)
+        this.principle = this.options[0]
+        this.options.forEach((discrete, index) => {
             const button = document.createElement('button')
             const label = `${discrete.name}|${index}`
             button.id = label
             button.innerHTML = label
             button.onclick = () => {
                 const index = button.id.split('|')[1]
-                this.principle = this.discretes[index]
+                this.principle = this.options[index]
             }
             menu.appendChild(button)
         })
@@ -113,7 +113,7 @@ export class ExampleChart {
                     const attributes = button.id.split('-')
                     const xName = attributes[0]
                     const yName = attributes[1]
-                    const datasets = this.principle.distribution.range.map((value) => {
+                    const datasets = this.principle.range.map((value) => {
                         const color = '#' + ((Math.random() * 0xffffff) << 0).toString(16)
                         return {
                             borderColor: color,
