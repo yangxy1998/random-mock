@@ -88,7 +88,9 @@ export class ExampleChart {
         this.dataset = data
         const menu = document.getElementById('menu')
         const coutinuous = attributes.filter(
-            (attribute) => attribute.type === AttributeType.Continuous
+            (attribute) =>
+                attribute.type === AttributeType.Continuous ||
+                attribute.type === AttributeType.Discrete
         )
         this.options = attributes.filter((attribute) => attribute.type === AttributeType.Category)
         this.principle = this.options[0]
