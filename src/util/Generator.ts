@@ -1,10 +1,11 @@
 import { DistributionConstructor } from '../distribution/Distribution'
 import { AnalysisEffect, AnalysisFilter } from './Analysis'
-import Attribute, { AttributeConstructor, AttributeConfig } from '../attribute'
+import { AttributeConstructor, AttributeConfig, AttributeCreater } from '../attribute'
 import { Rule } from './Rule'
 import { PrecedenceGraph } from './PrecedenceGraph'
 import { AttributeType } from '../attribute/Attribute'
 import { Primary } from '../attribute/Primary'
+import { RegulationConstructor } from 'src/regulation/Regulation'
 interface GeneratorConfiguation {
     attributes: Array<AttributeConfig>
     rules: Array<Rule> // rules like cause => effect
@@ -32,20 +33,22 @@ export class Generator {
     precedence: PrecedenceGraph
     attributes: AttributeConstructor[]
     primaries: Primary[]
+    attributeMap: { [key: string]: AttributeConstructor }
+    regulations: RegulationConstructor[]
     constructor(config: GeneratorConfiguation) {
         this.config = config
         this.attributes = []
         this.primaries = []
+        this.attributeMap = {}
         for (let attributeConfig of config.attributes) {
-            const attribute = attributeConfig.type(
-                attributeConfig.name,
-                attributeConfig.distribution
-            )
+            const attribute = AttributeCreater(attributeConfig)
             if (attribute instanceof Primary) {
                 this.primaries.push(attribute)
             }
             this.attributes.push(attribute)
+            this.attributeMap[attribute.name] = attribute
         }
+        this.regulations = config.rules.map((rule) => rule.regulation)
         this.precedence = new PrecedenceGraph(this.attributes, config.rules)
     }
     create(config: DataConfiguration) {
@@ -101,27 +104,15 @@ export class Generator {
                         // not initialized attribute
                         item[rule.name] = rule.random()
                 })
-            } else if (singlerule.filter) {
-                //rule
-                const rule = singlerule
-                items.filter(AnalysisFilter(singlerule.filter)).forEach((item) => {
-                    if (
-                        !item[rule.dependent] &&
-                        Math.random() <= (rule.confidence ? rule.confidence : 1)
-                    )
-                        // not initialized attribute
-                        item[rule.dependent] = AnalysisEffect(rule.effect)(item)
-                })
             } else {
                 //rule
                 const rule = singlerule
                 items.forEach((item) => {
-                    if (
-                        !item[rule.dependent] &&
-                        Math.random() <= (rule.confidence ? rule.confidence : 1)
-                    )
+                    if (Math.random() <= (rule.confidence ? rule.confidence : 1)) {
                         // not initialized attribute
-                        item[rule.dependent] = AnalysisEffect(rule.effect)(item)
+                        const value = rule.regulation.getValue(item)
+                        if (value) item[rule.target] = value
+                    }
                 })
             }
         }
@@ -182,27 +173,16 @@ export class Generator {
                     items.forEach((item) => {
                         if (!item[index]) item[index] = rule.random()
                     })
-                } else if (singlerule.filter) {
-                    //rule
-                    const rule = singlerule
-                    const index = header.indexOf(rule.dependent)
-                    items.filter(AnalysisFilter(singlerule.filter, mapper)).forEach((item) => {
-                        if (
-                            !item[index] &&
-                            Math.random() <= (rule.confidence ? rule.confidence : 1)
-                        )
-                            item[index] = AnalysisEffect(rule.effect, mapper)(item)
-                    })
                 } else {
                     //rule
                     const rule = singlerule
-                    const index = header.indexOf(rule.dependent)
+                    const index = header.indexOf(rule.target)
                     items.forEach((item) => {
-                        if (
-                            !item[index] &&
-                            Math.random() <= (rule.confidence ? rule.confidence : 1)
-                        )
-                            item[index] = AnalysisEffect(rule.effect, mapper)(item)
+                        if (Math.random() <= (rule.confidence ? rule.confidence : 1)) {
+                            // not initialized attribute
+                            const value = rule.regulation.getValue(item)
+                            if (value) item[index] = value
+                        }
                     })
                 }
             }

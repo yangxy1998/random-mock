@@ -1,9 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PrecedenceGraph = void 0;
+const attribute_1 = require("../attribute");
 class PrecedenceGraph {
     constructor(attributes, rules) {
-        let leading = [];
+        let leading = attributes
+            .filter((attribute) => attribute.type === attribute_1.AttributeType.Primary)
+            .map((attribute) => attribute.name);
         let following = [];
         let order = [];
         this.nodes = new Map(attributes.map((attribute) => [attribute.name, { name: attribute.name }]));
@@ -11,8 +14,8 @@ class PrecedenceGraph {
         function updateState() {
             following = [];
             for (let rule of rules) {
-                if (!following.includes(rule.dependent))
-                    following.push(rule.dependent);
+                if (!following.includes(rule.target))
+                    following.push(rule.target);
             }
             for (let attribute of attributes) {
                 if (!following.includes(attribute.name) && !leading.includes(attribute.name)) {
@@ -26,7 +29,7 @@ class PrecedenceGraph {
         while (rules.length > 0) {
             let rule = rules[i];
             let clear = true;
-            rule.arguments.forEach((argument) => {
+            rule.regulation.args.forEach((argument) => {
                 if (!leading.includes(argument)) {
                     clear = false;
                 }
@@ -36,8 +39,8 @@ class PrecedenceGraph {
             }
             else {
                 order.push(rule);
-                this.links.push(...rule.arguments.map((source) => {
-                    return { source, target: rule.dependent, weight: rule.confidence };
+                this.links.push(...rule.regulation.args.map((source) => {
+                    return { source, target: rule.target, weight: rule.confidence };
                 }));
                 rules.splice(i, 1);
             }

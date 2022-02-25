@@ -10,17 +10,20 @@ class Date extends Discrete_1.Discrete {
         this.range = [];
         this.type = Attribute_1.AttributeType.Date;
         this.formatString = format ? format : 'YYYY/MM/DD';
-        this.random = () => {
-            const result = dayjs.unix(super.random()).format(this.formatString);
-            if (!this.range.includes(result)) {
-                this.range.push(result);
-                this.range.sort();
-            }
-            return result;
-        };
     }
-    format(source) {
+    random() {
+        const result = dayjs.unix(super.random()).format(this.formatString);
+        if (!this.range.includes(result)) {
+            this.range.push(result);
+            this.range.sort();
+        }
+        return result;
+    }
+    formatToValue(source) {
         return dayjs(source).unix();
+    }
+    valueToFormat(source) {
+        return dayjs.unix(source).format(this.formatString);
     }
 }
 exports.Date = Date;

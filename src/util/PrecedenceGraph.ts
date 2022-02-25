@@ -1,3 +1,4 @@
+import { RegulationConstructor } from '../regulation/Regulation'
 import { AttributeConstructor, AttributeType } from '../attribute'
 import { Rule } from './Rule'
 
@@ -28,7 +29,7 @@ export class PrecedenceGraph {
         function updateState() {
             following = []
             for (let rule of rules) {
-                if (!following.includes(rule.dependent)) following.push(rule.dependent)
+                if (!following.includes(rule.target)) following.push(rule.target)
             }
             for (let attribute of attributes) {
                 if (!following.includes(attribute.name) && !leading.includes(attribute.name)) {
@@ -42,7 +43,7 @@ export class PrecedenceGraph {
         while (rules.length > 0) {
             let rule = rules[i]
             let clear = true
-            rule.arguments.forEach((argument) => {
+            rule.regulation.args.forEach((argument) => {
                 if (!leading.includes(argument)) {
                     clear = false
                 }
@@ -52,8 +53,8 @@ export class PrecedenceGraph {
             } else {
                 order.push(rule)
                 this.links.push(
-                    ...rule.arguments.map((source) => {
-                        return { source, target: rule.dependent, weight: rule.confidence }
+                    ...rule.regulation.args.map((source) => {
+                        return { source, target: rule.target, weight: rule.confidence }
                     })
                 )
                 rules.splice(i, 1)

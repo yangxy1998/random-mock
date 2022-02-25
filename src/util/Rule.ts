@@ -1,8 +1,7 @@
+import { RegulationConstructor } from '../regulation/Regulation'
 export type Rule = {
     // rule like y = 3 * x + 1 ± 0.5
-    dependent: string
-    arguments: Array<string>
-    filter?: (...args: any) => boolean
-    effect: (...args: any) => any
+    target: string
+    regulation: RegulationConstructor
     confidence?: number
 }

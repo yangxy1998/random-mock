@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Uniform = exports.Standard = exports.Normal = exports.Hypergeometric = exports.Exponential = exports.Disposable = exports.Compound = exports.Cauchy = exports.DistributionConstructor = void 0;
+exports.Uniform = exports.Standard = exports.Normal = exports.Hypergeometric = exports.Exponential = exports.Disposable = exports.Compound = exports.Cauchy = exports.DistributionConstructor = exports.Distribution = void 0;
 const Compound_1 = require("./Compound");
 Object.defineProperty(exports, "Compound", { enumerable: true, get: function () { return Compound_1.Compound; } });
 const Exponential_1 = require("./Exponential");
@@ -19,59 +19,13 @@ const Disposable_1 = require("./Disposable");
 Object.defineProperty(exports, "Disposable", { enumerable: true, get: function () { return Disposable_1.Disposable; } });
 const Distribution_1 = require("./Distribution");
 Object.defineProperty(exports, "DistributionConstructor", { enumerable: true, get: function () { return Distribution_1.DistributionConstructor; } });
-exports.default = {
-    Cauchy: (x0, theta) => {
-        return (format) => {
-            x0 = format(x0);
-            theta = format(theta);
-            return new Cauchy_1.Cauchy(x0, theta);
-        };
-    },
-    Compound: (config) => {
-        return (format) => {
-            config = format(config);
-            return new Compound_1.Compound(config);
-        };
-    },
-    Disposable: (dataset) => {
-        return (format) => {
-            dataset = dataset.map(format);
-            return new Disposable_1.Disposable(dataset);
-        };
-    },
-    Exponential: (offset, lambda) => {
-        return (format) => {
-            offset = format(offset);
-            lambda = format(lambda);
-            return new Exponential_1.Exponential(offset, lambda);
-        };
-    },
-    Standard: (range, p) => {
-        return (format) => {
-            range = range.map(format);
-            return new Standard_1.Standard(range, p);
-        };
-    },
-    Uniform: (range) => {
-        return (format) => {
-            range[0] = format(range[0]);
-            range[1] = format(range[1]);
-            return new Uniform_1.Uniform(range);
-        };
-    },
-    Normal: (u, sigma) => {
-        return (format) => {
-            u = format(u);
-            sigma = format(sigma);
-            return new Normal_1.Normal(u, sigma);
-        };
-    },
-    Hypergeometric: (range, N, M, n) => {
-        return (format) => {
-            N = format(N);
-            M = format(M);
-            n = format(n);
-            return new Hypergeometric_1.Hypergeometric(range, N, M, n);
-        };
-    }
+exports.Distribution = {
+    Cauchy: Cauchy_1.Cauchy,
+    Compound: Compound_1.Compound,
+    Disposable: Disposable_1.Disposable,
+    Exponential: Exponential_1.Exponential,
+    Standard: Standard_1.Standard,
+    Uniform: Uniform_1.Uniform,
+    Normal: Normal_1.Normal,
+    Hypergeometric: Hypergeometric_1.Hypergeometric
 };

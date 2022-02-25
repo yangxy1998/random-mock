@@ -3,9 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Unique = void 0;
 const Attribute_1 = require("./Attribute");
 class Unique extends Attribute_1.AttributeConstructor {
-    constructor(name, distribution, format = (source) => source, retryCount = 100) {
+    constructor(name, distribution, formatToValue = (source) => source, valueToFormat = (source) => source, retryCount = 100) {
         super(name, distribution);
-        this.format = format;
+        this.formatToValue = formatToValue;
+        this.valueToFormat = valueToFormat;
         this.type = Attribute_1.AttributeType.Unique;
         this.retryCount = retryCount;
         this.range = [];
@@ -13,7 +14,7 @@ class Unique extends Attribute_1.AttributeConstructor {
         this.random = () => {
             let i = 0;
             do {
-                const result = this.format(super.random());
+                const result = this.valueToFormat(super.random());
                 if (!this.range.includes(result)) {
                     this.range.push(result);
                     return result;

@@ -1,4 +1,4 @@
-import { Distribution } from '../distribution'
+import { DistributionConstructor } from '../distribution'
 import { AttributeConstructor, AttributeType } from './Attribute'
 
 export class Unique extends AttributeConstructor {
@@ -7,12 +7,14 @@ export class Unique extends AttributeConstructor {
     retryCount: number
     constructor(
         name: string,
-        distribution: Distribution,
-        format = (source: any) => source,
+        distribution: DistributionConstructor,
+        formatToValue = (source: any) => source,
+        valueToFormat = (source: any) => source,
         retryCount: number = 100
     ) {
         super(name, distribution)
-        this.format = format
+        this.formatToValue = formatToValue
+        this.valueToFormat = valueToFormat
         this.type = AttributeType.Unique
         this.retryCount = retryCount
         this.range = []
@@ -20,7 +22,7 @@ export class Unique extends AttributeConstructor {
         this.random = () => {
             let i = 0
             do {
-                const result = this.format(super.random())
+                const result = this.valueToFormat(super.random())
                 if (!this.range.includes(result)) {
                     this.range.push(result)
                     return result

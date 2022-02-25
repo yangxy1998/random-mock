@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Generator = exports.TableMode = exports.DataMode = void 0;
-const Analysis_1 = require("./Analysis");
 const attribute_1 = require("../attribute");
 const PrecedenceGraph_1 = require("./PrecedenceGraph");
 const Primary_1 = require("../attribute/Primary");
@@ -20,15 +19,16 @@ class Generator {
         this.config = config;
         this.attributes = [];
         this.primaries = [];
+        this.attributeMap = {};
         for (let attributeConfig of config.attributes) {
-            const attribute = attributeConfig.type(attributeConfig.name, attributeConfig.distribution);
+            const attribute = attribute_1.AttributeCreater(attributeConfig);
             if (attribute instanceof Primary_1.Primary) {
                 this.primaries.push(attribute);
             }
-            else {
-                this.attributes.push(attribute);
-            }
+            this.attributes.push(attribute);
+            this.attributeMap[attribute.name] = attribute;
         }
+        this.regulations = config.rules.map((rule) => rule.regulation);
         this.precedence = new PrecedenceGraph_1.PrecedenceGraph(this.attributes, config.rules);
     }
     create(config) {
@@ -90,24 +90,16 @@ class Generator {
                         item[rule.name] = rule.random();
                 });
             }
-            else if (singlerule.filter) {
-                //rule
-                const rule = singlerule;
-                items.filter(Analysis_1.AnalysisFilter(singlerule.filter)).forEach((item) => {
-                    if (!item[rule.dependent] &&
-                        Math.random() <= (rule.confidence ? rule.confidence : 1))
-                        // not initialized attribute
-                        item[rule.dependent] = Analysis_1.AnalysisEffect(rule.effect)(item);
-                });
-            }
             else {
                 //rule
                 const rule = singlerule;
                 items.forEach((item) => {
-                    if (!item[rule.dependent] &&
-                        Math.random() <= (rule.confidence ? rule.confidence : 1))
+                    if (Math.random() <= (rule.confidence ? rule.confidence : 1)) {
                         // not initialized attribute
-                        item[rule.dependent] = Analysis_1.AnalysisEffect(rule.effect)(item);
+                        const value = rule.regulation.getValue(item);
+                        if (value)
+                            item[rule.target] = value;
+                    }
                 });
             }
         }
@@ -176,24 +168,17 @@ class Generator {
                             item[index] = rule.random();
                     });
                 }
-                else if (singlerule.filter) {
-                    //rule
-                    const rule = singlerule;
-                    const index = header.indexOf(rule.dependent);
-                    items.filter(Analysis_1.AnalysisFilter(singlerule.filter, mapper)).forEach((item) => {
-                        if (!item[index] &&
-                            Math.random() <= (rule.confidence ? rule.confidence : 1))
-                            item[index] = Analysis_1.AnalysisEffect(rule.effect, mapper)(item);
-                    });
-                }
                 else {
                     //rule
                     const rule = singlerule;
-                    const index = header.indexOf(rule.dependent);
+                    const index = header.indexOf(rule.target);
                     items.forEach((item) => {
-                        if (!item[index] &&
-                            Math.random() <= (rule.confidence ? rule.confidence : 1))
-                            item[index] = Analysis_1.AnalysisEffect(rule.effect, mapper)(item);
+                        if (Math.random() <= (rule.confidence ? rule.confidence : 1)) {
+                            // not initialized attribute
+                            const value = rule.regulation.getValue(item);
+                            if (value)
+                                item[index] = value;
+                        }
                     });
                 }
             }
