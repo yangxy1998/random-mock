@@ -17,17 +17,17 @@ export class Unique extends AttributeConstructor {
         this.retryCount = retryCount
         this.range = []
         this.index = -1
-        this.random = () => {
-            let i = 0
-            do {
-                const result = this.valueToFormat(super.random())
-                if (!this.range.includes(result)) {
-                    this.range.push(result)
-                    return result
-                }
-                i++
-            } while (i < this.retryCount)
-            throw Error('exceed max retry count')
-        }
+    }
+    random() {
+        let i = 0
+        do {
+            const result = this.valueToFormat(super.random())
+            if (!this.range.includes(result)) {
+                this.range.push(result)
+                return result
+            }
+            i++
+        } while (i < this.retryCount)
+        throw Error('exceed max retry count')
     }
 }

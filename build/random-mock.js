@@ -1230,14 +1230,14 @@ const Attribute_1 = __webpack_require__(1);
 class Category extends Attribute_1.AttributeConstructor {
     constructor(name, distribution) {
         super(name, distribution);
-        this.random = () => {
-            const result = super.random();
-            if (!this.range.includes(result))
-                this.range.push(result);
-            return result;
-        };
         this.range = [];
         this.type = Attribute_1.AttributeType.Category;
+    }
+    random() {
+        const result = super.random();
+        if (!this.range.includes(result))
+            this.range.push(result);
+        return result;
     }
 }
 exports.Category = Category;
@@ -1259,18 +1259,18 @@ class Unique extends Attribute_1.AttributeConstructor {
         this.retryCount = retryCount;
         this.range = [];
         this.index = -1;
-        this.random = () => {
-            let i = 0;
-            do {
-                const result = this.valueToFormat(super.random());
-                if (!this.range.includes(result)) {
-                    this.range.push(result);
-                    return result;
-                }
-                i++;
-            } while (i < this.retryCount);
-            throw Error('exceed max retry count');
-        };
+    }
+    random() {
+        let i = 0;
+        do {
+            const result = this.valueToFormat(super.random());
+            if (!this.range.includes(result)) {
+                this.range.push(result);
+                return result;
+            }
+            i++;
+        } while (i < this.retryCount);
+        throw Error('exceed max retry count');
     }
 }
 exports.Unique = Unique;

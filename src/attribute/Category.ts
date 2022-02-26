@@ -8,7 +8,7 @@ export class Category extends AttributeConstructor {
         this.range = []
         this.type = AttributeType.Category
     }
-    random = () => {
+    random() {
         const result = super.random()
         if (!this.range.includes(result)) this.range.push(result)
         return result
