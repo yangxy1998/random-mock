@@ -115,7 +115,8 @@ export class ExampleChart {
                     const attributes = button.id.split('-')
                     const xName = attributes[0]
                     const yName = attributes[1]
-                    const datasets = this.principle.range.map((value) => {
+                    console.log(this.principle)
+                    const datasets = this.principle.distribution.range.map((value) => {
                         const color = '#' + ((Math.random() * 0xffffff) << 0).toString(16)
                         return {
                             borderColor: color,
