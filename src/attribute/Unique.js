@@ -4,9 +4,7 @@ exports.Unique = void 0;
 const Attribute_1 = require("./Attribute");
 class Unique extends Attribute_1.AttributeConstructor {
     constructor(name, distribution, formatToValue = (source) => source, valueToFormat = (source) => source, retryCount = 100) {
-        super(name, distribution);
-        this.formatToValue = formatToValue;
-        this.valueToFormat = valueToFormat;
+        super(name, distribution, formatToValue, valueToFormat);
         this.type = Attribute_1.AttributeType.Unique;
         this.retryCount = retryCount;
         this.range = [];

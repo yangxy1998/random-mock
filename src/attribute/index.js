@@ -25,7 +25,6 @@ exports.Attribute = {
     Primary: Primary_1.Primary
 };
 function AttributeCreater(config) {
-    const another = Object.values(config).slice(3);
     if (config.type === Attribute_1.AttributeType.Category) {
         return new Category_1.Category(config.name, config.distribution);
     }
@@ -33,16 +32,16 @@ function AttributeCreater(config) {
         return new Continuous_1.Continuous(config.name, config.distribution);
     }
     else if (config.type === Attribute_1.AttributeType.Date) {
-        return new Date_1.Date(config.name, config.distribution, ...another);
+        return new Date_1.Date(config.name, config.distribution, config.format, config.record, config.sort);
     }
     else if (config.type === Attribute_1.AttributeType.Discrete) {
-        return new Discrete_1.Discrete(config.name, config.distribution, ...another);
+        return new Discrete_1.Discrete(config.name, config.distribution, config.step, config.record, config.sort);
     }
     else if (config.type === Attribute_1.AttributeType.Primary) {
-        return new Primary_1.Primary(config.name, config.distribution, ...another);
+        return new Primary_1.Primary(config.name, config.distribution, config.count, config.formatToValue, config.valueToFormat, config.retryCount);
     }
     else if (config.type === Attribute_1.AttributeType.Unique) {
-        return new Unique_1.Unique(config.name, config.distribution, ...another);
+        return new Unique_1.Unique(config.name, config.distribution, config.formatToValue, config.valueToFormat, config.retryCount);
     }
     else
         return new Attribute_1.AttributeConstructor(config.name, config.distribution);

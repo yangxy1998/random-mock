@@ -3,18 +3,20 @@ import { DistributionConstructor, Normal, Uniform, Cauchy } from '../distributio
 import { RegulationConstructor } from './Regulation'
 
 export class Expression extends RegulationConstructor {
-    distribution: (value: number) => DistributionConstructor
+    distribution: (value: number) => DistributionConstructor | { random: () => any }
     expression: (item: any) => any
     constructor(args: string[], expression: (item: any) => any) {
         super(args)
         this.expression = expression
-        this.distribution = (value) => new Normal(value, 1)
+        this.distribution = (value) => {
+            return { random: () => value }
+        }
     }
-    Uniform(sigma: number) {
+    Normal(sigma: number) {
         this.distribution = (value) => new Normal(value, sigma)
         return this
     }
-    Normal(difference: number) {
+    Uniform(difference: number) {
         this.distribution = (value) => new Uniform([value - difference, value + difference])
         return this
     }

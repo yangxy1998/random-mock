@@ -13,9 +13,7 @@ export class Primary extends AttributeConstructor {
         valueToFormat = (source: any) => source,
         retryCount: number = 100
     ) {
-        super(name, distribution)
-        this.formatToValue = formatToValue
-        this.valueToFormat = valueToFormat
+        super(name, distribution, formatToValue, valueToFormat)
         this.type = AttributeType.Unique
         this.retryCount = retryCount
         this.range = []

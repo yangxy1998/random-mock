@@ -5,10 +5,11 @@ import { Rule } from './Rule'
 import { PrecedenceGraph } from './PrecedenceGraph'
 import { AttributeType } from '../attribute/Attribute'
 import { Primary } from '../attribute/Primary'
-import { RegulationConstructor } from 'src/regulation/Regulation'
+import { RegulationConstructor } from '../regulation/Regulation'
+import { CreateRegulation, RegulationConfig } from '../regulation'
 interface GeneratorConfiguation {
     attributes: Array<AttributeConfig>
-    rules: Array<Rule> // rules like cause => effect
+    rules: Array<Rule | RegulationConfig> // rules like cause => effect
 }
 interface DataConfiguration {
     count?: number
@@ -34,7 +35,6 @@ export class Generator {
     attributes: AttributeConstructor[]
     primaries: Primary[]
     attributeMap: { [key: string]: AttributeConstructor }
-    regulations: RegulationConstructor[]
     constructor(config: GeneratorConfiguation) {
         this.config = config
         this.attributes = []
@@ -48,8 +48,14 @@ export class Generator {
             this.attributes.push(attribute)
             this.attributeMap[attribute.name] = attribute
         }
-        this.regulations = config.rules.map((rule) => rule.regulation)
-        this.precedence = new PrecedenceGraph(this.attributes, config.rules)
+        const rules = config.rules.map((rule: any) => {
+            if (rule.regulation instanceof RegulationConstructor) return rule
+            else {
+                rule.regulation = CreateRegulation(rule)
+                return rule
+            }
+        })
+        this.precedence = new PrecedenceGraph(this.attributes, rules)
     }
     create(config: DataConfiguration) {
         config = {

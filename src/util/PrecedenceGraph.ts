@@ -43,8 +43,13 @@ export class PrecedenceGraph {
         while (rules.length > 0) {
             let rule = rules[i]
             let clear = true
-            rule.regulation.args.forEach((argument) => {
+            const args: string[] = rule.regulation.args
+            args.forEach((argument) => {
                 if (!leading.includes(argument)) {
+                    if (!following.includes(argument))
+                        throw Error(
+                            `attribute ${argument} has not be defined or cyclic dependence detected`
+                        )
                     clear = false
                 }
             })
@@ -53,7 +58,7 @@ export class PrecedenceGraph {
             } else {
                 order.push(rule)
                 this.links.push(
-                    ...rule.regulation.args.map((source) => {
+                    ...args.map((source) => {
                         return { source, target: rule.target, weight: rule.confidence }
                     })
                 )

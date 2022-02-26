@@ -5,25 +5,24 @@ const dayjs = require("dayjs");
 const Attribute_1 = require("./Attribute");
 const Discrete_1 = require("./Discrete");
 class Date extends Discrete_1.Discrete {
-    constructor(name, distribution, format) {
-        super(name, distribution);
-        this.range = [];
+    constructor(name, distribution, format = 'YYYY/MM/DD', record = false, sort = false) {
+        super(name, distribution, 1, record, sort, (source) => {
+            return dayjs(source).unix();
+        }, (source) => {
+            return dayjs.unix(source).format(format);
+        });
         this.type = Attribute_1.AttributeType.Date;
-        this.formatString = format ? format : 'YYYY/MM/DD';
+        this.formatString = format;
+        this.range = [];
     }
     random() {
         const result = dayjs.unix(super.random()).format(this.formatString);
-        if (!this.range.includes(result)) {
+        if (this.record && !this.range.includes(result)) {
             this.range.push(result);
-            this.range.sort();
+            if (this.sort)
+                this.range.sort();
         }
         return result;
-    }
-    formatToValue(source) {
-        return dayjs(source).unix();
-    }
-    valueToFormat(source) {
-        return dayjs.unix(source).format(this.formatString);
     }
 }
 exports.Date = Date;

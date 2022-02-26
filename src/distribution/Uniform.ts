@@ -3,10 +3,17 @@ import { DistributionConstructor } from './Distribution'
 export class Uniform extends DistributionConstructor {
     begin: number
     length: number
-    constructor(range: [number, number]) {
+    constructor(begin: number, end: number)
+    constructor(range: [number, number])
+    constructor() {
         super()
-        this.begin = range[0]
-        this.length = range[1] - range[0]
+        if (arguments.length === 1) {
+            this.begin = arguments[0][0]
+            this.length = arguments[0][1] - arguments[0][0]
+        } else {
+            this.begin = arguments[0]
+            this.length = arguments[1] - arguments[0]
+        }
     }
     random(): any {
         return this.begin + Math.random() * this.length

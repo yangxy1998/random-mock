@@ -7,13 +7,15 @@ class Expression extends Regulation_1.RegulationConstructor {
     constructor(args, expression) {
         super(args);
         this.expression = expression;
-        this.distribution = (value) => new distribution_1.Normal(value, 1);
+        this.distribution = (value) => {
+            return { random: () => value };
+        };
     }
-    Uniform(sigma) {
+    Normal(sigma) {
         this.distribution = (value) => new distribution_1.Normal(value, sigma);
         return this;
     }
-    Normal(difference) {
+    Uniform(difference) {
         this.distribution = (value) => new distribution_1.Uniform([value - difference, value + difference]);
         return this;
     }

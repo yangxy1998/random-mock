@@ -29,8 +29,11 @@ class PrecedenceGraph {
         while (rules.length > 0) {
             let rule = rules[i];
             let clear = true;
-            rule.regulation.args.forEach((argument) => {
+            const args = rule.regulation.args;
+            args.forEach((argument) => {
                 if (!leading.includes(argument)) {
+                    if (!following.includes(argument))
+                        throw Error(`attribute ${argument} has not be defined or cyclic dependence detected`);
                     clear = false;
                 }
             });
@@ -39,7 +42,7 @@ class PrecedenceGraph {
             }
             else {
                 order.push(rule);
-                this.links.push(...rule.regulation.args.map((source) => {
+                this.links.push(...args.map((source) => {
                     return { source, target: rule.target, weight: rule.confidence };
                 }));
                 rules.splice(i, 1);

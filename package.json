@@ -1,6 +1,6 @@
 {
     "name": "random-mock",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "Random mock is a random variable generator that can generate multidimensional variables with specified distribution or correlation.",
     "main": "./src/index.js",
     "types": "./src/index.ts",

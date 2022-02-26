@@ -4,6 +4,8 @@ exports.Generator = exports.TableMode = exports.DataMode = void 0;
 const attribute_1 = require("../attribute");
 const PrecedenceGraph_1 = require("./PrecedenceGraph");
 const Primary_1 = require("../attribute/Primary");
+const Regulation_1 = require("../regulation/Regulation");
+const regulation_1 = require("../regulation");
 var DataMode;
 (function (DataMode) {
     DataMode[DataMode["Object"] = 0] = "Object";
@@ -28,8 +30,15 @@ class Generator {
             this.attributes.push(attribute);
             this.attributeMap[attribute.name] = attribute;
         }
-        this.regulations = config.rules.map((rule) => rule.regulation);
-        this.precedence = new PrecedenceGraph_1.PrecedenceGraph(this.attributes, config.rules);
+        const rules = config.rules.map((rule) => {
+            if (rule.regulation instanceof Regulation_1.RegulationConstructor)
+                return rule;
+            else {
+                rule.regulation = regulation_1.CreateRegulation(rule);
+                return rule;
+            }
+        });
+        this.precedence = new PrecedenceGraph_1.PrecedenceGraph(this.attributes, rules);
     }
     create(config) {
         config = {
