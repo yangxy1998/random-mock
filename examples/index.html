@@ -9,26 +9,22 @@
     <script>
         const attributes = [
             {
-                name: 'id',
-                type: RandMock.AttributeType.Primary,
-                distribution: new RandMock.Distribution.Disposable([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]),
-                count: 10
-            },
-            {
-                name: 'idf',
-                type: RandMock.AttributeType.Primary,
-                distribution: new RandMock.Distribution.Uniform([0, 10]),
-                count: 100
-            },
-            {
                 name: 'x',
-                type: RandMock.AttributeType.Continuous,
-                distribution: new RandMock.Distribution.Uniform([0, 10])
+                type: 'primary',
+                distribution: {
+                    type: 'uniform',
+                    begin: 0,
+                    end: 10
+                }
             },
             {
                 name: 'y',
-                type: RandMock.AttributeType.Continuous,
-                distribution: new RandMock.Distribution.Uniform([0, 10])
+                type: 'primary',
+                distribution: {
+                    type: 'uniform',
+                    begin: 0,
+                    end: 10
+                }
             },
             {
                 name: 'z',
@@ -43,31 +39,14 @@
             {
                 name: 'date',
                 type: RandMock.AttributeType.Date,
-                distribution: new RandMock.Distribution.Uniform([
-                    '2021/01/01 00:00',
-                    '2021/12/01 00:00'
-                ]),
+                distribution: {
+                    type: RandMock.DistributionType.Uniform,
+                    range: ['2021/01/01 00:00', '2021/12/01 00:00']
+                },
                 format: 'YYYY/MM/DD HH:mm'
             }
         ]
-        const rules = [
-            {
-                target: 'region',
-                regulation: new RandMock.Regulation.MappingTable(
-                    ['x', 'y'],
-                    [
-                        { and: (item) => item.x + item.y >= 10, value: 'CHN' },
-                        { and: (item) => item.x - item.y <= 0, value: 'USA' }
-                    ]
-                ),
-                confidence: 0.99
-            },
-            {
-                target: 'z',
-                regulation: new RandMock.Regulation.Expression(['x'], (item) => 10 - item.x),
-                confidence: 0.98
-            }
-        ]
+        const rules = []
         const config = {
             attributes,
             rules
