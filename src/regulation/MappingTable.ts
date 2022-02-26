@@ -35,9 +35,9 @@ export class MappingTable extends RegulationConstructor {
     }
     private _getValue(value: Value): (item: any) => ConstantValue {
         if (value instanceof Expression) {
-            return value.getValue
+            return (item) => value.getValue(item)
         } else if (value instanceof DistributionConstructor) {
-            return value.random
+            return () => value.random()
         } else return () => value
     }
 }

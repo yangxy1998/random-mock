@@ -4,9 +4,9 @@
   "warnings": [
   ],
   "version": "4.46.0",
-  "hash": "ef80c660c9b40bbc1e13",
-  "time": 1746,
-  "builtAt": 1645861920831,
+  "hash": "d6df03be8658d487e455",
+  "time": 1802,
+  "builtAt": 1645873930368,
   "publicPath": "",
   "outputPath": "G:\\Github\\random-mock\\build",
   "assetsByChunkName": {
@@ -19,7 +19,7 @@
   "assets": [
     {
       "name": "random-mock.js",
-      "size": 53796,
+      "size": 54421,
       "chunks": [
         0,
         1
@@ -33,7 +33,7 @@
     },
     {
       "name": "random-mock.js.map",
-      "size": 65663,
+      "size": 66358,
       "chunks": [
         0,
         1
@@ -48,7 +48,7 @@
     },
     {
       "name": "random-mock.min.js",
-      "size": 26691,
+      "size": 26983,
       "chunks": [
         1,
         0
@@ -122,7 +122,7 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 47898,
+      "size": 48523,
       "names": [
         "random-mock"
       ],
@@ -130,7 +130,7 @@
         "random-mock.js",
         "random-mock.js.map"
       ],
-      "hash": "744ba305c350cce3e218",
+      "hash": "f439973a702feab6854d",
       "siblings": [
       ],
       "parents": [
@@ -860,7 +860,7 @@
           "name": "./src/regulation/index.ts",
           "index": 24,
           "index2": 24,
-          "size": 2889,
+          "size": 3490,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1777,7 +1777,7 @@
           "name": "./src/regulation/MappingTable.ts",
           "index": 26,
           "index2": 23,
-          "size": 1377,
+          "size": 1401,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -1843,14 +1843,14 @@
       "rendered": true,
       "initial": true,
       "entry": true,
-      "size": 47898,
+      "size": 48523,
       "names": [
         "random-mock.min"
       ],
       "files": [
         "random-mock.min.js"
       ],
-      "hash": "5eecb3f6a0bea5110d5a",
+      "hash": "3b0b45c92172e4847d17",
       "siblings": [
       ],
       "parents": [
@@ -2580,7 +2580,7 @@
           "name": "./src/regulation/index.ts",
           "index": 24,
           "index2": 24,
-          "size": 2889,
+          "size": 3490,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -3497,7 +3497,7 @@
           "name": "./src/regulation/MappingTable.ts",
           "index": 26,
           "index2": 23,
-          "size": 1377,
+          "size": 1401,
           "cacheable": true,
           "built": true,
           "optional": false,
@@ -4280,7 +4280,7 @@
       "name": "./src/regulation/index.ts",
       "index": 24,
       "index2": 24,
-      "size": 2889,
+      "size": 3490,
       "cacheable": true,
       "built": true,
       "optional": false,
@@ -5197,7 +5197,7 @@
       "name": "./src/regulation/MappingTable.ts",
       "index": 26,
       "index2": 23,
-      "size": 1377,
+      "size": 1401,
       "cacheable": true,
       "built": true,
       "optional": false,

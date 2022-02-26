@@ -16,20 +16,23 @@ export type RegulationConfig = {
     target: string
     [argument: string]: any
 }
+function CreateExpression(source: string[], config: any) {
+    const expression = new Expression(source, config.expression)
+    if (config.distribution) {
+        const type = config.distribution
+        if (type === DistributionType.Cauchy) expression.Cauchy(config.theta)
+        else if (type === DistributionType.Normal) expression.Normal(config.sigma)
+        else if (type === DistributionType.Uniform) expression.Uniform(config.difference)
+        else
+            throw Error(
+                'only cauchy | normal | uniform type of distribution is avaliable for expression'
+            )
+    }
+    return expression
+}
 export function CreateRegulation(config: RegulationConfig) {
     if (config.type === RegulationType.Expression) {
-        const expression = new Expression(config.source, config.expression)
-        if (config.distribution) {
-            const type = config.distribution
-            if (type === DistributionType.Cauchy) expression.Cauchy(config.theta)
-            else if (type === DistributionType.Normal) expression.Normal(config.sigma)
-            else if (type === DistributionType.Uniform) expression.Uniform(config.difference)
-            else
-                throw Error(
-                    'only cauchy | normal | uniform type of distribution is avaliable for expression'
-                )
-        }
-        return expression
+        return CreateExpression(config.source, config)
     } else if (config.type === RegulationType.MappingTable) {
         const conditions: ConditionMap[] = config.conditions.map((condition: any) => {
             const value = condition.value
@@ -42,8 +45,17 @@ export function CreateRegulation(config: RegulationConfig) {
                 return condition
             else {
                 if (value.type === RegulationType.Expression) {
-                    condition.value = new Expression(value.source, value.expression)
-                } else if (value.type in DistributionType) {
+                    condition.value = CreateExpression(config.source, value)
+                } else if (
+                    value.type === DistributionType.Cauchy ||
+                    value.type === DistributionType.Compound ||
+                    value.type === DistributionType.Disposable ||
+                    value.type === DistributionType.Exponential ||
+                    value.type === DistributionType.Hypergeometric ||
+                    value.type === DistributionType.Normal ||
+                    value.type === DistributionType.Standard ||
+                    value.type === DistributionType.Uniform
+                ) {
                     condition.value = DistributionCreater(value)
                 } else {
                     throw Error('value type should be expression or distribution')

@@ -28,10 +28,10 @@ class MappingTable extends Regulation_1.RegulationConstructor {
     }
     _getValue(value) {
         if (value instanceof Expression_1.Expression) {
-            return value.getValue;
+            return (item) => value.getValue(item);
         }
         else if (value instanceof distribution_1.DistributionConstructor) {
-            return value.random;
+            return () => value.random();
         }
         else
             return () => value;

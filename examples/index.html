@@ -7,52 +7,166 @@
     <script src="./dist/main.js"></script>
     <script src="../build/random-mock.js"></script>
     <script>
+        // const attributes = [
+        //     {
+        //         name: 'x',
+        //         type: 'primary',
+        //         distribution: {
+        //             type: 'uniform',
+        //             begin: 0,
+        //             end: 10
+        //         }
+        //     },
+        //     {
+        //         name: 'y',
+        //         type: 'primary',
+        //         distribution: {
+        //             type: 'uniform',
+        //             begin: 0,
+        //             end: 10
+        //         }
+        //     },
+        //     {
+        //         name: 'z',
+        //         type: RandMock.AttributeType.Continuous,
+        //         distribution: new RandMock.Distribution.Exponential(5, 5)
+        //     },
+        //     {
+        //         name: 'region',
+        //         type: RandMock.AttributeType.Category,
+        //         distribution: new RandMock.Distribution.Standard(['USA', 'UK', 'CHN', 'RUS', 'FRA'])
+        //     },
+        //     {
+        //         name: 'date',
+        //         type: RandMock.AttributeType.Date,
+        //         distribution: {
+        //             type: RandMock.DistributionType.Uniform,
+        //             range: ['2021/01/01 00:00', '2021/12/01 00:00']
+        //         },
+        //         format: 'YYYY/MM/DD HH:mm'
+        //     }
+        // ]
+        // const rules = []
+        // const config = {
+        //     attributes,
+        //     rules
+        // }
+        // let mocker = new RandMock.Mocker(config)
+        // let data = mocker.create({
+        //     mode: RandMock.DataMode.Object
+        // })
         const attributes = [
             {
-                name: 'x',
+                name: 'Region',
                 type: 'primary',
                 distribution: {
-                    type: 'uniform',
-                    begin: 0,
-                    end: 10
-                }
-            },
-            {
-                name: 'y',
-                type: 'primary',
-                distribution: {
-                    type: 'uniform',
-                    begin: 0,
-                    end: 10
-                }
-            },
-            {
-                name: 'z',
-                type: RandMock.AttributeType.Continuous,
-                distribution: new RandMock.Distribution.Exponential(5, 5)
-            },
-            {
-                name: 'region',
-                type: RandMock.AttributeType.Category,
-                distribution: new RandMock.Distribution.Standard(['USA', 'UK', 'CHN', 'RUS', 'FRA'])
-            },
-            {
-                name: 'date',
-                type: RandMock.AttributeType.Date,
-                distribution: {
-                    type: RandMock.DistributionType.Uniform,
-                    range: ['2021/01/01 00:00', '2021/12/01 00:00']
+                    type: 'disposable',
+                    dataset: ['USA', 'UK', 'CHN', 'RUS', 'FRA']
                 },
-                format: 'YYYY/MM/DD HH:mm'
+                count: 5
+            },
+            {
+                name: 'Age',
+                type: 'primary',
+                distribution: {
+                    type: 'disposable',
+                    dataset: (function () {
+                        const ages = []
+                        for (let i = 1; i < 100; i++) ages.push(i)
+                        return ages
+                    })()
+                },
+                count: 99
+            },
+            {
+                name: 'Bmi',
+                type: 'continuous',
+                distribution: {
+                    type: 'normal',
+                    u: 22,
+                    sigma: 3
+                }
+            },
+            {
+                name: 'Charges',
+                type: 'continuous',
+                distribution: {
+                    type: 'exponential',
+                    offset: 5,
+                    lambda: 5
+                }
+            },
+            {
+                name: 'Sex',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['male', 'female'],
+                    p: [0.55, 0.45]
+                }
+            },
+            {
+                name: 'Smoker',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['smoker', 'non-smoker'],
+                    p: [0.3, 0.7]
+                }
             }
         ]
-        const rules = []
-        const config = {
+        const mocker = new RandMock.Mocker({
             attributes,
-            rules
-        }
-        let mocker = new RandMock.Mocker(config)
-        let data = mocker.create({
+            rules: [
+                {
+                    target: 'Smoker',
+                    source: ['Sex'],
+                    type: 'mappingtable',
+                    conditions: [
+                        {
+                            Sex: ['male'],
+                            value: {
+                                type: 'standard',
+                                range: ['smoker', 'non-smoker'],
+                                p: [0.4, 0.6]
+                            }
+                        },
+                        {
+                            Sex: ['female'],
+                            value: {
+                                type: 'standard',
+                                range: ['smoker', 'non-smoker'],
+                                p: [0.2, 0.8]
+                            }
+                        }
+                    ],
+                    confidence: 0.95
+                },
+                {
+                    target: 'Bmi',
+                    source: ['Age', 'Sex', 'Charges'],
+                    type: 'mappingtable',
+                    conditions: [
+                        {
+                            Sex: ['male'],
+                            value: {
+                                type: 'expression',
+                                expression: (item) => 16 + item.Age * 0.12
+                            }
+                        },
+                        {
+                            Sex: ['female'],
+                            value: {
+                                type: 'expression',
+                                expression: (item) => 12 + item.Age * 0.1
+                            }
+                        }
+                    ],
+                    confidence: 0.95
+                }
+            ]
+        })
+        const data = mocker.create({
             mode: RandMock.DataMode.Object
         })
         console.log(data)
