@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Unique = exports.Primary = exports.Discrete = exports.Date = exports.Continuous = exports.Category = exports.AttributeConstructor = exports.AttributeType = exports.AttributeCreater = exports.Attribute = void 0;
+exports.Unique = exports.Primary = exports.Discrete = exports.Date = exports.Compound = exports.Continuous = exports.Category = exports.AttributeConstructor = exports.AttributeType = exports.AttributeCreater = exports.Attribute = void 0;
 const Continuous_1 = require("./Continuous");
 Object.defineProperty(exports, "Continuous", { enumerable: true, get: function () { return Continuous_1.Continuous; } });
 const Date_1 = require("./Date");
@@ -13,11 +13,14 @@ const Unique_1 = require("./Unique");
 Object.defineProperty(exports, "Unique", { enumerable: true, get: function () { return Unique_1.Unique; } });
 const Primary_1 = require("./Primary");
 Object.defineProperty(exports, "Primary", { enumerable: true, get: function () { return Primary_1.Primary; } });
+const Compound_1 = require("./Compound");
+Object.defineProperty(exports, "Compound", { enumerable: true, get: function () { return Compound_1.Compound; } });
 const Attribute_1 = require("./Attribute");
 Object.defineProperty(exports, "AttributeConstructor", { enumerable: true, get: function () { return Attribute_1.AttributeConstructor; } });
 Object.defineProperty(exports, "AttributeType", { enumerable: true, get: function () { return Attribute_1.AttributeType; } });
 exports.Attribute = {
     Continuous: Continuous_1.Continuous,
+    Compound: Compound_1.Compound,
     Date: Date_1.Date,
     Discrete: Discrete_1.Discrete,
     Category: Category_1.Category,
@@ -27,6 +30,9 @@ exports.Attribute = {
 function AttributeCreater(config) {
     if (config.type === Attribute_1.AttributeType.Category) {
         return new Category_1.Category(config.name, config.distribution);
+    }
+    else if (config.type === Attribute_1.AttributeType.Compound) {
+        return new Compound_1.Compound(config.name, config.arguments);
     }
     else if (config.type === Attribute_1.AttributeType.Continuous) {
         return new Continuous_1.Continuous(config.name, config.distribution);

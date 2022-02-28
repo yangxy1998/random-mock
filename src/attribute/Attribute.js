@@ -29,7 +29,7 @@ class AttributeConstructor {
                 ? distribution
                 : distribution_1.DistributionCreater(distribution, this.formatToValue);
     }
-    random() {
+    random(...args) {
         return this.distribution.random();
     }
 }

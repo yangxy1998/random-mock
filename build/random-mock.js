@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 11);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -101,25 +101,9 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DistributionConstructor = void 0;
-class DistributionConstructor {
-    constructor() { }
-    random(...args) { }
-    static Random(...args) { }
-}
-exports.DistributionConstructor = DistributionConstructor;
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.AttributeConstructor = exports.AttributeType = void 0;
 const distribution_1 = __webpack_require__(2);
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 var AttributeType;
 (function (AttributeType) {
     AttributeType["Category"] = "category";
@@ -146,11 +130,27 @@ class AttributeConstructor {
                 ? distribution
                 : distribution_1.DistributionCreater(distribution, this.formatToValue);
     }
-    random() {
+    random(...args) {
         return this.distribution.random();
     }
 }
 exports.AttributeConstructor = AttributeConstructor;
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DistributionConstructor = void 0;
+class DistributionConstructor {
+    constructor() { }
+    random(...args) { }
+    static Random(...args) { }
+}
+exports.DistributionConstructor = DistributionConstructor;
 
 
 /***/ }),
@@ -160,29 +160,26 @@ exports.AttributeConstructor = AttributeConstructor;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Uniform = exports.Standard = exports.Normal = exports.Hypergeometric = exports.Exponential = exports.Disposable = exports.Compound = exports.Cauchy = exports.DistributionConstructor = exports.DistributionType = exports.Distribution = exports.DistributionCreater = void 0;
-const Compound_1 = __webpack_require__(14);
-Object.defineProperty(exports, "Compound", { enumerable: true, get: function () { return Compound_1.Compound; } });
-const Exponential_1 = __webpack_require__(16);
+exports.Uniform = exports.Standard = exports.Normal = exports.Hypergeometric = exports.Exponential = exports.Disposable = exports.Cauchy = exports.DistributionConstructor = exports.DistributionType = exports.Distribution = exports.DistributionCreater = void 0;
+const Exponential_1 = __webpack_require__(13);
 Object.defineProperty(exports, "Exponential", { enumerable: true, get: function () { return Exponential_1.Exponential; } });
-const Standard_1 = __webpack_require__(6);
+const Standard_1 = __webpack_require__(5);
 Object.defineProperty(exports, "Standard", { enumerable: true, get: function () { return Standard_1.Standard; } });
-const Uniform_1 = __webpack_require__(17);
+const Uniform_1 = __webpack_require__(14);
 Object.defineProperty(exports, "Uniform", { enumerable: true, get: function () { return Uniform_1.Uniform; } });
-const Normal_1 = __webpack_require__(18);
+const Normal_1 = __webpack_require__(15);
 Object.defineProperty(exports, "Normal", { enumerable: true, get: function () { return Normal_1.Normal; } });
-const Cauchy_1 = __webpack_require__(19);
+const Cauchy_1 = __webpack_require__(16);
 Object.defineProperty(exports, "Cauchy", { enumerable: true, get: function () { return Cauchy_1.Cauchy; } });
-const Hypergeometric_1 = __webpack_require__(20);
+const Hypergeometric_1 = __webpack_require__(17);
 Object.defineProperty(exports, "Hypergeometric", { enumerable: true, get: function () { return Hypergeometric_1.Hypergeometric; } });
-const Disposable_1 = __webpack_require__(21);
+const Disposable_1 = __webpack_require__(18);
 Object.defineProperty(exports, "Disposable", { enumerable: true, get: function () { return Disposable_1.Disposable; } });
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 Object.defineProperty(exports, "DistributionConstructor", { enumerable: true, get: function () { return Distribution_1.DistributionConstructor; } });
 var DistributionType;
 (function (DistributionType) {
     DistributionType["Cauchy"] = "cauchy";
-    DistributionType["Compound"] = "compound";
     DistributionType["Disposable"] = "disposable";
     DistributionType["Exponential"] = "exponential";
     DistributionType["Standard"] = "standard";
@@ -221,7 +218,6 @@ function DistributionCreater(config, format = (source) => source) {
 exports.DistributionCreater = DistributionCreater;
 exports.Distribution = {
     Cauchy: Cauchy_1.Cauchy,
-    Compound: Compound_1.Compound,
     Disposable: Disposable_1.Disposable,
     Exponential: Exponential_1.Exponential,
     Standard: Standard_1.Standard,
@@ -254,24 +250,27 @@ exports.RegulationConstructor = RegulationConstructor;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Unique = exports.Primary = exports.Discrete = exports.Date = exports.Continuous = exports.Category = exports.AttributeConstructor = exports.AttributeType = exports.AttributeCreater = exports.Attribute = void 0;
-const Continuous_1 = __webpack_require__(13);
+exports.Unique = exports.Primary = exports.Discrete = exports.Date = exports.Compound = exports.Continuous = exports.Category = exports.AttributeConstructor = exports.AttributeType = exports.AttributeCreater = exports.Attribute = void 0;
+const Continuous_1 = __webpack_require__(12);
 Object.defineProperty(exports, "Continuous", { enumerable: true, get: function () { return Continuous_1.Continuous; } });
-const Date_1 = __webpack_require__(22);
+const Date_1 = __webpack_require__(19);
 Object.defineProperty(exports, "Date", { enumerable: true, get: function () { return Date_1.Date; } });
-const Discrete_1 = __webpack_require__(7);
+const Discrete_1 = __webpack_require__(6);
 Object.defineProperty(exports, "Discrete", { enumerable: true, get: function () { return Discrete_1.Discrete; } });
-const Category_1 = __webpack_require__(24);
+const Category_1 = __webpack_require__(21);
 Object.defineProperty(exports, "Category", { enumerable: true, get: function () { return Category_1.Category; } });
-const Unique_1 = __webpack_require__(25);
+const Unique_1 = __webpack_require__(22);
 Object.defineProperty(exports, "Unique", { enumerable: true, get: function () { return Unique_1.Unique; } });
-const Primary_1 = __webpack_require__(8);
+const Primary_1 = __webpack_require__(7);
 Object.defineProperty(exports, "Primary", { enumerable: true, get: function () { return Primary_1.Primary; } });
-const Attribute_1 = __webpack_require__(1);
+const Compound_1 = __webpack_require__(23);
+Object.defineProperty(exports, "Compound", { enumerable: true, get: function () { return Compound_1.Compound; } });
+const Attribute_1 = __webpack_require__(0);
 Object.defineProperty(exports, "AttributeConstructor", { enumerable: true, get: function () { return Attribute_1.AttributeConstructor; } });
 Object.defineProperty(exports, "AttributeType", { enumerable: true, get: function () { return Attribute_1.AttributeType; } });
 exports.Attribute = {
     Continuous: Continuous_1.Continuous,
+    Compound: Compound_1.Compound,
     Date: Date_1.Date,
     Discrete: Discrete_1.Discrete,
     Category: Category_1.Category,
@@ -281,6 +280,9 @@ exports.Attribute = {
 function AttributeCreater(config) {
     if (config.type === Attribute_1.AttributeType.Category) {
         return new Category_1.Category(config.name, config.distribution);
+    }
+    else if (config.type === Attribute_1.AttributeType.Compound) {
+        return new Compound_1.Compound(config.name, config.arguments);
     }
     else if (config.type === Attribute_1.AttributeType.Continuous) {
         return new Continuous_1.Continuous(config.name, config.distribution);
@@ -310,79 +312,8 @@ exports.AttributeCreater = AttributeCreater;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrecedenceGraph = void 0;
-const attribute_1 = __webpack_require__(4);
-class PrecedenceGraph {
-    constructor(attributes, rules) {
-        let leading = attributes
-            .filter((attribute) => attribute.type === attribute_1.AttributeType.Primary)
-            .map((attribute) => attribute.name);
-        let following = [];
-        let order = [];
-        this.nodes = new Map(attributes.map((attribute) => [attribute.name, { name: attribute.name }]));
-        this.links = [];
-        function updateState() {
-            following = [];
-            for (let rule of rules) {
-                if (!following.includes(rule.target))
-                    following.push(rule.target);
-            }
-            for (let attribute of attributes) {
-                if (!following.includes(attribute.name) && !leading.includes(attribute.name)) {
-                    order.push(attribute);
-                    leading.push(attribute.name);
-                }
-            }
-        }
-        updateState();
-        let i = 0;
-        while (rules.length > 0) {
-            let rule = rules[i];
-            let clear = true;
-            const args = rule.regulation.args;
-            args.forEach((argument) => {
-                if (!leading.includes(argument)) {
-                    if (!following.includes(argument))
-                        throw Error(`attribute ${argument} has not be defined or cyclic dependence detected`);
-                    clear = false;
-                }
-            });
-            if (!clear) {
-                i++;
-            }
-            else {
-                order.push(rule);
-                this.links.push(...args.map((source) => {
-                    return { source, target: rule.target, weight: rule.confidence };
-                }));
-                rules.splice(i, 1);
-            }
-            if (i >= rules.length) {
-                updateState();
-                i = 0;
-            }
-        }
-        this.sequence = order;
-    }
-    getSequence() {
-        return this.sequence;
-    }
-    getGraph() {
-        return { nodes: this.nodes, links: this.links };
-    }
-}
-exports.PrecedenceGraph = PrecedenceGraph;
-
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.Standard = void 0;
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 class Standard extends Distribution_1.DistributionConstructor {
     constructor(range, p) {
         super();
@@ -441,14 +372,14 @@ exports.Standard = Standard;
 
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Discrete = void 0;
-const Attribute_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
 class Discrete extends Attribute_1.AttributeConstructor {
     constructor(name, distribution, step, record = false, sort = false, formatTovalue, valueToFormat) {
         super(name, distribution, formatTovalue, valueToFormat);
@@ -472,14 +403,14 @@ exports.Discrete = Discrete;
 
 
 /***/ }),
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Primary = void 0;
-const Attribute_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
 class Primary extends Attribute_1.AttributeConstructor {
     constructor(name, distribution, count = 100, formatToValue = (source) => source, valueToFormat = (source) => source, retryCount = 100) {
         super(name, distribution, formatToValue, valueToFormat);
@@ -514,7 +445,7 @@ exports.Primary = Primary;
 
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -522,8 +453,8 @@ exports.Primary = Primary;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateRegulation = exports.RegulationType = exports.Regulation = void 0;
 const distribution_1 = __webpack_require__(2);
-const Expression_1 = __webpack_require__(10);
-const MappingTable_1 = __webpack_require__(26);
+const Expression_1 = __webpack_require__(9);
+const MappingTable_1 = __webpack_require__(25);
 const Regulation_1 = __webpack_require__(3);
 exports.Regulation = {
     Expression: Expression_1.Expression,
@@ -566,7 +497,6 @@ function CreateRegulation(config) {
                     condition.value = CreateExpression(config.source, value);
                 }
                 else if (value.type === distribution_1.DistributionType.Cauchy ||
-                    value.type === distribution_1.DistributionType.Compound ||
                     value.type === distribution_1.DistributionType.Disposable ||
                     value.type === distribution_1.DistributionType.Exponential ||
                     value.type === distribution_1.DistributionType.Hypergeometric ||
@@ -594,7 +524,7 @@ exports.default = {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -632,23 +562,23 @@ exports.Expression = Expression;
 
 
 /***/ }),
-/* 11 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Mocker = exports.Regulation = exports.DistributionType = exports.Distribution = exports.DataMode = exports.AttributeType = exports.Attribute = void 0;
-const Generator_1 = __webpack_require__(12);
+const Generator_1 = __webpack_require__(11);
 Object.defineProperty(exports, "DataMode", { enumerable: true, get: function () { return Generator_1.DataMode; } });
 const distribution_1 = __webpack_require__(2);
 Object.defineProperty(exports, "Distribution", { enumerable: true, get: function () { return distribution_1.Distribution; } });
 Object.defineProperty(exports, "DistributionType", { enumerable: true, get: function () { return distribution_1.DistributionType; } });
 const attribute_1 = __webpack_require__(4);
 Object.defineProperty(exports, "Attribute", { enumerable: true, get: function () { return attribute_1.Attribute; } });
-const Attribute_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
 Object.defineProperty(exports, "AttributeType", { enumerable: true, get: function () { return Attribute_1.AttributeType; } });
-const regulation_1 = __webpack_require__(9);
+const regulation_1 = __webpack_require__(8);
 Object.defineProperty(exports, "Regulation", { enumerable: true, get: function () { return regulation_1.Regulation; } });
 const Mocker = Generator_1.Generator;
 exports.Mocker = Mocker;
@@ -656,7 +586,7 @@ exports.default = Mocker;
 
 
 /***/ }),
-/* 12 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -664,10 +594,10 @@ exports.default = Mocker;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Generator = exports.TableMode = exports.DataMode = void 0;
 const attribute_1 = __webpack_require__(4);
-const PrecedenceGraph_1 = __webpack_require__(5);
-const Primary_1 = __webpack_require__(8);
+const PrecedenceGraph_1 = __webpack_require__(24);
+const Primary_1 = __webpack_require__(7);
 const Regulation_1 = __webpack_require__(3);
-const regulation_1 = __webpack_require__(9);
+const regulation_1 = __webpack_require__(8);
 var DataMode;
 (function (DataMode) {
     DataMode[DataMode["Object"] = 0] = "Object";
@@ -683,13 +613,19 @@ class Generator {
         this.config = config;
         this.attributes = [];
         this.primaries = [];
+        this.compounds = [];
         this.attributeMap = {};
         for (let attributeConfig of config.attributes) {
             const attribute = attribute_1.AttributeCreater(attributeConfig);
             if (attribute instanceof Primary_1.Primary) {
                 this.primaries.push(attribute);
+                this.attributes.push(attribute);
             }
-            this.attributes.push(attribute);
+            else if (attribute instanceof attribute_1.Compound)
+                this.compounds.push(attribute);
+            else {
+                this.attributes.push(attribute);
+            }
             this.attributeMap[attribute.name] = attribute;
         }
         const rules = config.rules.map((rule) => {
@@ -774,101 +710,38 @@ class Generator {
                 });
             }
         }
+        for (let compound of this.compounds) {
+            items.forEach((item) => {
+                item[compound.name] = compound.random(item);
+                compound.args.forEach((name) => {
+                    delete item[name];
+                });
+            });
+        }
         return items;
     }
     _createTable(count, settings = { head: true, mode: TableMode.ArrangeByRow }) {
-        if (settings.mode === TableMode.ArrangeByRow) {
-            const header = [];
-            const mapper = {};
-            let index = 0;
-            const cart = (target, primary) => {
-                if (target.length === 0) {
-                    return primary.range.map((value) => {
-                        return [value];
-                    });
-                }
-                else {
-                    const result = [];
-                    target.forEach((element) => {
-                        primary.range.forEach((value) => {
-                            result.push([...element, value]);
-                        });
-                    });
-                    return result;
-                }
-            };
-            let items = [];
-            if (this.primaries.length > 0) {
-                this.primaries.forEach((primary) => {
-                    mapper[primary.name] = index;
-                    header.push(primary.name);
-                    items = cart(items, primary);
-                    index++;
-                });
-                if (count)
-                    if (count > items.length)
-                        console.warn('requested count greater than primary keys');
-                    else
-                        items = items.slice(0, count);
-                items = items.map((item) => item.concat(Array(this.config.attributes.length)));
-            }
-            else {
-                if (count) {
-                    for (let i = 0; i < count; i++) {
-                        items.push(Array(this.config.attributes.length));
-                    }
-                }
-                else
-                    throw Error('count is needed while primary is not defined');
-            }
-            this.config.attributes.forEach((attribute) => {
-                mapper[attribute.name] = index;
-                header.push(attribute.name);
-                index++;
-            });
-            if (settings.head)
-                items.unshift(header);
-            let sequence = this.precedence.getSequence();
-            for (let singlerule of sequence) {
-                if (singlerule instanceof attribute_1.AttributeConstructor) {
-                    //attribute
-                    const rule = singlerule;
-                    const index = header.indexOf(rule.name);
-                    items.forEach((item) => {
-                        if (!item[index])
-                            item[index] = rule.random();
-                    });
-                }
-                else {
-                    //rule
-                    const rule = singlerule;
-                    const index = header.indexOf(rule.target);
-                    items.forEach((item) => {
-                        if (Math.random() <= (rule.confidence ? rule.confidence : 1)) {
-                            // not initialized attribute
-                            const value = rule.regulation.getValue(item);
-                            if (value)
-                                item[index] = value;
-                        }
-                    });
-                }
-            }
-            return items;
-        }
+        let items = this._createObjectList(count);
+        let array = [];
+        const header = Object.keys(items[0]);
+        if (settings.head)
+            array.push(header);
+        items.forEach((item) => array.push(header.map((name) => item[name])));
+        return array;
     }
 }
 exports.Generator = Generator;
 
 
 /***/ }),
-/* 13 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Continuous = void 0;
-const Attribute_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
 class Continuous extends Attribute_1.AttributeConstructor {
     constructor(name, distribution) {
         super(name, distribution);
@@ -879,98 +752,14 @@ exports.Continuous = Continuous;
 
 
 /***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Compound = void 0;
-const Distribution_1 = __webpack_require__(0);
-const PrecedenceGraph_1 = __webpack_require__(5);
-const Analysis_1 = __webpack_require__(15);
-class Compound extends Distribution_1.DistributionConstructor {
-    constructor(confiurations) {
-        super();
-        this.orders = new PrecedenceGraph_1.PrecedenceGraph(confiurations.attributes, confiurations.rules).getSequence();
-    }
-    random() {
-        let item = {};
-        for (let rule of this.orders) {
-            if (rule.name) {
-                //attribute
-                if (!item[rule.name])
-                    // not initialized attribute
-                    item[rule.name] = rule.distribution.random();
-            }
-            else if (rule.filter) {
-                //rule
-                if (Analysis_1.AnalysisFilter(rule.filter)(item) &&
-                    !item[rule.dependent] &&
-                    Math.random() <= rule.confidence)
-                    // not initialized attribute
-                    item[rule.dependent] = Analysis_1.AnalysisEffect(rule.effect)(item);
-            }
-            else {
-                //rule
-                if (!item[rule.dependent] && Math.random() <= rule.confidence)
-                    // not initialized attribute
-                    item[rule.dependent] = Analysis_1.AnalysisEffect(rule.effect)(item);
-            }
-        }
-        return item;
-    }
-}
-exports.Compound = Compound;
-
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.AnalysisFilter = exports.AnalysisEffect = void 0;
-function AnalysisEffect(effect, mapper) {
-    const str = effect.toString();
-    const left = str.indexOf('(');
-    const right = str.indexOf(')');
-    const names = str
-        .substring(left + 1, right)
-        .replace(/\s/g, '')
-        .split(',');
-    return (item) => {
-        const args = names.map((name) => item[mapper ? mapper[name] : name]);
-        return effect(...args);
-    };
-}
-exports.AnalysisEffect = AnalysisEffect;
-function AnalysisFilter(filter, mapper) {
-    const str = filter.toString();
-    const left = str.indexOf('(');
-    const right = str.indexOf(')');
-    const names = str
-        .substring(left + 1, right)
-        .replace(/\s/g, '')
-        .split(',');
-    return (item, index, items) => {
-        const args = names.map((name) => item[mapper ? mapper[name] : name]);
-        return filter(...args);
-    };
-}
-exports.AnalysisFilter = AnalysisFilter;
-
-
-/***/ }),
-/* 16 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Exponential = void 0;
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 class Exponential extends Distribution_1.DistributionConstructor {
     constructor(offset, lambda) {
         super();
@@ -988,14 +777,14 @@ exports.Exponential = Exponential;
 
 
 /***/ }),
-/* 17 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Uniform = void 0;
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 class Uniform extends Distribution_1.DistributionConstructor {
     constructor() {
         super();
@@ -1021,14 +810,14 @@ exports.Uniform = Uniform;
 
 
 /***/ }),
-/* 18 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Normal = void 0;
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 class Normal extends Distribution_1.DistributionConstructor {
     constructor(u, sigma) {
         super();
@@ -1062,14 +851,14 @@ exports.Normal = Normal;
 
 
 /***/ }),
-/* 19 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Cauchy = void 0;
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 class Cauchy extends Distribution_1.DistributionConstructor {
     constructor(x0, theta) {
         super();
@@ -1087,14 +876,14 @@ exports.Cauchy = Cauchy;
 
 
 /***/ }),
-/* 20 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Hypergeometric = void 0;
-const Standard_1 = __webpack_require__(6);
+const Standard_1 = __webpack_require__(5);
 class Hypergeometric extends Standard_1.Standard {
     constructor(range, N, M, n) {
         const denominator = C(n, N);
@@ -1144,14 +933,14 @@ function C(M, N) {
 
 
 /***/ }),
-/* 21 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Disposable = void 0;
-const Distribution_1 = __webpack_require__(0);
+const Distribution_1 = __webpack_require__(1);
 class Disposable extends Distribution_1.DistributionConstructor {
     constructor(dataset) {
         super();
@@ -1178,16 +967,16 @@ exports.Disposable = Disposable;
 
 
 /***/ }),
-/* 22 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Date = void 0;
-const dayjs = __webpack_require__(23);
-const Attribute_1 = __webpack_require__(1);
-const Discrete_1 = __webpack_require__(7);
+const dayjs = __webpack_require__(20);
+const Attribute_1 = __webpack_require__(0);
+const Discrete_1 = __webpack_require__(6);
 class Date extends Discrete_1.Discrete {
     constructor(name, distribution, format = 'YYYY/MM/DD', record = false, sort = false) {
         super(name, distribution, 1, record, sort, (source) => {
@@ -1213,20 +1002,20 @@ exports.Date = Date;
 
 
 /***/ }),
-/* 23 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 !function(t,e){ true?module.exports=e():undefined}(this,(function(){"use strict";var t=1e3,e=6e4,n=36e5,r="millisecond",i="second",s="minute",u="hour",a="day",o="week",f="month",h="quarter",c="year",d="date",$="Invalid Date",l=/^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/,y=/\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,M={name:"en",weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_")},m=function(t,e,n){var r=String(t);return!r||r.length>=e?t:""+Array(e+1-r.length).join(n)+t},g={s:m,z:function(t){var e=-t.utcOffset(),n=Math.abs(e),r=Math.floor(n/60),i=n%60;return(e<=0?"+":"-")+m(r,2,"0")+":"+m(i,2,"0")},m:function t(e,n){if(e.date()<n.date())return-t(n,e);var r=12*(n.year()-e.year())+(n.month()-e.month()),i=e.clone().add(r,f),s=n-i<0,u=e.clone().add(r+(s?-1:1),f);return+(-(r+(n-i)/(s?i-u:u-i))||0)},a:function(t){return t<0?Math.ceil(t)||0:Math.floor(t)},p:function(t){return{M:f,y:c,w:o,d:a,D:d,h:u,m:s,s:i,ms:r,Q:h}[t]||String(t||"").toLowerCase().replace(/s$/,"")},u:function(t){return void 0===t}},D="en",v={};v[D]=M;var p=function(t){return t instanceof _},S=function(t,e,n){var r;if(!t)return D;if("string"==typeof t)v[t]&&(r=t),e&&(v[t]=e,r=t);else{var i=t.name;v[i]=t,r=i}return!n&&r&&(D=r),r||!n&&D},w=function(t,e){if(p(t))return t.clone();var n="object"==typeof e?e:{};return n.date=t,n.args=arguments,new _(n)},O=g;O.l=S,O.i=p,O.w=function(t,e){return w(t,{locale:e.$L,utc:e.$u,x:e.$x,$offset:e.$offset})};var _=function(){function M(t){this.$L=S(t.locale,null,!0),this.parse(t)}var m=M.prototype;return m.parse=function(t){this.$d=function(t){var e=t.date,n=t.utc;if(null===e)return new Date(NaN);if(O.u(e))return new Date;if(e instanceof Date)return new Date(e);if("string"==typeof e&&!/Z$/i.test(e)){var r=e.match(l);if(r){var i=r[2]-1||0,s=(r[7]||"0").substring(0,3);return n?new Date(Date.UTC(r[1],i,r[3]||1,r[4]||0,r[5]||0,r[6]||0,s)):new Date(r[1],i,r[3]||1,r[4]||0,r[5]||0,r[6]||0,s)}}return new Date(e)}(t),this.$x=t.x||{},this.init()},m.init=function(){var t=this.$d;this.$y=t.getFullYear(),this.$M=t.getMonth(),this.$D=t.getDate(),this.$W=t.getDay(),this.$H=t.getHours(),this.$m=t.getMinutes(),this.$s=t.getSeconds(),this.$ms=t.getMilliseconds()},m.$utils=function(){return O},m.isValid=function(){return!(this.$d.toString()===$)},m.isSame=function(t,e){var n=w(t);return this.startOf(e)<=n&&n<=this.endOf(e)},m.isAfter=function(t,e){return w(t)<this.startOf(e)},m.isBefore=function(t,e){return this.endOf(e)<w(t)},m.$g=function(t,e,n){return O.u(t)?this[e]:this.set(n,t)},m.unix=function(){return Math.floor(this.valueOf()/1e3)},m.valueOf=function(){return this.$d.getTime()},m.startOf=function(t,e){var n=this,r=!!O.u(e)||e,h=O.p(t),$=function(t,e){var i=O.w(n.$u?Date.UTC(n.$y,e,t):new Date(n.$y,e,t),n);return r?i:i.endOf(a)},l=function(t,e){return O.w(n.toDate()[t].apply(n.toDate("s"),(r?[0,0,0,0]:[23,59,59,999]).slice(e)),n)},y=this.$W,M=this.$M,m=this.$D,g="set"+(this.$u?"UTC":"");switch(h){case c:return r?$(1,0):$(31,11);case f:return r?$(1,M):$(0,M+1);case o:var D=this.$locale().weekStart||0,v=(y<D?y+7:y)-D;return $(r?m-v:m+(6-v),M);case a:case d:return l(g+"Hours",0);case u:return l(g+"Minutes",1);case s:return l(g+"Seconds",2);case i:return l(g+"Milliseconds",3);default:return this.clone()}},m.endOf=function(t){return this.startOf(t,!1)},m.$set=function(t,e){var n,o=O.p(t),h="set"+(this.$u?"UTC":""),$=(n={},n[a]=h+"Date",n[d]=h+"Date",n[f]=h+"Month",n[c]=h+"FullYear",n[u]=h+"Hours",n[s]=h+"Minutes",n[i]=h+"Seconds",n[r]=h+"Milliseconds",n)[o],l=o===a?this.$D+(e-this.$W):e;if(o===f||o===c){var y=this.clone().set(d,1);y.$d[$](l),y.init(),this.$d=y.set(d,Math.min(this.$D,y.daysInMonth())).$d}else $&&this.$d[$](l);return this.init(),this},m.set=function(t,e){return this.clone().$set(t,e)},m.get=function(t){return this[O.p(t)]()},m.add=function(r,h){var d,$=this;r=Number(r);var l=O.p(h),y=function(t){var e=w($);return O.w(e.date(e.date()+Math.round(t*r)),$)};if(l===f)return this.set(f,this.$M+r);if(l===c)return this.set(c,this.$y+r);if(l===a)return y(1);if(l===o)return y(7);var M=(d={},d[s]=e,d[u]=n,d[i]=t,d)[l]||1,m=this.$d.getTime()+r*M;return O.w(m,this)},m.subtract=function(t,e){return this.add(-1*t,e)},m.format=function(t){var e=this,n=this.$locale();if(!this.isValid())return n.invalidDate||$;var r=t||"YYYY-MM-DDTHH:mm:ssZ",i=O.z(this),s=this.$H,u=this.$m,a=this.$M,o=n.weekdays,f=n.months,h=function(t,n,i,s){return t&&(t[n]||t(e,r))||i[n].substr(0,s)},c=function(t){return O.s(s%12||12,t,"0")},d=n.meridiem||function(t,e,n){var r=t<12?"AM":"PM";return n?r.toLowerCase():r},l={YY:String(this.$y).slice(-2),YYYY:this.$y,M:a+1,MM:O.s(a+1,2,"0"),MMM:h(n.monthsShort,a,f,3),MMMM:h(f,a),D:this.$D,DD:O.s(this.$D,2,"0"),d:String(this.$W),dd:h(n.weekdaysMin,this.$W,o,2),ddd:h(n.weekdaysShort,this.$W,o,3),dddd:o[this.$W],H:String(s),HH:O.s(s,2,"0"),h:c(1),hh:c(2),a:d(s,u,!0),A:d(s,u,!1),m:String(u),mm:O.s(u,2,"0"),s:String(this.$s),ss:O.s(this.$s,2,"0"),SSS:O.s(this.$ms,3,"0"),Z:i};return r.replace(y,(function(t,e){return e||l[t]||i.replace(":","")}))},m.utcOffset=function(){return 15*-Math.round(this.$d.getTimezoneOffset()/15)},m.diff=function(r,d,$){var l,y=O.p(d),M=w(r),m=(M.utcOffset()-this.utcOffset())*e,g=this-M,D=O.m(this,M);return D=(l={},l[c]=D/12,l[f]=D,l[h]=D/3,l[o]=(g-m)/6048e5,l[a]=(g-m)/864e5,l[u]=g/n,l[s]=g/e,l[i]=g/t,l)[y]||g,$?D:O.a(D)},m.daysInMonth=function(){return this.endOf(f).$D},m.$locale=function(){return v[this.$L]},m.locale=function(t,e){if(!t)return this.$L;var n=this.clone(),r=S(t,e,!0);return r&&(n.$L=r),n},m.clone=function(){return O.w(this.$d,this)},m.toDate=function(){return new Date(this.valueOf())},m.toJSON=function(){return this.isValid()?this.toISOString():null},m.toISOString=function(){return this.$d.toISOString()},m.toString=function(){return this.$d.toUTCString()},M}(),b=_.prototype;return w.prototype=b,[["$ms",r],["$s",i],["$m",s],["$H",u],["$W",a],["$M",f],["$y",c],["$D",d]].forEach((function(t){b[t[1]]=function(e){return this.$g(e,t[0],t[1])}})),w.extend=function(t,e){return t.$i||(t(e,_,w),t.$i=!0),w},w.locale=S,w.isDayjs=p,w.unix=function(t){return w(1e3*t)},w.en=v[D],w.Ls=v,w.p={},w}));
 
 /***/ }),
-/* 24 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Category = void 0;
-const Attribute_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
 class Category extends Attribute_1.AttributeConstructor {
     constructor(name, distribution) {
         super(name, distribution);
@@ -1244,14 +1033,14 @@ exports.Category = Category;
 
 
 /***/ }),
-/* 25 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Unique = void 0;
-const Attribute_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
 class Unique extends Attribute_1.AttributeConstructor {
     constructor(name, distribution, formatToValue = (source) => source, valueToFormat = (source) => source, retryCount = 100) {
         super(name, distribution, formatToValue, valueToFormat);
@@ -1277,7 +1066,105 @@ exports.Unique = Unique;
 
 
 /***/ }),
-/* 26 */
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Compound = void 0;
+const Distribution_1 = __webpack_require__(1);
+const Attribute_1 = __webpack_require__(0);
+class Compound extends Attribute_1.AttributeConstructor {
+    constructor(name, args) {
+        super(name, new Distribution_1.DistributionConstructor());
+        this.type = Attribute_1.AttributeType.Compound;
+        this.args = args;
+    }
+    random(item) {
+        let value = {};
+        this.args.forEach((name) => {
+            value[name] = item[name];
+        });
+        return JSON.stringify(value);
+    }
+}
+exports.Compound = Compound;
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PrecedenceGraph = void 0;
+const attribute_1 = __webpack_require__(4);
+class PrecedenceGraph {
+    constructor(attributes, rules) {
+        let leading = attributes
+            .filter((attribute) => attribute.type === attribute_1.AttributeType.Primary)
+            .map((attribute) => attribute.name);
+        let following = [];
+        let order = [];
+        this.nodes = new Map(attributes.map((attribute) => [attribute.name, { name: attribute.name }]));
+        this.links = [];
+        function updateState() {
+            following = [];
+            for (let rule of rules) {
+                if (!following.includes(rule.target))
+                    following.push(rule.target);
+            }
+            for (let attribute of attributes) {
+                if (!following.includes(attribute.name) && !leading.includes(attribute.name)) {
+                    order.push(attribute);
+                    leading.push(attribute.name);
+                }
+            }
+        }
+        updateState();
+        let i = 0;
+        while (rules.length > 0) {
+            let rule = rules[i];
+            let clear = true;
+            const args = rule.regulation.args;
+            args.forEach((argument) => {
+                if (!leading.includes(argument)) {
+                    if (!following.includes(argument))
+                        throw Error(`attribute ${argument} has not be defined or cyclic dependence detected`);
+                    clear = false;
+                }
+            });
+            if (!clear) {
+                i++;
+            }
+            else {
+                order.push(rule);
+                this.links.push(...args.map((source) => {
+                    return { source, target: rule.target, weight: rule.confidence };
+                }));
+                rules.splice(i, 1);
+            }
+            if (i >= rules.length) {
+                updateState();
+                i = 0;
+            }
+        }
+        this.sequence = order;
+    }
+    getSequence() {
+        return this.sequence;
+    }
+    getGraph() {
+        return { nodes: this.nodes, links: this.links };
+    }
+}
+exports.PrecedenceGraph = PrecedenceGraph;
+
+
+/***/ }),
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1285,7 +1172,7 @@ exports.Unique = Unique;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MappingTable = void 0;
 const distribution_1 = __webpack_require__(2);
-const Expression_1 = __webpack_require__(10);
+const Expression_1 = __webpack_require__(9);
 const Regulation_1 = __webpack_require__(3);
 class MappingTable extends Regulation_1.RegulationConstructor {
     constructor(args, conditions) {

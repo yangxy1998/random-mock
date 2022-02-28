@@ -9,55 +9,514 @@
     <script>
         const attributes = [
             {
-                name: 'x',
-                type: 'continuous',
-                distribution: {
-                    type: 'uniform',
-                    begin: -5,
-                    end: 5
-                }
+                name: 'log_map',
+                type: 'compound',
+                arguments: ['skip', 'totalmemory', 'ota_version']
             },
             {
-                name: 'y',
-                type: 'continuous',
-                distribution: {
-                    type: 'uniform',
-                    begin: -5,
-                    end: 5
-                }
-            },
-            {
-                name: 'series',
+                name: 'skip',
                 type: 'category',
                 distribution: {
                     type: 'standard',
-                    range: ['a', 'b']
+                    range: ['56-107-23005']
+                }
+            },
+            {
+                name: 'totalmemory',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: [4, 8, 12]
+                }
+            },
+            {
+                name: 'ota_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: [
+                        'PXXX0020139_11.A.25_0250_202108241641',
+                        'PXXX00_11.A.26_0260_202108231255'
+                    ]
+                }
+            },
+            {
+                name: 'model',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['PXXX00', 'PXXX01', 'PXXX02', 'PXXX03']
+                }
+            },
+            {
+                name: 'app_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['1', '2', '3']
+                }
+            },
+            {
+                name: 'os_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['V11.0', 'V11.1', 'V11.2', 'V11.3']
+                }
+            },
+            {
+                name: 'rom_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['PXXX00_11_A.25', 'PXXX00_11_A.26', 'PXXX00_11_A.27', 'PXXX00_11_A.28']
+                }
+            },
+            {
+                name: 'android_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['11', '12']
+                }
+            },
+            {
+                name: '1e1434dd98fa2dd9_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['5.1.19232', '5.1.19238']
+                }
+            },
+            {
+                name: 'channel',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['ColorOS', 'Android']
+                }
+            },
+            {
+                name: 'network_id',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['UNKNOWN']
+                }
+            },
+            {
+                name: 'operators_id',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['0', '1', '2']
+                }
+            },
+            {
+                name: 'app_name',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: [
+                        '1e1434dd98fa2dd5',
+                        '1e1434dd98fa2dd6',
+                        '1e1434dd98fa2dd7',
+                        '1e1434dd98fa2dd8',
+                        '1e1434dd98fa2dd9'
+                    ]
+                }
+            },
+            {
+                name: 'app_package',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['10605205cb7ee0b8']
+                }
+            },
+            {
+                name: 'event_id',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['launch_time']
+                }
+            },
+            {
+                name: 'log_tag',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['2016101']
+                }
+            },
+            {
+                name: 'server_time',
+                type: 'date',
+                distribution: {
+                    type: 'uniform',
+                    range: ['2021/01/01 00:00', '2021/12/01 00:00']
+                }
+            },
+            {
+                name: 'client_time',
+                type: 'date',
+                distribution: {
+                    type: 'uniform',
+                    range: ['2021/01/01 00:00', '2021/12/01 00:00']
+                }
+            },
+            {
+                name: 'system_id',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['20160', '20161']
+                }
+            },
+            {
+                name: 'sim1_carrier',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['46000', '46001', '46011']
+                }
+            },
+            {
+                name: 'sim2_carrier',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['', '46000']
+                }
+            },
+            {
+                name: 'seqno',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['0']
+                }
+            },
+            {
+                name: 'topic_name',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['os_uni_channel_20160', 'os_uni_channel_20161']
+                }
+            },
+            {
+                name: 'ota_version',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: [
+                        'PXXX0020139_11.A.25_0250_202108241641',
+                        'PXXX00_11.A.26_0260_202108231255',
+                        'PXXX00_11.A.27_0270_202110131940',
+                        'PXXX00_11.A.25_0250_202106240033'
+                    ]
+                }
+            },
+            {
+                name: 'dayno',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['20211105']
+                }
+            },
+            {
+                name: 'hour',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['9']
+                }
+            },
+            {
+                name: 'brand',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['OPPO']
+                }
+            },
+            {
+                name: 'region',
+                type: 'category',
+                distribution: {
+                    type: 'standard',
+                    range: ['CN']
                 }
             }
         ]
         const rules = [
             {
-                source: ['x', 'y'],
-                target: 'series',
+                target: 'model',
+                source: ['os_version'],
+                type: 'mappingtable',
+                conditions: [
+                    { os_version: 'V11.0', value: 'PXXX00' },
+                    { os_version: 'V11.1', value: 'PXXX01' },
+                    { os_version: 'V11.2', value: 'PXXX02' },
+                    { value: 'PXXX03' }
+                ],
+                confidence: 0.9
+            },
+
+            {
+                target: 'android_version',
+                source: ['rom_version'],
+                type: 'mappingtable',
+                type: 'mappingtable',
+                conditions: [
+                    { rom_version: ['PXXX00_11_A.25', 'PXXX00_11_A.26'], value: '11' },
+                    { value: '12' }
+                ],
+                confidence: 0.9
+            },
+
+            {
+                target: 'operators_id',
+                source: ['rom_version'],
                 type: 'mappingtable',
                 conditions: [
                     {
-                        and: (item) =>
-                            item.x * item.x +
-                                Math.pow(item.y - Math.pow(item.x * item.x, 1 / 2), 2) <=
-                            5,
-                        value: 'a'
+                        rom_version: ['PXXX00_11_A.25', 'PXXX00_11_A.26'],
+                        value: {
+                            type: 'standard',
+                            range: ['0', '1', '2'],
+                            p: [0.2, 0.2, 0.6]
+                        }
                     },
                     {
-                        and: (item) =>
-                            item.x * item.x +
-                                Math.pow(item.y - Math.pow(item.x * item.x, 1 / 2), 2) >
-                            5,
-                        value: 'b'
+                        value: {
+                            type: 'standard',
+                            range: ['0', '1', '2'],
+                            p: [0.6, 0.2, 0.2]
+                        }
                     }
-                ]
+                ],
+                confidence: 0.9
+            },
+            {
+                target: '1e1434dd98fa2dd9_version',
+                source: ['channel'],
+                type: 'mappingtable',
+                conditions: [
+                    {
+                        channel: 'ColorOS',
+                        value: {
+                            type: 'standard',
+                            range: ['5.1.19232', '5.1.19238'],
+                            p: [0.3, 0.7]
+                        }
+                    },
+                    {
+                        value: {
+                            type: 'standard',
+                            range: ['5.1.19232', '5.1.19238'],
+                            p: [0.8, 0.2]
+                        }
+                    }
+                ],
+                confidence: 0.9
+            },
+
+            {
+                target: 'sim2_carrier',
+                source: ['sim1_carrier'],
+                type: 'mappingtable',
+                conditions: [
+                    {
+                        sim1_carrier: '46000',
+                        value: {
+                            type: 'standard',
+                            range: ['46000', '46001', '46011'],
+                            p: [0.2, 0.4, 0.4]
+                        }
+                    },
+                    {
+                        sim1_carrier: '46001',
+                        value: {
+                            type: 'standard',
+                            range: ['46000', '46001', '46011'],
+                            p: [0.4, 0.2, 0.4]
+                        }
+                    },
+                    {
+                        value: {
+                            type: 'standard',
+                            range: ['46000', '46001', '46011'],
+                            p: [0.4, 0.4, 0.2]
+                        }
+                    }
+                ],
+
+                confidence: 0.9
+            },
+
+            {
+                target: 'app_version',
+                source: ['app_name'],
+                type: 'mappingtable',
+                conditions: [
+                    {
+                        app_name: '1e1434dd98fa2dd5',
+                        value: {
+                            type: 'standard',
+                            range: ['1', '2', '3'],
+                            p: [0.1, 0.6, 0.3]
+                        }
+                    },
+                    {
+                        app_name: '1e1434dd98fa2dd6',
+                        value: {
+                            type: 'standard',
+                            range: ['1', '2', '3'],
+                            p: [0.2, 0.5, 0.3]
+                        }
+                    },
+                    {
+                        app_name: '1e1434dd98fa2dd7',
+                        value: {
+                            type: 'standard',
+                            range: [0.8, 0.1, 0.1],
+                            p: [0.1, 0.6, 0.3]
+                        }
+                    },
+                    {
+                        app_name: '1e1434dd98fa2dd8',
+                        value: {
+                            type: 'standard',
+                            range: ['1', '2', '3'],
+                            p: [0.9, 0.05, 0.05]
+                        }
+                    },
+                    {
+                        value: {
+                            type: 'standard',
+                            range: ['1', '2', '3'],
+                            p: [0.1, 0.1, 0.8]
+                        }
+                    }
+                ],
+                confidence: 0.9
+            },
+
+            {
+                target: 'app_package',
+                source: ['app_version'],
+                type: 'mappingtable',
+                conditions: [
+                    {
+                        app_version: '1',
+                        value: {
+                            type: 'standard',
+                            range: [
+                                '10605205cb7ee0b9',
+                                '10605205cb7ee0b10',
+                                '10605205cb7ee0b11',
+                                '10605205cb7ee0b12'
+                            ],
+                            p: [0.6, 0.1, 0.2, 0.1]
+                        }
+                    },
+                    {
+                        app_version: '2',
+                        value: {
+                            type: 'standard',
+                            range: [
+                                '10605205cb7ee0b9',
+                                '10605205cb7ee0b10',
+                                '10605205cb7ee0b11',
+                                '10605205cb7ee0b12'
+                            ],
+                            p: [0.3, 0.2, 0.1, 0.4]
+                        }
+                    },
+                    {
+                        value: {
+                            type: 'standard',
+                            range: [
+                                '10605205cb7ee0b9',
+                                '10605205cb7ee0b10',
+                                '10605205cb7ee0b11',
+                                '10605205cb7ee0b12'
+                            ],
+                            p: [0.1, 0.1, 0.1, 0.7]
+                        }
+                    }
+                ],
+                confidence: 0.9
+            },
+
+            {
+                target: 'ota_version',
+                source: ['system_id', 'topic_name'],
+                type: 'mappingtable',
+                conditions: [
+                    {
+                        system_id: '20160',
+                        topic_name: 'os_uni_channel_20160',
+                        value: {
+                            type: 'standard',
+                            range: [
+                                'PXXX0020139_11.A.25_0250_202108241641',
+                                'PXXX00_11.A.26_0260_202108231255',
+                                'PXXX00_11.A.27_0270_202110131940',
+                                'PXXX00_11.A.25_0250_202106240033'
+                            ],
+                            p: [0.2, 0.2, 0.2, 0.4]
+                        }
+                    },
+                    {
+                        system_id: '20160',
+                        topic_name: 'os_uni_channel_20161',
+                        value: {
+                            type: 'standard',
+                            range: [
+                                'PXXX0020139_11.A.25_0250_202108241641',
+                                'PXXX00_11.A.26_0260_202108231255',
+                                'PXXX00_11.A.27_0270_202110131940',
+                                'PXXX00_11.A.25_0250_202106240033'
+                            ],
+                            p: [0.6, 0.1, 0.2, 0.1]
+                        }
+                    },
+                    {
+                        system_id: '20161',
+                        topic_name: 'os_uni_channel_20160',
+                        value: {
+                            type: 'standard',
+                            range: [
+                                'PXXX0020139_11.A.25_0250_202108241641',
+                                'PXXX00_11.A.26_0260_202108231255',
+                                'PXXX00_11.A.27_0270_202110131940',
+                                'PXXX00_11.A.25_0250_202106240033'
+                            ],
+                            p: [0.3, 0.3, 0.3, 0.1]
+                        }
+                    },
+                    {
+                        value: {
+                            type: 'standard',
+                            range: [
+                                'PXXX0020139_11.A.25_0250_202108241641',
+                                'PXXX00_11.A.26_0260_202108231255',
+                                'PXXX00_11.A.27_0270_202110131940',
+                                'PXXX00_11.A.25_0250_202106240033'
+                            ],
+                            p: [0.5, 0.4, 0.05, 0.05]
+                        }
+                    }
+                ],
+                confidence: 0.9
             }
         ]
+
         const config = {
             attributes,
             rules
@@ -65,7 +524,7 @@
         let mocker = new RandMock.Mocker(config)
         let data = mocker.create({
             count: 10000,
-            mode: RandMock.DataMode.Object
+            mode: RandMock.DataMode.Table
         })
         console.log(data)
         const chart = new ExampleChart()

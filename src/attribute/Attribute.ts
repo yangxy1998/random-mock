@@ -43,7 +43,7 @@ export class AttributeConstructor {
                 ? distribution
                 : DistributionCreater(distribution, this.formatToValue)
     }
-    random(): any {
+    random(...args: any[]): any {
         return this.distribution.random()
     }
 }

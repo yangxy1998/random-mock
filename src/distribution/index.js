@@ -1,8 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Uniform = exports.Standard = exports.Normal = exports.Hypergeometric = exports.Exponential = exports.Disposable = exports.Compound = exports.Cauchy = exports.DistributionConstructor = exports.DistributionType = exports.Distribution = exports.DistributionCreater = void 0;
-const Compound_1 = require("./Compound");
-Object.defineProperty(exports, "Compound", { enumerable: true, get: function () { return Compound_1.Compound; } });
+exports.Uniform = exports.Standard = exports.Normal = exports.Hypergeometric = exports.Exponential = exports.Disposable = exports.Cauchy = exports.DistributionConstructor = exports.DistributionType = exports.Distribution = exports.DistributionCreater = void 0;
 const Exponential_1 = require("./Exponential");
 Object.defineProperty(exports, "Exponential", { enumerable: true, get: function () { return Exponential_1.Exponential; } });
 const Standard_1 = require("./Standard");
@@ -22,7 +20,6 @@ Object.defineProperty(exports, "DistributionConstructor", { enumerable: true, ge
 var DistributionType;
 (function (DistributionType) {
     DistributionType["Cauchy"] = "cauchy";
-    DistributionType["Compound"] = "compound";
     DistributionType["Disposable"] = "disposable";
     DistributionType["Exponential"] = "exponential";
     DistributionType["Standard"] = "standard";
@@ -61,7 +58,6 @@ function DistributionCreater(config, format = (source) => source) {
 exports.DistributionCreater = DistributionCreater;
 exports.Distribution = {
     Cauchy: Cauchy_1.Cauchy,
-    Compound: Compound_1.Compound,
     Disposable: Disposable_1.Disposable,
     Exponential: Exponential_1.Exponential,
     Standard: Standard_1.Standard,

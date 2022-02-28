@@ -21,13 +21,19 @@ class Generator {
         this.config = config;
         this.attributes = [];
         this.primaries = [];
+        this.compounds = [];
         this.attributeMap = {};
         for (let attributeConfig of config.attributes) {
             const attribute = attribute_1.AttributeCreater(attributeConfig);
             if (attribute instanceof Primary_1.Primary) {
                 this.primaries.push(attribute);
+                this.attributes.push(attribute);
             }
-            this.attributes.push(attribute);
+            else if (attribute instanceof attribute_1.Compound)
+                this.compounds.push(attribute);
+            else {
+                this.attributes.push(attribute);
+            }
             this.attributeMap[attribute.name] = attribute;
         }
         const rules = config.rules.map((rule) => {
@@ -112,87 +118,24 @@ class Generator {
                 });
             }
         }
+        for (let compound of this.compounds) {
+            items.forEach((item) => {
+                item[compound.name] = compound.random(item);
+                compound.args.forEach((name) => {
+                    delete item[name];
+                });
+            });
+        }
         return items;
     }
     _createTable(count, settings = { head: true, mode: TableMode.ArrangeByRow }) {
-        if (settings.mode === TableMode.ArrangeByRow) {
-            const header = [];
-            const mapper = {};
-            let index = 0;
-            const cart = (target, primary) => {
-                if (target.length === 0) {
-                    return primary.range.map((value) => {
-                        return [value];
-                    });
-                }
-                else {
-                    const result = [];
-                    target.forEach((element) => {
-                        primary.range.forEach((value) => {
-                            result.push([...element, value]);
-                        });
-                    });
-                    return result;
-                }
-            };
-            let items = [];
-            if (this.primaries.length > 0) {
-                this.primaries.forEach((primary) => {
-                    mapper[primary.name] = index;
-                    header.push(primary.name);
-                    items = cart(items, primary);
-                    index++;
-                });
-                if (count)
-                    if (count > items.length)
-                        console.warn('requested count greater than primary keys');
-                    else
-                        items = items.slice(0, count);
-                items = items.map((item) => item.concat(Array(this.config.attributes.length)));
-            }
-            else {
-                if (count) {
-                    for (let i = 0; i < count; i++) {
-                        items.push(Array(this.config.attributes.length));
-                    }
-                }
-                else
-                    throw Error('count is needed while primary is not defined');
-            }
-            this.config.attributes.forEach((attribute) => {
-                mapper[attribute.name] = index;
-                header.push(attribute.name);
-                index++;
-            });
-            if (settings.head)
-                items.unshift(header);
-            let sequence = this.precedence.getSequence();
-            for (let singlerule of sequence) {
-                if (singlerule instanceof attribute_1.AttributeConstructor) {
-                    //attribute
-                    const rule = singlerule;
-                    const index = header.indexOf(rule.name);
-                    items.forEach((item) => {
-                        if (!item[index])
-                            item[index] = rule.random();
-                    });
-                }
-                else {
-                    //rule
-                    const rule = singlerule;
-                    const index = header.indexOf(rule.target);
-                    items.forEach((item) => {
-                        if (Math.random() <= (rule.confidence ? rule.confidence : 1)) {
-                            // not initialized attribute
-                            const value = rule.regulation.getValue(item);
-                            if (value)
-                                item[index] = value;
-                        }
-                    });
-                }
-            }
-            return items;
-        }
+        let items = this._createObjectList(count);
+        let array = [];
+        const header = Object.keys(items[0]);
+        if (settings.head)
+            array.push(header);
+        items.forEach((item) => array.push(header.map((name) => item[name])));
+        return array;
     }
 }
 exports.Generator = Generator;

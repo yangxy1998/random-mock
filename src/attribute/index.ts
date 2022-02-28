@@ -4,9 +4,11 @@ import { Discrete } from './Discrete'
 import { Category } from './Category'
 import { Unique } from './Unique'
 import { Primary } from './Primary'
+import { Compound } from './Compound'
 import { AttributeConstructor, AttributeConfig, AttributeType } from './Attribute'
 export const Attribute = {
     Continuous,
+    Compound,
     Date,
     Discrete,
     Category,
@@ -16,6 +18,8 @@ export const Attribute = {
 export function AttributeCreater(config: AttributeConfig) {
     if (config.type === AttributeType.Category) {
         return new Category(config.name, config.distribution)
+    } else if (config.type === AttributeType.Compound) {
+        return new Compound(config.name, config.arguments)
     } else if (config.type === AttributeType.Continuous) {
         return new Continuous(config.name, config.distribution)
     } else if (config.type === AttributeType.Date) {
@@ -53,6 +57,7 @@ export {
     AttributeConstructor,
     Category,
     Continuous,
+    Compound,
     Date,
     Discrete,
     Primary,

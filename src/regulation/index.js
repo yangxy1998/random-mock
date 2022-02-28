@@ -46,7 +46,6 @@ function CreateRegulation(config) {
                     condition.value = CreateExpression(config.source, value);
                 }
                 else if (value.type === distribution_1.DistributionType.Cauchy ||
-                    value.type === distribution_1.DistributionType.Compound ||
                     value.type === distribution_1.DistributionType.Disposable ||
                     value.type === distribution_1.DistributionType.Exponential ||
                     value.type === distribution_1.DistributionType.Hypergeometric ||

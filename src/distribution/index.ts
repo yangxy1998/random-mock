@@ -1,4 +1,3 @@
-import { Compound } from './Compound'
 import { Exponential } from './Exponential'
 import { Standard } from './Standard'
 import { Uniform } from './Uniform'
@@ -9,7 +8,6 @@ import { Disposable } from './Disposable'
 import { DistributionConstructor } from './Distribution'
 enum DistributionType {
     Cauchy = 'cauchy',
-    Compound = 'compound',
     Disposable = 'disposable',
     Exponential = 'exponential',
     Standard = 'standard',
@@ -42,7 +40,6 @@ export function DistributionCreater(config: DistributionConfig, format = (source
 }
 export const Distribution = {
     Cauchy,
-    Compound,
     Disposable,
     Exponential,
     Standard,
@@ -54,7 +51,6 @@ export {
     DistributionType,
     DistributionConstructor,
     Cauchy,
-    Compound,
     Disposable,
     Exponential,
     Hypergeometric,
